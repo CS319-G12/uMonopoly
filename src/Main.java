@@ -1,8 +1,9 @@
+package src;
 /**
  *
- * @author anikristo
+ * @author
  */
-public class UMonopoly {
+public class Main{
 
     /**
      * @param args the command line arguments
