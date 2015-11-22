@@ -1,11 +1,16 @@
 package src;
+
+import src.gui.Window;
+
+import javax.swing.*;
+
 /**
  *
- * @author
+ * @author anikristo
  */
 public class Main{
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        SwingUtilities.invokeLater(() -> new Window());
     }
     
 }

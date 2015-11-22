@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="src.gui.HomeScreen">
+  <grid id="27dc6" binding="content" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="788" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-855310"/>
+      <maximumSize width="1152" height="720"/>
+      <preferredSize width="1152" height="720"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="84a3d" class="javax.swing.JLabel" binding="title">
+        <constraints border-constraint="North"/>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <icon value="src/img/home_title.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="c592c" class="javax.swing.JLabel" binding="credits">
+        <constraints border-constraint="South"/>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <icon value="src/img/home_credits.png"/>
+          <inheritsPopupMenu value="false"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <grid id="b615b" binding="buttons" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-855310"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="2411b" class="javax.swing.JButton" binding="start">
+            <constraints/>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <focusPainted value="false"/>
+              <icon value="src/img/home_btn_start.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="90bb7" class="javax.swing.JButton" binding="highScores">
+            <constraints/>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <focusPainted value="false"/>
+              <icon value="src/img/home_btn_highscores.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="86375" class="javax.swing.JButton" binding="help">
+            <constraints/>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <focusPainted value="false"/>
+              <icon value="src/img/home_btn_help.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="65215" class="javax.swing.JButton" binding="quit">
+            <constraints/>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <focusPainted value="false"/>
+              <icon value="src/img/home_btn_quit.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
