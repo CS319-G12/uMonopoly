@@ -6,6 +6,7 @@ package src.domain.dice;
 public class Dice {
 
     // ATTRIBUTES
+    private int value1, value2;
 
     // CONSTRUCTOR
 
