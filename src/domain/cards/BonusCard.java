@@ -1,4 +1,4 @@
-package src.domain.cards;
+package domain.cards;
 
 public class BonusCard {
 

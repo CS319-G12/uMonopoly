@@ -1,4 +1,4 @@
-package src.domain.squares;
+package domain.squares;
 
 /**
  * Created by

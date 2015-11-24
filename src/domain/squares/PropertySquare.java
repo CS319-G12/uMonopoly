@@ -1,9 +1,9 @@
-package src.domain.squares;
+package domain.squares;
 
 /**
  * Created by
  */
-public abstract class PropertySquare extends Square {
+public abstract class PropertySquare extends domain.squares.Square {
 
     // ATTRIBUTES
 

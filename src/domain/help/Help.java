@@ -1,4 +1,4 @@
-package src.domain.help;
+package domain.help;
 
 /**
  * Created by

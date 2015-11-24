@@ -1,4 +1,4 @@
-package src.domain.dice;
+package domain.dice;
 
 /**
  * Created by

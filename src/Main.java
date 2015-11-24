@@ -1,4 +1,4 @@
-import src.gui.Window;
+import gui.Window;
 
 import javax.swing.*;
 

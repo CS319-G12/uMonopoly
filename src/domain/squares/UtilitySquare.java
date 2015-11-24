@@ -1,9 +1,9 @@
-package src.domain.squares;
+package domain.squares;
 
 /**
  * Created by
  */
-public class UtilitySquare extends PropertySquare {
+public class UtilitySquare extends domain.squares.PropertySquare {
 
     // ATTRIBUTES
 
