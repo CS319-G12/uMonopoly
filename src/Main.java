@@ -1,5 +1,3 @@
-package src;
-
 import src.gui.Window;
 
 import javax.swing.*;
