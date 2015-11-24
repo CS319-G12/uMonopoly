@@ -1,6 +1,8 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by anikristo on 22-Nov-15.
@@ -39,9 +41,8 @@ public class HomeScreen {
             // TODO
         });
 
-        quit.addActionListener(actionEvent -> {
+        quit.addActionListener(e -> {
             // TODO
-            JOptionPane.showConfirmDialog(content, "Sure?");
         });
 
     }
