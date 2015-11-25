@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.PlayerRegistrationSection">
+  <grid id="27dc6" binding="mainPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="1088" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-1644826"/>
+      <enabled value="true"/>
+      <maximumSize width="1088" height="103"/>
+      <minimumSize width="1088" height="103"/>
+      <preferredSize width="1088" height="103"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="626b7" class="javax.swing.JLabel" binding="nameLb">
+        <constraints/>
+        <properties>
+          <focusable value="true"/>
+          <font/>
+          <foreground color="-16777216"/>
+          <icon value="img/playReg_lb_name.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="cfee5" class="javax.swing.JTextField" binding="nameTF">
+        <constraints/>
+        <properties>
+          <background color="-1644826"/>
+          <columns value="20"/>
+          <focusable value="true"/>
+          <font size="21"/>
+          <foreground color="-2031616"/>
+          <horizontalAlignment value="0"/>
+          <opaque value="true"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="d001b" class="javax.swing.JButton" binding="dogBtn">
+        <constraints/>
+        <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <enabled value="true"/>
+          <focusPainted value="false"/>
+          <icon value="img/playReg_token_dog.png"/>
+          <selected value="false"/>
+          <selectedIcon value="img/playReg_token_sel_dog.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="427e4" class="javax.swing.JButton" binding="carBtn">
+        <constraints/>
+        <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <focusPainted value="false"/>
+          <icon value="img/playReg_token_car.png"/>
+          <selectedIcon value="img/playReg_token_sel_car.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="9d961" class="javax.swing.JButton" binding="ironBtn">
+        <constraints/>
+        <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <focusPainted value="false"/>
+          <icon value="img/playReg_token_iron.png"/>
+          <selected value="false"/>
+          <selectedIcon value="img/playReg_token_sel_iron.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="545f8" class="javax.swing.JButton" binding="hatBtn">
+        <constraints/>
+        <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <focusPainted value="false"/>
+          <icon value="img/playReg_token_hat.png"/>
+          <selectedIcon value="img/playReg_token_sel_hat.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="4226c" class="javax.swing.JButton" binding="thimbleBtn">
+        <constraints/>
+        <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <focusPainted value="false"/>
+          <icon value="img/playReg_token_thimble.png"/>
+          <selectedIcon value="img/playReg_token_sel_thimble.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="5fc7a" class="javax.swing.JButton" binding="shoeBtn">
+        <constraints/>
+        <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <focusPainted value="false"/>
+          <icon value="img/playReg_token_shoe.png"/>
+          <label value=""/>
+          <selectedIcon value="img/playReg_token_sel_shoe.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

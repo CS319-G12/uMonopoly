@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -13,6 +14,7 @@ public class Window extends JFrame implements WindowListener {
     // CONSTRUCTOR
     public Window() {
         super("µMonopoly");
+
         setSize(1152, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
