@@ -14,7 +14,7 @@
     <border type="none"/>
     <children>
       <grid id="dc74f" binding="content" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
-        <constraints border-constraint="First"/>
+        <constraints border-constraint="Center"/>
         <properties>
           <background color="-1644826"/>
         </properties>
@@ -140,12 +140,15 @@
         </children>
       </grid>
       <component id="8844c" class="javax.swing.JLabel" binding="errorLb">
-        <constraints border-constraint="Last"/>
+        <constraints border-constraint="South"/>
         <properties>
           <background color="-1644826"/>
           <font size="10"/>
           <foreground color="-2031616"/>
-          <text value="Please select a token first!"/>
+          <maximumSize width="1067" height="21"/>
+          <minimumSize width="1067" height="21"/>
+          <preferredSize width="1067" height="21"/>
+          <text value="Ani"/>
           <visible value="true"/>
         </properties>
       </component>

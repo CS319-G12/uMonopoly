@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.Observable;
 
 /**
- * Created by anikristo on 22-Nov-15.
+ * @author anikristo
  */
 public class HomeScreen extends Observable {
 
@@ -51,7 +51,7 @@ public class HomeScreen extends Observable {
     }
 
     // METHODS
-    public JPanel getContent() {
+    JPanel getContent() {
         return content;
     }
 }

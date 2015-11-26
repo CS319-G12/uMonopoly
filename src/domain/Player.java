@@ -1,10 +1,9 @@
 package domain;
 
 import domain.token.Token;
-import domain.token.TokenFigure;
 
 /**
- * Created by
+ * @author anikristo
  */
 public class Player {
 
@@ -13,15 +12,23 @@ public class Player {
     private Token token;
 
     // CONSTRUCTOR
-    public Player(String name, TokenFigure tokenFigure) {
+    public Player(String name, String tokenFigure) {
         this.name = name;
-        this.token = new Token();// TODO enum: figure and type
+//        this.token = new Token(tokenFigure, TokenType.SIMPLE);// TODO enum: figure and type
     }
 
     // METHODS
     public String getName() {
         return name;
     }
+
+//    public TokenFigure getTokenFigure(){
+//        // TODO return token.getFigure();
+//    }
+//
+//    public int getTokenPosition(){
+//        // TODO return token.getPosition();
+//    }
 
 
 }

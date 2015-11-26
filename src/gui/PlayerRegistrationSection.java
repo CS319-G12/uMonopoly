@@ -4,9 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by anikristo on 25-Nov-15.
+ * @author anikristo
  */
 public class PlayerRegistrationSection extends java.util.Observable {
+
+    // CONSTANTS
+    final static String NO_TOKEN_SELECTED = "Please select a token!";
+    final static String NO_NAME_ENTERED = "Please enter the player's name!";
+    final static String NAME_NOT_UNIQUE = "Please enter a unique name!";
+    final static String FEW_PLAYERS = "Please register at least two players!";
 
     // ATTRIBUTES
     private JPanel mainPanel;
@@ -21,12 +27,12 @@ public class PlayerRegistrationSection extends java.util.Observable {
     private JPanel namePn;
     private JLabel playerNrLb;
     private JPanel content;
-    private JLabel errorLb; // TODO add error for unique name
+    private JLabel errorLb;
 
     private boolean isLocked;
 
     // CONSTRUCTOR
-    public PlayerRegistrationSection(int playerNr){
+    public PlayerRegistrationSection(int playerNr) {
 
         // Setting the borders of the TF
         nameTf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
@@ -134,34 +140,35 @@ public class PlayerRegistrationSection extends java.util.Observable {
             }
         });
 
-        errorLb.setBorder(BorderFactory.createEmptyBorder(10, 30, 50, 0));
-        setError(false);
-
+        setError(false, null);
         isLocked = false;
     }
 
     // METHODS
-    public String getName(){
-        return nameTf.getText();
+    public String getName() throws NameNotEnteredException {
+        String str = nameTf.getText();
+        if (!str.isEmpty())
+            return str;
+        else throw new NameNotEnteredException();
     }
 
     public String getTokenFigure() throws TokenNotSelectedException { // TODO change to enum
-        if(dogBtn.isSelected()){
+        if (dogBtn.isSelected()) {
             return "DOG";
 //            return TokenFigure.DOG;
-        } else if(carBtn.isSelected()){
+        } else if (carBtn.isSelected()) {
             return "CAR";
 //            return TokenFigure.CAR;
-        } else if(shoeBtn.isSelected()){
+        } else if (shoeBtn.isSelected()) {
             return "SHOE";
 //            return TokenFigure.SHOE;
-        } else if(thimbleBtn.isSelected()){
+        } else if (thimbleBtn.isSelected()) {
             return "THIMBLE";
 //            return TokenFigure.THIMBLE;
-        } else if(hatBtn.isSelected()){
+        } else if (hatBtn.isSelected()) {
             return "HAT";
 //            return TokenFigure.HAT;
-        } else if(ironBtn.isSelected()){
+        } else if (ironBtn.isSelected()) {
             return "IRON";
 //            return TokenFigure.IRON;
         }
@@ -169,15 +176,16 @@ public class PlayerRegistrationSection extends java.util.Observable {
         throw new TokenNotSelectedException();
     }
 
-    public void setError(boolean error) {
+    public void setError(boolean error, String msg) {
+        errorLb.setText(msg);
         errorLb.setVisible(error);
     }
 
-    public JPanel getContent(){
+    JPanel getContent() {
         return mainPanel;
     }
 
-    public void setVisible( boolean visible){
+    public void setVisible(boolean visible) {
         mainPanel.setVisible(visible);
     }
 
@@ -199,7 +207,7 @@ public class PlayerRegistrationSection extends java.util.Observable {
     }
 
     public void lock() {
-        isLocked = false;
+        isLocked = true;
     }
 
     /**
@@ -209,6 +217,36 @@ public class PlayerRegistrationSection extends java.util.Observable {
         @Override
         public String getMessage() {
             return super.getMessage() + "Please make sure you have selected a token!";
+        }
+    }
+
+    /**
+     * TODO
+     */
+    class NameNotEnteredException extends Throwable {
+        @Override
+        public String getMessage() {
+            return super.getMessage() + "Please make sure you have entered a player name!";
+        }
+    }
+
+    /**
+     * TODO
+     */
+    public static class NameNotUniqueException extends Throwable {
+        @Override
+        public String getMessage() {
+            return super.getMessage() + "Please make sure you have entered a unique name!";
+        }
+    }
+
+    /**
+     * TODO
+     */
+    public static class TooFewPlayersException extends Throwable {
+        @Override
+        public String getMessage() {
+            return super.getMessage() + "Please make sure you have registered at least two players!";
         }
     }
 }

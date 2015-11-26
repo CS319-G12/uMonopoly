@@ -1,5 +1,7 @@
 package gui;
 
+import domain.GameController;
+
 import javax.swing.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -7,7 +9,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created by anikristo on 22-Nov-15.
+ * @author anikristo
  */
 public class Window extends JFrame implements WindowListener, Observer {
 
@@ -18,16 +20,20 @@ public class Window extends JFrame implements WindowListener, Observer {
     private HighScoresScreen highScoresScreen;
     private HelpScreen helpScreen;
 
+    private GameController gameController;
+
     // CONSTRUCTOR
     public Window() {
         super("µMonopoly");
+
+        gameController = new GameController();
 
         setSize(1152, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Instantiating the panels
         homeScreen = new HomeScreen();
-        playRegScreen = new PlayerRegistrationScreen();
+        playRegScreen = new PlayerRegistrationScreen(gameController);
         gameScreen = new GameScreen();
         highScoresScreen = new HighScoresScreen();
 
@@ -89,6 +95,9 @@ public class Window extends JFrame implements WindowListener, Observer {
             // TODO
         } else if (observable == playRegScreen) {
             // TODO
+            if (o == NotificationMsg.BACK) {
+                setContentPane(homeScreen.getContent());
+            }
         } else if (observable == gameScreen) {
             // TODO
         }
@@ -101,6 +110,6 @@ public class Window extends JFrame implements WindowListener, Observer {
      * todo
      */
     enum NotificationMsg {
-        PLAY_REG, HIGH_SCORES, HELP, QUIT, NEW_GAME
+        PLAY_REG, HIGH_SCORES, HELP, QUIT, NEW_GAME, BACK
     }
 }
