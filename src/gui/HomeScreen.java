@@ -1,13 +1,12 @@
 package gui;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Observable;
 
 /**
  * Created by anikristo on 22-Nov-15.
  */
-public class HomeScreen {
+public class HomeScreen extends Observable {
 
     // ATTRIBUTES
     private JPanel content;
@@ -30,19 +29,23 @@ public class HomeScreen {
 
         // Setting action listeners
         start.addActionListener(actionEvent -> {
-            // TODO
+            setChanged();
+            notifyObservers(Window.NotificationMsg.PLAY_REG);
         });
 
         highScores.addActionListener(actionEvent -> {
-            // TODO
+            setChanged();
+            notifyObservers(Window.NotificationMsg.HIGH_SCORES);
         });
 
         help.addActionListener(actionEvent -> {
-            // TODO
+            setChanged();
+            notifyObservers(Window.NotificationMsg.HELP);
         });
 
         quit.addActionListener(e -> {
-            // TODO
+            setChanged();
+            notifyObservers(Window.NotificationMsg.QUIT);
         });
 
     }

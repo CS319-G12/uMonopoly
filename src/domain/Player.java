@@ -2,7 +2,6 @@ package domain;
 
 import domain.token.Token;
 import domain.token.TokenFigure;
-import domain.token.TokenType;
 
 /**
  * Created by
@@ -16,7 +15,7 @@ public class Player {
     // CONSTRUCTOR
     public Player(String name, TokenFigure tokenFigure) {
         this.name = name;
-        this.token = new Token(tokenFigure, TokenType.SIMPLE);
+        this.token = new Token();// TODO enum: figure and type
     }
 
     // METHODS
