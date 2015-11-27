@@ -1,14 +1,10 @@
 package domain.token;
 
 /**
- * Created by
+ * @author Ali Gocer
  */
 public enum TokenFigure {
 
-    // ATTRIBUTES
-
-    // CONSTRUCTOR
-
-    // METHODS
+    DOG, CAR, HAT, THIMBLE, SHOE, IRON
 
 }

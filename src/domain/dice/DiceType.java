@@ -1,14 +1,8 @@
 package domain.dice;
 
 /**
- * Created by
+ * @author Ali Gocer
  */
 public enum DiceType {
-
-    // ATTRIBUTES
-
-    // CONSTRUCTOR
-
-    // METHODS
-
+    GOLDEN, PLATINUM, SIMPLE
 }
