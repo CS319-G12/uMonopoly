@@ -3,9 +3,8 @@ package domain.squares;
 import domain.cards.BonusCard;
 
 /**
- * Created by Alp Er
+ * Created by Alper Önder
  */
 public interface CardSquare {
-
     BonusCard pickCard();
 }
