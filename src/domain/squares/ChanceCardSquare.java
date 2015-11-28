@@ -13,7 +13,8 @@ public class ChanceCardSquare extends Square implements CardSquare {
     private ArrayList<ChanceCard> theChanceCardList;
 
     // CONSTRUCTOR
-    public ChanceCardSquare(ArrayList<ChanceCard> theChanceCardList){
+    public ChanceCardSquare(int id, int position, String name, SquareType type, ArrayList<ChanceCard> theChanceCardList){
+        super(id, position, name, type);
         this.theChanceCardList = (ArrayList<ChanceCard>) theChanceCardList.clone();
     }
 

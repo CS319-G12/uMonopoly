@@ -13,7 +13,8 @@ public class CommunityChestCardSquare extends Square implements CardSquare {
     private ArrayList<CommunityChestCard> theCommunityChestCard;
 
     // CONSTRUCTOR
-    public CommunityChestCardSquare(ArrayList<CommunityChestCard> theCommunityChestCard){
+    public CommunityChestCardSquare(int id, int position, String name, SquareType type, ArrayList<CommunityChestCard> theCommunityChestCard){
+        super(id, position, name, type);
         this.theCommunityChestCard = (ArrayList<CommunityChestCard>) theCommunityChestCard.clone();
     }
 
