@@ -1,14 +1,8 @@
 package domain.squares;
 
 /**
- * Created by
+ * Created by Alper Önder
  */
 public enum SquareType {
-
-    // ATTRIBUTES
-
-    // CONSTRUCTOR
-
-    // METHODS
-
+    PROPERTY, CHANCE, COMMUNITY_CHEST, GO, JAIL_VISITOR, JAIL, FREE_PARKING, TAX
 }

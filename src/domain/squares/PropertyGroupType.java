@@ -1,14 +1,8 @@
 package domain.squares;
 
 /**
- * Created by
+ * Created by Alper Önder
  */
 public enum PropertyGroupType {
-
-    // ATTRIBUTES
-
-    // CONSTRUCTOR
-
-    // METHODS
-
+    RAILROADS, TOWN, UTILITY;
 }
