@@ -1,14 +1,10 @@
 package domain.token;
 
 /**
- * Created by
+ * @author Ali Gocer
  */
 public enum TokenType {
+    GOLDEN, PLATINUM, SIMPLE
 
-    // ATTRIBUTES
-
-    // CONSTRUCTOR
-
-    // METHODS
 
 }
