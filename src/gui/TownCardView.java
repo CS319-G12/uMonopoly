@@ -1,6 +1,6 @@
 package gui;
 
-import domain.cards.PropertyCard;
+import domain.cards.TownCard;
 
 import javax.swing.*;
 
@@ -30,7 +30,7 @@ public class TownCardView { // TODO test
     private JLabel hotelCostLb;
 
     // CONSTRUCTOR
-    public TownCardView(PropertyCard card) {
+    public TownCardView(TownCard card) {
 
         // Fixing form design
         titlePn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Colors.BLACK));
