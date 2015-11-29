@@ -18,7 +18,7 @@ public abstract class BonusCard {
     private String desc;
 
     // CONSTRUCTOR
-    public BonusCard(int amount, boolean jail, boolean outOfJail, String desc) {
+    protected BonusCard(int amount, boolean jail, boolean outOfJail, String desc) {
         this.id = id_count++;
         this.amount = amount;
         this.jail = jail;

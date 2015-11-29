@@ -1,7 +1,7 @@
 package domain.cards;
 
 /**
- * Created by
+ * @author buseburcu
  */
 public class CommunityChestCard extends BonusCard {
 
