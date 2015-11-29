@@ -2,24 +2,36 @@ package domain.squares;
 
 import domain.cards.BonusCard;
 import domain.cards.CommunityChestCard;
-import java.util.ArrayList;
+
+import java.util.List;
 
 /**
- * Created by Alper Önder
+ * @author Alper Önder
  */
 public class CommunityChestCardSquare extends Square implements CardSquare {
 
     // ATTRIBUTES
-    private ArrayList<CommunityChestCard> theCommunityChestCard;
+    private List<CommunityChestCard> theCommunityChestCard;
+    private int selectedCardID;
+    private int maxSelectableCardSize;
+    private int selectableCardSize;
 
     // CONSTRUCTOR
-    public CommunityChestCardSquare(int id, int position, String name, SquareType type, ArrayList<CommunityChestCard> theCommunityChestCard){
-        super(id, position, name, type);
-        this.theCommunityChestCard = (ArrayList<CommunityChestCard>) theCommunityChestCard.clone();
+    public CommunityChestCardSquare(int position, String name, SquareType type, List<CommunityChestCard> theCommunityChestCard) {
+        super(position, name, type);
+        this.theCommunityChestCard = theCommunityChestCard;
+        maxSelectableCardSize      = theCommunityChestCard.size();
+        selectableCardSize         = maxSelectableCardSize;
     }
 
     // METHODS
-    public BonusCard pickCard(){
-        return theCommunityChestCard.get((int)(Math.random() * theCommunityChestCard.size()));
+    public BonusCard pickCard() {
+        if (selectableCardSize == 0)
+            selectableCardSize = maxSelectableCardSize;
+        selectedCardID = (int) (Math.random() * selectableCardSize);
+        theCommunityChestCard.add(theCommunityChestCard.get(selectedCardID));
+        theCommunityChestCard.remove(theCommunityChestCard.get(selectedCardID));
+        selectableCardSize--;
+        return theCommunityChestCard.get(theCommunityChestCard.size() - 1);
     }
 }

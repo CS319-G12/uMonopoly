@@ -1,18 +1,18 @@
 package domain.squares;
 
 /**
- * Created by
+ * @author Alper Önder
  */
-public abstract class PropertySquare extends domain.squares.Square {
+public abstract class PropertySquare extends Square {
 
     // ATTRIBUTES
 
     // CONSTRUCTOR
-    PropertySquare(int id, int position, String name, SquareType type){
-        super(id, position, name, type);
+    PropertySquare(int position, String name, SquareType type){
+        super(position, name, type);
     }
 
     // METHODS
-    public abstract int getRentPrice();
+    public abstract int getRentPrice(int numberOfBuildings);
 
 }

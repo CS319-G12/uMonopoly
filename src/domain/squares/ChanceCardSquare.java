@@ -2,24 +2,37 @@ package domain.squares;
 
 import domain.cards.BonusCard;
 import domain.cards.ChanceCard;
-import java.util.ArrayList;
+
+import java.util.List;
 
 /**
- * Created by Alper Önder
+ * @author Alper Önder
  */
 public class ChanceCardSquare extends Square implements CardSquare {
 
     // ATTRIBUTES
-    private ArrayList<ChanceCard> theChanceCardList;
+    private List<ChanceCard> theChanceCardList;
+    private int selectedCardID;
+    private int maxSelectableCardSize;
+    private int selectableCardSize;
+
 
     // CONSTRUCTOR
-    public ChanceCardSquare(int id, int position, String name, SquareType type, ArrayList<ChanceCard> theChanceCardList){
-        super(id, position, name, type);
-        this.theChanceCardList = (ArrayList<ChanceCard>) theChanceCardList.clone();
+    public ChanceCardSquare( int position, String name, SquareType type, List<ChanceCard> theChanceCardList){
+        super(position, name, type);
+        this.theChanceCardList = theChanceCardList;
+        maxSelectableCardSize  = theChanceCardList.size();
+        selectableCardSize     = maxSelectableCardSize;
     }
 
     // METHODS
-    public BonusCard pickCard(){ // Getting randon Chance Card
-        return theChanceCardList.get((int)(Math.random() * theChanceCardList.size()));
+    public BonusCard pickCard(){ // Getting randon Chance Car
+        if(selectableCardSize == 0)
+            selectableCardSize = maxSelectableCardSize;
+        selectedCardID = (int)(Math.random() * selectableCardSize);
+        theChanceCardList.add(theChanceCardList.get(selectedCardID));
+        theChanceCardList.remove(theChanceCardList.get(selectedCardID));
+        selectableCardSize--;
+        return theChanceCardList.get(theChanceCardList.size()-1);
     }
 }
