@@ -2,10 +2,11 @@ package domain.squares;
 
 import domain.cards.TownCard;
 
-import java.awt.Color;
+import java.awt.*;
+// import gui.Color;
 
 /**
- * Created by Alper Önder
+ * @author Alper Önder
  */
 public class TownSquare extends PropertySquare {
 
@@ -13,24 +14,32 @@ public class TownSquare extends PropertySquare {
     private Color    color;
     public  int      houseCount;
     public  boolean  hotel;
-    private TownCard card;
+    private TownCard theTownCard;
 
     // CONSTRUCTOR
-    public TownSquare(int id, int position, String name, SquareType type, Color color, int houseCount, boolean hotel, TownCard card){
-        super(id, position, name, type);
-        this.color      = color;
-        this.houseCount = houseCount;
-        this.hotel      = hotel;
-        this.card       = card;
+    public TownSquare(int position, String name, SquareType type, Color color, int houseCount, boolean hotel, TownCard theTownCard){
+        super(position, name, type);
+        this.color        = color;
+        this.houseCount   = houseCount;
+        this.hotel        = hotel;
+        this.theTownCard  = theTownCard;
     }
 
     // METHODS
-    public void addHouse(){
-        // TODO
+    public void addHouse() throws CannotBuildHouseException {
+        if(houseCount < 4 && !hotel)
+            houseCount++;
+        else
+            throw new CannotBuildHouseException();
     }
 
-    public void addHotel(){
-        // TODO
+    public void addHotel() throws CannotBuildHotelException{
+        if(houseCount == 4 && !hotel){
+            houseCount = 0;
+            hotel = true;
+        }
+        else
+            throw new CannotBuildHotelException();
     }
 
     public Color getColor(){
@@ -45,9 +54,21 @@ public class TownSquare extends PropertySquare {
         return hotel;
     }
 
-    public int getRentPrice(){
-        // TODO
-        return 0;
+    public int getRentPrice(int numberOfBuilding){
+        return theTownCard.getRentPrice(numberOfBuilding);
     }
 
+    public static class CannotBuildHouseException extends Throwable {
+        @Override
+        public String getMessage() {
+            return super.getClass().getName() + ", " + super.getMessage() + "No more than 4 houses can be built!";
+        }
+    }
+
+    public static class CannotBuildHotelException extends Throwable {
+        @Override
+        public String getMessage() {
+            return super.getClass().getName() + ", " + super.getMessage() + "Not enough houses to build a Hotel!";
+        }
+    }
 }

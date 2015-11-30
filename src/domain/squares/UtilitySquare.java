@@ -3,7 +3,7 @@ package domain.squares;
 import domain.cards.UtilityCard;
 
 /**
- * Created by Alper Önder
+ * @author Alper Önder
  */
 public class UtilitySquare extends PropertySquare {
 
@@ -11,15 +11,14 @@ public class UtilitySquare extends PropertySquare {
     private UtilityCard theUtilityCard;
 
     // CONSTRUCTOR
-    public UtilitySquare(int id, int position, String name, SquareType type, UtilityCard theUtilityCard){
-        super(id, position, name, type);
+    public UtilitySquare(int position, String name, SquareType type, UtilityCard theUtilityCard){
+        super(position, name, type);
         this.theUtilityCard = theUtilityCard;
     }
 
     // METHODS
-    public int getRentPrice(){
-        // TODO
-        return 0;
+    @Override
+    public int getRentPrice(int numberOfBuildings){
+        return theUtilityCard.getRentPrice(numberOfBuildings);
     }
-
 }
