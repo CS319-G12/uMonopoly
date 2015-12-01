@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class ChanceCardView {
+public class CommunityChestCardView {
     private JPanel mainPanel;
     private JTextPane descPane;
 }

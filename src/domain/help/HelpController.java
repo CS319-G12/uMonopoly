@@ -26,7 +26,7 @@ public class HelpController {
     }
 
     public HelpItem getNextItem() {
-        return helpModel.getItemAt(currentItem--);
+        return helpModel.getItemAt(currentItem++);
     }
 
     public HelpItem getItemAt(int index) {

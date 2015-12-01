@@ -1,9 +1,7 @@
 package domain.squares;
 
 import domain.cards.TownCard;
-
-import java.awt.*;
-// import gui.Color;
+import gui.Color;
 
 /**
  * @author Alper Önder
@@ -11,7 +9,7 @@ import java.awt.*;
 public class TownSquare extends PropertySquare {
 
     // ATTRIBUTES
-    private Color    color;
+    private Color color;
     public  int      houseCount;
     public  boolean  hotel;
     private TownCard theTownCard;

@@ -19,8 +19,8 @@ public class PropertyCardSmallView { // TODO test
 
         mainPanel.setBackground(card.getColor());
         titleLb.setText(card.getName());
-        if (card.getColor() == Colors.CHARCOAL)
-            titleLb.setForeground(Colors.WHITE);
+        if (card.getColor() == Color.CHARCOAL)
+            titleLb.setForeground(Color.WHITE);
     }
 
     // METHODS

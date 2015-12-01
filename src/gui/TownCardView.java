@@ -33,8 +33,8 @@ public class TownCardView { // TODO test
     public TownCardView(TownCard card) {
 
         // Fixing form design
-        titlePn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Colors.BLACK));
-        rentPn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Colors.BLACK));
+        titlePn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        rentPn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
 
         // Setting up the card view
         titlePn.setBackground(card.getColor());
