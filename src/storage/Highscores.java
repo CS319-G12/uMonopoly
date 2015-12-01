@@ -3,7 +3,7 @@ package storage;
 /**
  * @author Alper Önder
  */
-public class Highscores {
+public class HighScores {
 
     // ATTRIBUTES
     private int    id;
@@ -13,7 +13,7 @@ public class Highscores {
     private String date;
 
     // CONSTRUCTOR
-    public Highscores(int id, String name, String tokenFigure, int amount, String date){
+    public HighScores(int id, String name, String tokenFigure, int amount, String date){
         this.id          = id;
         this.name        = name;
         this.tokenFigure = tokenFigure;
