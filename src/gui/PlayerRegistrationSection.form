@@ -74,7 +74,6 @@
               <contentAreaFilled value="false"/>
               <enabled value="true"/>
               <focusPainted value="false"/>
-              <icon value="img/dog.png"/>
               <selected value="false"/>
               <selectedIcon value="img/dog_sel.png"/>
               <text value=""/>
@@ -86,7 +85,6 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
-              <icon value="img/car.png"/>
               <selectedIcon value="img/car_sel.png"/>
               <text value=""/>
             </properties>
@@ -97,7 +95,6 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
-              <icon value="img/iron.png"/>
               <selected value="false"/>
               <selectedIcon value="img/iron_sel.png"/>
               <text value=""/>
@@ -109,7 +106,6 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
-              <icon value="img/hat.png"/>
               <selectedIcon value="img/hat_sel.png"/>
               <text value=""/>
             </properties>
@@ -120,7 +116,6 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
-              <icon value="img/thimble.png"/>
               <selectedIcon value="img/thimble_sel.png"/>
               <text value=""/>
             </properties>
@@ -131,7 +126,6 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
-              <icon value="img/shoe.png"/>
               <label value=""/>
               <selectedIcon value="img/shoe_sel.png"/>
               <text value=""/>

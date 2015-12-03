@@ -44,6 +44,21 @@ public class PlayerRegistrationSection extends java.util.Observable {
         // Editing default visibility
         mainPanel.setVisible(false);
 
+        // Setting up the icons
+        dogBtn.setIcon(TokenFigure.DOG.getIcon());
+        carBtn.setIcon(TokenFigure.CAR.getIcon());
+        shoeBtn.setIcon(TokenFigure.SHOE.getIcon());
+        hatBtn.setIcon(TokenFigure.HAT.getIcon());
+        ironBtn.setIcon(TokenFigure.IRON.getIcon());
+        thimbleBtn.setIcon(TokenFigure.THIMBLE.getIcon());
+
+        dogBtn.setSelectedIcon(TokenFigure.DOG.getSelectedIcon());
+        carBtn.setSelectedIcon(TokenFigure.CAR.getSelectedIcon());
+        shoeBtn.setSelectedIcon(TokenFigure.SHOE.getSelectedIcon());
+        hatBtn.setSelectedIcon(TokenFigure.HAT.getSelectedIcon());
+        ironBtn.setSelectedIcon(TokenFigure.IRON.getSelectedIcon());
+        thimbleBtn.setSelectedIcon(TokenFigure.THIMBLE.getSelectedIcon());
+
         // Adding action listeners
         dogBtn.addActionListener(actionEvent -> {
             if (!isLocked) {
