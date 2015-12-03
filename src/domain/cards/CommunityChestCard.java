@@ -1,5 +1,7 @@
 package domain.cards;
 
+import gui.CommunityChestCardView;
+
 /**
  * @author buseburcu
  */

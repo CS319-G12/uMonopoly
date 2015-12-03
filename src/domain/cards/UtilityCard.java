@@ -1,5 +1,6 @@
 package domain.cards;
 
+import gui.Color;
 import gui.UtilityCardView;
 
 /**
@@ -11,8 +12,8 @@ public class UtilityCard extends PropertyCard {
     private UtilityCardView view; // TODO
 
     // CONSTRUCTOR
-    public UtilityCard(int sellPrice, int mortgagePrice, int rent1, int rent2) {
-        super(sellPrice, mortgagePrice);
+    public UtilityCard(String name, int sellPrice, int mortgagePrice, int rent1, int rent2) {
+        super(name, sellPrice, mortgagePrice);
 
         setRentPrices(rent1, rent2);
     }
@@ -21,5 +22,10 @@ public class UtilityCard extends PropertyCard {
     @Override
     public int getRentPrice(int nrOfUtilities) {
         return getRentPrices()[nrOfUtilities - 1];
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.CHARCOAL;
     }
 }

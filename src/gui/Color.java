@@ -7,6 +7,7 @@ public enum Color {
 
     WHITE(0xffffff),
     BLACK(0x000000),
+    CHARCOAL(0x999999),
     BACKGROUND(0xcde6d0),
     BROWN(0x955436),
     LIGHT_BLUE(0xaae0fa),
@@ -28,5 +29,8 @@ public enum Color {
     }
 
     // METHODS
+    public java.awt.Color awtColor() {
+        return color;
+    }
 
 }

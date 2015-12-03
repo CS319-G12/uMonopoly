@@ -1,7 +1,8 @@
 package gui;
 
+import domain.token.TokenFigure;
+
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * @author anikristo
@@ -35,7 +36,7 @@ public class PlayerRegistrationSection extends java.util.Observable {
     public PlayerRegistrationSection(int playerNr) {
 
         // Setting the borders of the TF
-        nameTf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
+        nameTf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, java.awt.Color.BLACK));
 
         // Set the Player number text
         playerNrLb.setText("Player #" + playerNr + ":");
@@ -152,25 +153,19 @@ public class PlayerRegistrationSection extends java.util.Observable {
         else throw new NameNotEnteredException();
     }
 
-    public String getTokenFigure() throws TokenNotSelectedException { // TODO change to enum
+    public TokenFigure getTokenFigure() throws TokenNotSelectedException {
         if (dogBtn.isSelected()) {
-            return "DOG";
-//            return TokenFigure.DOG;
+            return TokenFigure.DOG;
         } else if (carBtn.isSelected()) {
-            return "CAR";
-//            return TokenFigure.CAR;
+            return TokenFigure.CAR;
         } else if (shoeBtn.isSelected()) {
-            return "SHOE";
-//            return TokenFigure.SHOE;
+            return TokenFigure.SHOE;
         } else if (thimbleBtn.isSelected()) {
-            return "THIMBLE";
-//            return TokenFigure.THIMBLE;
+            return TokenFigure.THIMBLE;
         } else if (hatBtn.isSelected()) {
-            return "HAT";
-//            return TokenFigure.HAT;
+            return TokenFigure.HAT;
         } else if (ironBtn.isSelected()) {
-            return "IRON";
-//            return TokenFigure.IRON;
+            return TokenFigure.IRON;
         }
 
         throw new TokenNotSelectedException();
@@ -189,19 +184,19 @@ public class PlayerRegistrationSection extends java.util.Observable {
         mainPanel.setVisible(visible);
     }
 
-    public void disableTokens(String[] figures) { // TODO change to enum
-        for (String figure : figures) {
-            if (figure == "DOG")//TokenFigure.DOG)
+    public void disableTokens(TokenFigure[] figures) {
+        for (TokenFigure figure : figures) {
+            if (figure == TokenFigure.DOG)
                 dogBtn.setEnabled(false);
-            else if (figure == "CAR")//TokenFigure.CAR)
+            else if (figure == TokenFigure.CAR)
                 carBtn.setEnabled(false);
-            else if (figure == "SHOE")//TokenFigure.SHOE)
+            else if (figure == TokenFigure.SHOE)
                 shoeBtn.setEnabled(false);
-            else if (figure == "THIMBLE")//TokenFigure.THIMBLE)
+            else if (figure == TokenFigure.THIMBLE)
                 thimbleBtn.setEnabled(false);
-            else if (figure == "HAT")//TokenFigure.HAT)
+            else if (figure == TokenFigure.HAT)
                 hatBtn.setEnabled(false);
-            else if (figure == "IRON")//TokenFigure.IRON)
+            else if (figure == TokenFigure.IRON)
                 ironBtn.setEnabled(false);
         }
     }
@@ -213,27 +208,7 @@ public class PlayerRegistrationSection extends java.util.Observable {
     /**
      * TODO
      */
-    class TokenNotSelectedException extends Throwable {
-        @Override
-        public String getMessage() {
-            return super.getMessage() + "Please make sure you have selected a token!";
-        }
-    }
-
-    /**
-     * TODO
-     */
-    class NameNotEnteredException extends Throwable {
-        @Override
-        public String getMessage() {
-            return super.getMessage() + "Please make sure you have entered a player name!";
-        }
-    }
-
-    /**
-     * TODO
-     */
-    public static class NameNotUniqueException extends Throwable {
+    public static class NameNotUniqueException extends Exception {
         @Override
         public String getMessage() {
             return super.getMessage() + "Please make sure you have entered a unique name!";
@@ -243,10 +218,30 @@ public class PlayerRegistrationSection extends java.util.Observable {
     /**
      * TODO
      */
-    public static class TooFewPlayersException extends Throwable {
+    public static class TooFewPlayersException extends Exception {
         @Override
         public String getMessage() {
             return super.getMessage() + "Please make sure you have registered at least two players!";
+        }
+    }
+
+    /**
+     * TODO
+     */
+    class TokenNotSelectedException extends Exception {
+        @Override
+        public String getMessage() {
+            return super.getMessage() + "Please make sure you have selected a token!";
+        }
+    }
+
+    /**
+     * TODO
+     */
+    class NameNotEnteredException extends Exception {
+        @Override
+        public String getMessage() {
+            return super.getMessage() + "Please make sure you have entered a player name!";
         }
     }
 }

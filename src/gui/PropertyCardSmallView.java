@@ -17,10 +17,10 @@ public class PropertyCardSmallView { // TODO test
     public PropertyCardSmallView(PropertyCard card) {
         super();
 
-        mainPanel.setBackground(card.getColor());
+        mainPanel.setBackground(card.getColor().awtColor());
         titleLb.setText(card.getName());
         if (card.getColor() == Color.CHARCOAL)
-            titleLb.setForeground(Color.WHITE);
+            titleLb.setForeground(java.awt.Color.WHITE);
     }
 
     // METHODS

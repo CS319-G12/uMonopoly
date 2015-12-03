@@ -11,9 +11,9 @@ import java.util.List;
 public class ChanceCardSquare extends Square implements CardSquare {
 
     // ATTRIBUTES
-    private List<ChanceCard> theChanceCardList;
+    private final List<ChanceCard> theChanceCardList;
+    private final int maxSelectableCardSize;
     private int selectedCardID;
-    private int maxSelectableCardSize;
     private int selectableCardSize;
 
 

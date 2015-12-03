@@ -23,11 +23,11 @@ public class RailroadsCardView {
 
         // Setting up the card view
         titleLb.setText(card.getName());
-        rentValueLb.setText(card.getRent(1) + "$");
-        twoStationsRentLb.setText(card.getRent(2) + "$");
-        threeStationsRentLb.setText(card.getRent(3) + "$");
-        fourStationsRentLb.setText(card.getRent(4) + "$");
-        mortgageValueLb.setText("Mortgage value " + card.getMortagePrice() + "$");
+        rentValueLb.setText(card.getRentPrice(1) + "$");
+        twoStationsRentLb.setText(card.getRentPrice(2) + "$");
+        threeStationsRentLb.setText(card.getRentPrice(3) + "$");
+        fourStationsRentLb.setText(card.getRentPrice(4) + "$");
+        mortgageValueLb.setText("Mortgage value " + card.getMortgagePrice() + "$");
 
     }
 

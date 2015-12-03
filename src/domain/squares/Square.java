@@ -7,10 +7,10 @@ public class Square {
 
     // ATTRIBUTES
     private static int   idCounter = 0;
-    protected int        id;
-    protected int        position;
-    protected String     name;
-    protected SquareType type;
+    protected final int id;
+    protected final int position;
+    protected final String name;
+    protected final SquareType type;
 
     // CONSTRUCTOR
     public Square(int position, String name, SquareType type){

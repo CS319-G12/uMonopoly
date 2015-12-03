@@ -1,10 +1,8 @@
 package domain;
 
+import domain.token.TokenFigure;
 import gui.PlayerRegistrationSection;
 import storage.Rules;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author anikristo
@@ -12,33 +10,34 @@ import java.util.Map;
 public class GameController {
 
     // ATTRIBUTES
-    private Map<String, Player> players;
+    private Game game;
 
     // CONSTRUCTOR
     public GameController() {
-        players = new HashMap<>(Rules.MAX_PLAYERS);
+        game = new Game();// todo
     }
 
     // METHODS
-    public void createPlayerDetails(String name, String tokenFigure) throws PlayerRegistrationSection.NameNotUniqueException {
-        // TODO replace with enum
-
-        if (players.containsKey(name))
-            throw new PlayerRegistrationSection.NameNotUniqueException();
-
-        players.put(name, new Player(name, tokenFigure));
+    public void createPlayerDetails(String name, TokenFigure tokenFigure) throws PlayerRegistrationSection.NameNotUniqueException {
+        game.addPlayer(name, tokenFigure);
     }
 
     public void startGame() throws PlayerRegistrationSection.TooFewPlayersException {
-        // TODO create MonopolyBoard
-        // TODO create side panel
-        // TODO timer ?
+        // TODO create Game
 
-        if (players.size() < Rules.MIN_PLAYERS)
+        // Checking the minimum number of players is satisfied
+        if (game.getNumberOfPlayers() < Rules.MIN_PLAYERS)
             throw new PlayerRegistrationSection.TooFewPlayersException();
+
+        // Creating the MonopolyBoard
+
     }
 
     public void removePlayer(String name) {
-        players.remove(name);
+        try {
+            game.removePlayer(name);
+        } catch (Game.PlayerNotFoundException e) {
+            System.out.println("The player was not registered!");// todo
+        }
     }
 }

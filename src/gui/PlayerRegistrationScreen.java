@@ -1,6 +1,7 @@
 package gui;
 
 import domain.GameController;
+import domain.token.TokenFigure;
 import storage.Rules;
 
 import javax.swing.*;
@@ -105,7 +106,6 @@ public class PlayerRegistrationScreen extends Observable implements Observer {
                 try {
                     gameController.removePlayer(currentSection.getName());
                 } catch (PlayerRegistrationSection.NameNotEnteredException e1) {
-                    return;
                 }
             }
         });
@@ -126,7 +126,7 @@ public class PlayerRegistrationScreen extends Observable implements Observer {
      */
     private void checkTokens() {
         // Finding all the used tokens
-        Set<String> usedTokens = new HashSet<>(); // TODO change to enum
+        Set<TokenFigure> usedTokens = new HashSet<>(); // TODO change to enum
         for (int i = 0; i < shownPlayerSections; i++) {
             try {
                 usedTokens.add(playerRegSections.get(i).getTokenFigure());
@@ -135,7 +135,7 @@ public class PlayerRegistrationScreen extends Observable implements Observer {
         }
 
         // Disabling all the used tokens
-        String[] usedTokensArr = usedTokens.toArray(new String[usedTokens.size()]);
+        TokenFigure[] usedTokensArr = usedTokens.toArray(new TokenFigure[usedTokens.size()]);
         playerRegSections.get(shownPlayerSections - 1).disableTokens(usedTokensArr); // TODO change to enum
     }
 

@@ -5,10 +5,10 @@ import domain.cards.UtilityCard;
 /**
  * @author Alper Önder
  */
-public class UtilitySquare extends PropertySquare {
+public class UtilitySquare extends Square implements PropertySquare {
 
     // ATTRIBUTES
-    private UtilityCard theUtilityCard;
+    private final UtilityCard theUtilityCard;
 
     // CONSTRUCTOR
     public UtilitySquare(int position, String name, SquareType type, UtilityCard theUtilityCard){

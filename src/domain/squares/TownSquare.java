@@ -6,64 +6,63 @@ import gui.Color;
 /**
  * @author Alper Önder
  */
-public class TownSquare extends PropertySquare {
+public class TownSquare extends Square implements PropertySquare {
 
     // ATTRIBUTES
-    private Color color;
-    public  int      houseCount;
-    public  boolean  hotel;
-    private TownCard theTownCard;
+    private final Color color;
+    private final TownCard theTownCard;
+    public int houseCount;
+    public boolean hotel;
 
     // CONSTRUCTOR
-    public TownSquare(int position, String name, SquareType type, Color color, int houseCount, boolean hotel, TownCard theTownCard){
+    public TownSquare(int position, String name, SquareType type, Color color, int houseCount, boolean hotel, TownCard theTownCard) {
         super(position, name, type);
-        this.color        = color;
-        this.houseCount   = houseCount;
-        this.hotel        = hotel;
-        this.theTownCard  = theTownCard;
+        this.color = color;
+        this.houseCount = houseCount;
+        this.hotel = hotel;
+        this.theTownCard = theTownCard;
     }
 
     // METHODS
     public void addHouse() throws CannotBuildHouseException {
-        if(houseCount < 4 && !hotel)
+        if (houseCount < 4 && !hotel)
             houseCount++;
         else
             throw new CannotBuildHouseException();
     }
 
-    public void addHotel() throws CannotBuildHotelException{
-        if(houseCount == 4 && !hotel){
+    public void addHotel() throws CannotBuildHotelException {
+        if (houseCount == 4 && !hotel) {
             houseCount = 0;
             hotel = true;
-        }
-        else
+        } else
             throw new CannotBuildHotelException();
     }
 
-    public Color getColor(){
+    public Color getColor() {
         return color;
     }
 
-    public int getHouseCount(){
+    public int getHouseCount() {
         return houseCount;
     }
 
-    public boolean hasHotel(){
+    public boolean hasHotel() {
         return hotel;
     }
 
-    public int getRentPrice(int numberOfBuilding){
+    public int getRentPrice(int numberOfBuilding) {
         return theTownCard.getRentPrice(numberOfBuilding);
     }
 
-    public static class CannotBuildHouseException extends Throwable {
+    public static class CannotBuildHouseException extends Exception {
         @Override
         public String getMessage() {
             return super.getClass().getName() + ", " + super.getMessage() + "No more than 4 houses can be built!";
         }
     }
 
-    public static class CannotBuildHotelException extends Throwable {
+    public static class CannotBuildHotelException extends Exception {
         @Override
         public String getMessage() {
             return super.getClass().getName() + ", " + super.getMessage() + "Not enough houses to build a Hotel!";

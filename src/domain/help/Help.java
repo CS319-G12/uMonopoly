@@ -1,5 +1,7 @@
 package domain.help;
 
+import gui.HelpView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

@@ -11,9 +11,9 @@ import java.util.List;
 public class CommunityChestCardSquare extends Square implements CardSquare {
 
     // ATTRIBUTES
-    private List<CommunityChestCard> theCommunityChestCard;
+    private final List<CommunityChestCard> theCommunityChestCard;
+    private final int maxSelectableCardSize;
     private int selectedCardID;
-    private int maxSelectableCardSize;
     private int selectableCardSize;
 
     // CONSTRUCTOR

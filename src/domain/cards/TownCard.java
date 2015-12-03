@@ -1,5 +1,6 @@
 package domain.cards;
 
+import gui.Color;
 import gui.TownCardView;
 
 /**
@@ -10,13 +11,15 @@ public class TownCard extends PropertyCard {
     // ATTRIBUTES
     private int housePrice;
     private int hotelPrice;
+    private Color color;
 
     private TownCardView view; // TODO
 
     // CONSTRUCTOR
-    public TownCard(int sellPrice, int mortgagePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rentHotel) {
-        super(sellPrice, mortgagePrice);
+    public TownCard(String name, Color color, int sellPrice, int mortgagePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rentHotel) {
+        super(name, sellPrice, mortgagePrice);
 
+        this.color = color;
         setRentPrices(rent0, rent1, rent2, rent3, rent4, rentHotel);
     }
 
@@ -25,6 +28,11 @@ public class TownCard extends PropertyCard {
         if (nrOfHouses > 4)
             throw new IllegalArgumentException();
         return getRentPrices()[nrOfHouses];
+    }
+
+    @Override
+    public Color getColor() {
+        return color;
     }
 
     public int getHotelRentPrice() {

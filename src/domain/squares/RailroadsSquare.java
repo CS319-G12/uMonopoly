@@ -5,10 +5,10 @@ import domain.cards.RailroadsCard;
 /**
  * @author Alper Önder
  */
-public class RailroadsSquare extends PropertySquare {
+public class RailroadsSquare extends Square implements PropertySquare {
 
     // ATTRIBUTES
-    private RailroadsCard theRailroadsCard;
+    private final RailroadsCard theRailroadsCard;
 
     // CONSTRUCTOR
     public RailroadsSquare(int position, String name, SquareType type, RailroadsCard theRailroadsCard){

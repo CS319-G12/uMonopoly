@@ -33,21 +33,21 @@ public class TownCardView { // TODO test
     public TownCardView(TownCard card) {
 
         // Fixing form design
-        titlePn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-        rentPn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        titlePn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, java.awt.Color.BLACK));
+        rentPn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, java.awt.Color.BLACK));
 
         // Setting up the card view
-        titlePn.setBackground(card.getColor());
+        titlePn.setBackground(card.getColor().awtColor());
         titleLb.setText(card.getName());
-        firstRentLb.setText("RENT " + card.getRent(0) + "$");
-        oneHouseRentLb.setText(card.getRent(1) + "$");
-        twoHousesRentLb.setText(card.getRent(2) + "$");
-        threeHousesRentLb.setText(card.getRent(3) + "$");
-        fourHousesRentLb.setText(card.getRent(4) + "$");
-        hotelRentLb.setText(card.getRent(5) + "$");
-        mortgageValueLb.setText("Mortgage value " + card.getMortagePrice() + "$");
-        houseCostLb.setText("Houses cost " + card.getHousePrice() + "$ each");
-        hotelCostLb.setText("<html><center>Hotels cost " + card.getHotelPrice() + "$ each<br>plus 4 houses</html>");
+        firstRentLb.setText("RENT " + card.getRentPrice(0) + "$");
+        oneHouseRentLb.setText(card.getRentPrice(1) + "$");
+        twoHousesRentLb.setText(card.getRentPrice(2) + "$");
+        threeHousesRentLb.setText(card.getRentPrice(3) + "$");
+        fourHousesRentLb.setText(card.getRentPrice(4) + "$");
+        hotelRentLb.setText(card.getRentPrice(5) + "$");
+        mortgageValueLb.setText("Mortgage value " + card.getMortgagePrice() + "$");
+        houseCostLb.setText("Houses cost " + card.getHouseBuildPrice() + "$ each");
+        hotelCostLb.setText("<html><center>Hotels cost " + card.getHotelBuildPrice() + "$ each<br>plus 4 houses</html>");
 
     }
 

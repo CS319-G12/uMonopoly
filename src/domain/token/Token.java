@@ -19,8 +19,16 @@ public class Token {
 
 
     // METHODS
+    public boolean equals(Token o) {
+        return figure == o.figure && type == o.type;
+    }
+
     public TokenType getType() {
         return type;
+    }
+
+    public void setType(TokenType type) {
+        this.type = type;
     }
 
     public TokenFigure getFigure() {
@@ -34,5 +42,4 @@ public class Token {
     public void setPosition(int pos) {
         this.position = pos;
     }
-
 }
