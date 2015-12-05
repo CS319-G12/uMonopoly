@@ -8,12 +8,11 @@ import java.util.List;
 /**
  * @author Alper Önder
  */
-public class ChanceCardSquare extends Square implements CardSquare {
+public class ChanceCardSquare extends CardSquare {
 
     // ATTRIBUTES
     private final List<ChanceCard> theChanceCardList;
     private final int maxSelectableCardSize;
-    private int selectedCardID;
     private int selectableCardSize;
 
 
@@ -29,7 +28,7 @@ public class ChanceCardSquare extends Square implements CardSquare {
     public BonusCard pickCard(){ // Getting randon Chance Car
         if(selectableCardSize == 0)
             selectableCardSize = maxSelectableCardSize;
-        selectedCardID = (int)(Math.random() * selectableCardSize);
+        int selectedCardID = (int) (Math.random() * selectableCardSize);
         theChanceCardList.add(theChanceCardList.get(selectedCardID));
         theChanceCardList.remove(theChanceCardList.get(selectedCardID));
         selectableCardSize--;

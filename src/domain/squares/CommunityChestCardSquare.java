@@ -8,12 +8,11 @@ import java.util.List;
 /**
  * @author Alper Önder
  */
-public class CommunityChestCardSquare extends Square implements CardSquare {
+public class CommunityChestCardSquare extends CardSquare {
 
     // ATTRIBUTES
     private final List<CommunityChestCard> theCommunityChestCard;
     private final int maxSelectableCardSize;
-    private int selectedCardID;
     private int selectableCardSize;
 
     // CONSTRUCTOR
@@ -28,7 +27,7 @@ public class CommunityChestCardSquare extends Square implements CardSquare {
     public BonusCard pickCard() {
         if (selectableCardSize == 0)
             selectableCardSize = maxSelectableCardSize;
-        selectedCardID = (int) (Math.random() * selectableCardSize);
+        int selectedCardID = (int) (Math.random() * selectableCardSize);
         theCommunityChestCard.add(theCommunityChestCard.get(selectedCardID));
         theCommunityChestCard.remove(theCommunityChestCard.get(selectedCardID));
         selectableCardSize--;

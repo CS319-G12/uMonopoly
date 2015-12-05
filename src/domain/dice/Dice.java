@@ -40,20 +40,19 @@ public class Dice {
     /**
      * This will roll the dice and return the right
      *
-     * @param nDice This is the dice type that the current player owns
      * @return The total value of the roll. The sum if it is simple type, double the sum if it is platinum
      * and two roll's value if it is golden.
      * @pre nDice == DiceType.SIMPLE || nDice == DiceType.GOLDEN || nDice == DiceType.PLATINUM
      * @post self.value1 != @pre.self.value1 && self.value2 != @pre.self.value2
      */
-    public int rollAndGetTotalValue(DiceType nDice) {
+    public int rollAndGetTotalValue() {
         int total;
-        if (nDice == DiceType.GOLDEN) {
+        if (type == DiceType.GOLDEN) {
             this.roll();
             total = value1 + value2;
             this.roll();
             total += value1 + value2;
-        } else if (nDice == DiceType.PLATINUM) {
+        } else if (type == DiceType.PLATINUM) {
             total = 2 * (value1 + value2);
         } else { // DiceType is SIMPLE
             roll();
