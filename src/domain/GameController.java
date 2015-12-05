@@ -11,10 +11,11 @@ public class GameController {
 
     // ATTRIBUTES
     private Game game;
+    private int currentPlayer;
 
     // CONSTRUCTOR
     public GameController() {
-        game = new Game();// todo
+        game = new Game();// todo null not new
     }
 
     // METHODS
@@ -22,6 +23,11 @@ public class GameController {
         game.addPlayer(name, tokenFigure);
     }
 
+    /**
+     * @throws PlayerRegistrationSection.TooFewPlayersException
+     * @pre self.game == null
+     * @post self.game != null
+     */
     public void startGame() throws PlayerRegistrationSection.TooFewPlayersException {
         // TODO create Game
 
@@ -39,5 +45,22 @@ public class GameController {
         } catch (Game.PlayerNotFoundException e) {
             System.out.println("The player was not registered!");// todo
         }
+    }
+
+    /**
+     * @pre game.getPlayer(currentPlayer).getBudget() >= game.getSquare(currentSquare).getPrice()
+     * @pre !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
+     * @post game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
+     */
+    public void buyProperty() {
+        // Todo
+    }
+
+    /**
+     * @pre game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
+     * @post !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
+     */
+    public void sellProperty() {
+        // todo
     }
 }
