@@ -7,6 +7,8 @@ public class Rules {
     // ATTRIBUTES
     public static final int MAX_PLAYERS = 4;
     public static final int MIN_PLAYERS = 2;
+    public static final int MAX_HOUSE_COUNT = 4;
+
 
     // INNER CLASSES
     public static class Utilities {

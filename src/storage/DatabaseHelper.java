@@ -8,6 +8,9 @@ import java.util.Comparator;
 
 /**
  * @author Alper Önder
+ * DatabaseHelper is the connection class between the application and uMonopoly's SQLite database.
+ * This class gets high scores from database and sort the high scores, adds new HighScore and delete
+ * selected High Score or delete all High Scores.
  */
 public class DatabaseHelper {
 
@@ -24,6 +27,11 @@ public class DatabaseHelper {
     }
 
     // METHODS
+    /**
+     * @post self.dbConnection.isClosed()
+     * @post self.stmt.isClosed()
+     * @post self.dbConnection.isCommited()
+     */
     public ArrayList<HighScores> getHighScoresFromDB()
     {
         if(theHighScores.size() > 0)
@@ -55,6 +63,15 @@ public class DatabaseHelper {
         return null;
     }
 
+    /**
+     * @param name is the name of the player won
+     * @param tokenFigure is used token by player won
+     * @param amount is the money which is had by player won
+     * @param date is the date the game played
+     * @post self.dbConnection.isClosed()
+     * @post self.stmt.isClosed()
+     * @post self.dbConnection.isCommited()
+     */
     public void insertHighScoreToDB(String name, String tokenFigure, int amount, String date)
     {
         dbConnection = null;
@@ -81,6 +98,12 @@ public class DatabaseHelper {
         }
     }
 
+    /**
+     * @param selectedID is the id of the score which is selected for deleting
+     * @post self.dbConnection.isClosed()
+     * @post self.stmt.isClosed()
+     * @post self.dbConnection.isCommited()
+     */
     public void removeHighScoreFromDB(int selectedID) // 0 means remove All
     {
         dbConnection = null;
