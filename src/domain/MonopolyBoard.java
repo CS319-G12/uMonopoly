@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * @author anikristo
+ * @invariant self.squareList.size() == 40
  */
 public class MonopolyBoard {
 
@@ -27,7 +28,13 @@ public class MonopolyBoard {
 //        // TODO
 //    }
 
-    public void build() {
+    /**
+     * @pre self.squareList->at(currentSquare).getHouseCount() < 5 ||
+     * (self.squareList->at(currentSquare).getHouseCount() == 4 && !self.squareList->at(currentSquare).hasHotel())
+     * @post self.squareList->at(currentSquare).getHouseCount() == self@pre.squareList->at(currentSquare).getHouseCount() + 1
+     * || (self.squareList->at(currentSquare).houseCount() == 0 && self.squareList->at(currentSquare).hasHotel())
+     */
+    public void build(int currentSquare) {
         // TODO current player in current square
     }
 
