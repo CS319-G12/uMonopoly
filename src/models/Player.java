@@ -6,23 +6,27 @@ import models.token.Token;
 import models.token.TokenFigure;
 import models.token.TokenType;
 
+import java.util.Observable;
+
 /**
  * @author anikristo
  */
-public class Player {
+public class Player extends Observable {
 
     // ATTRIBUTES
     private String name;
-    private Token token;
+    private boolean inJail;
     private int budget;
+    private Token token;
     private Dice dice;
 
     // CONSTRUCTOR
     public Player(String name, TokenFigure tokenFigure) {
         this.name = name;
+        this.budget = Rules.START_BUDGET;
+        this.inJail = false;
         this.dice = new Dice();
         this.token = new Token(tokenFigure);
-        this.budget = Rules.START_BUDGET;
     }
 
     // METHODS
@@ -34,17 +38,13 @@ public class Player {
         return token.getFigure();
     }
 
-    public int getTokenPosition() {
+    public int getPosition() {
         return token.getPosition();
     }
 
-    public void upgradeDice() throws DiceCannotBeUpgradedException {
-        if (dice.getType() == DiceType.SIMPLE)
-            dice.setType(DiceType.GOLDEN);
-        else if (dice.getType() == DiceType.GOLDEN)
-            dice.setType(DiceType.PLATINUM);
-        else
-            throw new DiceCannotBeUpgradedException();
+    public void setPosition(int position) {
+        token.setPosition(position);
+        notifyObservers(); // TODO see if is changed
     }
 
     public void upgradeToken() throws TokenCannotBeUpgradedException {
@@ -54,15 +54,51 @@ public class Player {
             token.setType(TokenType.PLATINUM);
         else
             throw new TokenCannotBeUpgradedException();
+
+        notifyObservers();
+    }
+
+    public TokenType getTokenType() {
+        return token.getType();
+    }
+
+    public void move(int difference) {
+        token.setPosition(token.getPosition() + difference);
+        notifyObservers();
+    }
+
+    public int getBudget() {
+        return budget;
+    }
+
+    public void updateBudget(int difference) {
+        budget += difference;
+        notifyObservers();
+    }
+
+    public boolean isInJail() {
+        return inJail;
+    }
+
+    public void upgradeDice() throws DiceCannotBeUpgradedException {
+        if (dice.getType() == DiceType.SIMPLE)
+            dice.setType(DiceType.GOLDEN);
+        else if (dice.getType() == DiceType.GOLDEN)
+            dice.setType(DiceType.PLATINUM);
+        else
+            throw new DiceCannotBeUpgradedException();
+
+        notifyObservers();
     }
 
     public int roll() {
         return dice.rollAndGetTotalValue();
     }
 
-    public void updateBudget(int difference) {
-        budget += difference;
+    public DiceType getDiceType() {
+        return dice.getType();
     }
+
 
     public static class DiceCannotBeUpgradedException extends Exception {
         @Override
