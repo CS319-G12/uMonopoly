@@ -1,5 +1,6 @@
 package gui;
 
+import models.squares.UtilitySquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
@@ -7,29 +8,28 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class CommunityChestSquareView implements SquareView {
+public class UtilitySquareView {
 
     // ATTRIBUTES
-    private JPanel mainPanel;
+    private JPanel mainPn;
     private JLabel titleLb;
-    private JLabel iconLb;
-
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
     // CONSTRUCTOR
-    public CommunityChestSquareView() {
-        iconLb.setIcon(new ImageIcon(getClass().getResource("/img/cccs_small.png")));
+    public UtilitySquareView(UtilitySquare square) {
+        titleLb.setText(square.getName());
     }
+
 
     // METHODS
     public JPanel getContent() {
-        return mainPanel;
+        return mainPn;
     }
 
-    public void addTokenFigure(TokenFigure figure) throws SquareFullException {
+    public void addTokenFigure(TokenFigure figure) throws SquareView.SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());
         else if (secondTokenLb.getIcon() == null)
@@ -39,10 +39,10 @@ public class CommunityChestSquareView implements SquareView {
         else if (fourthTokenLb.getIcon() == null)
             fourthTokenLb.setIcon(figure.getIcon());
         else
-            throw new SquareFullException();
+            throw new SquareView.SquareFullException();
     }
 
-    public void removeTokenFigure(TokenFigure figure) throws InvalidTokenRemovalException {
+    public void removeTokenFigure(TokenFigure figure) throws SquareView.InvalidTokenRemovalException {
         if (firstTokenLb.getIcon() != null)
             firstTokenLb.setIcon(null);
         else if (secondTokenLb.getIcon() != null)
@@ -52,6 +52,6 @@ public class CommunityChestSquareView implements SquareView {
         else if (fourthTokenLb.getIcon() != null)
             fourthTokenLb.setIcon(null);
         else
-            throw new InvalidTokenRemovalException();
+            throw new SquareView.InvalidTokenRemovalException();
     }
 }

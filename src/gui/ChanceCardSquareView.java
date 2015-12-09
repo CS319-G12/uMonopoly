@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class ChanceSquareView implements SquareView {
+public class ChanceCardSquareView implements SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
