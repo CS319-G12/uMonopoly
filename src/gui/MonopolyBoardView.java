@@ -11,12 +11,12 @@ import java.util.List;
 public class MonopolyBoardView {
 
     // ATTRIBUTES
-    private JPanel mainPanel;
+    private JPanel mainPn;
     private JPanel leftPn;
     private JPanel topPn;
     private JPanel rightPn;
     private JPanel bottomPn;
-    private JPanel mainPn;
+    private JPanel centerPn;
 
     // CONSTRUCTOR
     public MonopolyBoardView(List<Square> squares) { // TODO check
@@ -24,11 +24,13 @@ public class MonopolyBoardView {
         rightPn = new RightBoardPanel(squares.subList(11, 20)).getContent();
         topPn = new TopBoardPanel(squares.subList(20, 31)).getContent();
         bottomPn = new BottomBoardPanel(squares.subList(31, 40)).getContent();
+        centerPn = new CenterBoardPanel();
+
     }
 
     // METHODS
     public JPanel getContent() {
-        return mainPanel;
+        return mainPn;
     }
 
 }

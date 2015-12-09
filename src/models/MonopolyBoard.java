@@ -67,4 +67,7 @@ public class MonopolyBoard {
         return null; // todo
     }
 
+    public List<Square> getListOfSquares() {
+        return squareList;
+    }
 }
