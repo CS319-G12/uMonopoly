@@ -1,6 +1,6 @@
 package gui;
 
-import domain.GameController;
+import controllers.GameController;
 
 import javax.swing.*;
 import java.awt.event.WindowEvent;

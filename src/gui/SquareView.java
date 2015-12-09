@@ -1,6 +1,6 @@
 package gui;
 
-import domain.token.TokenFigure;
+import models.token.TokenFigure;
 
 /**
  * @author anikristo

@@ -1,6 +1,6 @@
 package gui;
 
-import domain.cards.RailroadsCard;
+import models.cards.RailroadsCard;
 
 import javax.swing.*;
 

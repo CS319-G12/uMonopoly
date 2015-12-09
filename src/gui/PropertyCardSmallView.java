@@ -1,6 +1,6 @@
 package gui;
 
-import domain.cards.PropertyCard;
+import models.cards.PropertyCard;
 
 import javax.swing.*;
 

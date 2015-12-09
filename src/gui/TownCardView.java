@@ -1,6 +1,6 @@
 package gui;
 
-import domain.cards.TownCard;
+import models.cards.TownCard;
 
 import javax.swing.*;
 

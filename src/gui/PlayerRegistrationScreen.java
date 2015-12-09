@@ -1,8 +1,8 @@
 package gui;
 
-import domain.GameController;
-import domain.token.TokenFigure;
-import storage.Rules;
+import controllers.GameController;
+import models.Rules;
+import models.token.TokenFigure;
 
 import javax.swing.*;
 import java.util.*;

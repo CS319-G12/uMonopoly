@@ -1,7 +1,7 @@
 package gui;
 
-import domain.squares.RailroadsSquare;
-import domain.token.TokenFigure;
+import models.squares.RailroadsSquare;
+import models.token.TokenFigure;
 
 import javax.swing.*;
 

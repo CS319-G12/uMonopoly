@@ -1,7 +1,7 @@
 package gui;
 
-import domain.cards.UtilityCard;
-import storage.Rules;
+import models.Rules;
+import models.cards.UtilityCard;
 
 import javax.swing.*;
 

@@ -1,8 +1,8 @@
 package gui;
 
-import domain.squares.CommunityChestCardSquare;
-import domain.squares.SquareType;
-import domain.token.TokenFigure;
+import models.squares.CommunityChestCardSquare;
+import models.squares.SquareType;
+import models.token.TokenFigure;
 
 import javax.swing.*;
 

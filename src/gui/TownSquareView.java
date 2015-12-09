@@ -1,7 +1,7 @@
 package gui;
 
-import domain.squares.TownSquare;
-import domain.token.TokenFigure;
+import models.squares.TownSquare;
+import models.token.TokenFigure;
 
 import javax.swing.*;
 
