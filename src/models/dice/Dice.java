@@ -3,7 +3,7 @@ package models.dice;
 /**
  * @author Ali Gocer
  * This is a simulation of the two dice used in the Monopoly Game.
- * It provides the rolling method tailored for the different Dice Types.
+ * It providevrs the rolling method tailored for the different Dice Types.
  * @invariant self.value1 > 0 && self.value1 < 7
  * @invariant self.value2 > 0 && self.value2 < 7
  */

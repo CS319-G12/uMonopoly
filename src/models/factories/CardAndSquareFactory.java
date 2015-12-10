@@ -1,14 +1,10 @@
 package models.factories;
 
+import java.util.List;
+
 /**
- * @author anikristo
+ * @author Alper Önder
  */
-public abstract class CardAndSquareFactory {
-
-    // ATTRIBUTES
-
-    // CONSTRUCTOR
-
-    // METHODS
-
+public interface CardAndSquareFactory {
+    <T> List<T> getSquare();
 }
