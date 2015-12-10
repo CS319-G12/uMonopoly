@@ -15,12 +15,16 @@ public class CommunityChestCardSquare extends CardSquare {
     private final int maxSelectableCardSize;
     private int selectableCardSize;
 
+    private CommunityChestCard chosenCard;
+
     // CONSTRUCTOR
     public CommunityChestCardSquare(int position, String name, SquareType type, List<CommunityChestCard> theCommunityChestCard) {
         super(position, name, type);
         this.theCommunityChestCard = theCommunityChestCard;
-        maxSelectableCardSize      = theCommunityChestCard.size();
-        selectableCardSize         = maxSelectableCardSize;
+        maxSelectableCardSize = theCommunityChestCard.size();
+        selectableCardSize = maxSelectableCardSize;
+
+        chosenCard = null;
     }
 
     // METHODS
@@ -31,6 +35,12 @@ public class CommunityChestCardSquare extends CardSquare {
         theCommunityChestCard.add(theCommunityChestCard.get(selectedCardID));
         theCommunityChestCard.remove(theCommunityChestCard.get(selectedCardID));
         selectableCardSize--;
-        return theCommunityChestCard.get(theCommunityChestCard.size() - 1);
+        chosenCard = theCommunityChestCard.get(theCommunityChestCard.size() - 1);
+        return chosenCard;
+    }
+
+    @Override
+    public CommunityChestCard getCard() {
+        return chosenCard;
     }
 }

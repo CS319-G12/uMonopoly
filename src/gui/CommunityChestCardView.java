@@ -12,6 +12,8 @@ import javax.swing.text.StyledDocument;
  * @author anikristo
  */
 public class CommunityChestCardView {
+
+    // ATTRIBUTES
     private JPanel mainPanel;
     private JTextPane descPane;
 
@@ -23,5 +25,10 @@ public class CommunityChestCardView {
         doc.setParagraphAttributes(0, doc.getLength(), centerAttributeSet, false);
 
         descPane.setText(card.getDescription());
+    }
+
+    // METHODS
+    public JPanel getContent() {
+        return mainPanel;
     }
 }

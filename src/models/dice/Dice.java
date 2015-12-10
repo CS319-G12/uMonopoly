@@ -10,30 +10,52 @@ package models.dice;
 public class Dice {
 
     // ATTRIBUTES
-    private int value1, value2;
+    private DiceValue value1, value2;
     private DiceType type;
 
     // CONSTRUCTOR
     public Dice() {
-        value1 = value2 = 0;
+        value1 = value2 = null;
         type = DiceType.SIMPLE;
     }
 
     // METHODS
     private void roll() {
-        value1 = ((int) Math.random() * 6) + 1;
-        value2 = ((int) Math.random() * 6) + 1;
+        int value1 = ((int) (Math.random() * 6)) + 1;
+        int value2 = ((int) (Math.random() * 6)) + 1;
+
+        this.value1 = getDiceValue(value1);
+        this.value2 = getDiceValue(value2);
+    }
+
+    private DiceValue getDiceValue(int value) {
+        switch (value) {
+            case 1:
+                return DiceValue.ONE;
+            case 2:
+                return DiceValue.TWO;
+            case 3:
+                return DiceValue.THREE;
+            case 4:
+                return DiceValue.FOUR;
+            case 5:
+                return DiceValue.FIVE;
+            case 6:
+                return DiceValue.SIX;
+        }
+
+        return null;
     }
 
     public boolean isDoubles() {
-        return (value1 == value2);
+        return (value1.equals(value2));
     }
 
-    public int getValue2() {
+    public DiceValue getValue2() {
         return value2;
     }
 
-    public int getValue1() {
+    public DiceValue getValue1() {
         return value1;
     }
 
@@ -49,14 +71,14 @@ public class Dice {
         int total;
         if (type == DiceType.GOLDEN) {
             this.roll();
-            total = value1 + value2;
+            total = value1.getValue() + value2.getValue();
             this.roll();
-            total += value1 + value2;
+            total += value1.getValue() + value2.getValue();
         } else if (type == DiceType.PLATINUM) {
-            total = 2 * (value1 + value2);
+            total = 2 * (value1.getValue() + value2.getValue());
         } else { // DiceType is SIMPLE
             roll();
-            total = value1 + value2;
+            total = value1.getValue() + value2.getValue();
         }
         return total;
     }

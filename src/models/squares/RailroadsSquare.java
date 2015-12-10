@@ -1,6 +1,5 @@
 package models.squares;
 
-import models.cards.PropertyCard;
 import models.cards.RailroadsCard;
 
 /**
@@ -24,7 +23,7 @@ public class RailroadsSquare extends Square implements PropertySquare {
     }
 
     @Override
-    public PropertyCard getPropertyCard() {
+    public RailroadsCard getCard() {
         return theRailroadsCard;
     }
 }

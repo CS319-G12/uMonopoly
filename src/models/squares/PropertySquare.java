@@ -8,5 +8,5 @@ import models.cards.PropertyCard;
 public interface PropertySquare {
     int getRentPrice(int numberOfBuildings);
 
-    PropertyCard getPropertyCard();
+    PropertyCard getCard();
 }

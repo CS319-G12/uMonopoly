@@ -85,4 +85,17 @@ public class GameController {
     public Game getGame() {
         return game;
     }
+
+    public void roll() {
+        // TODO roll, move the token, update curren squares....
+    }
+
+    public void endTurn() {
+        // TODO update turn, update current player and views of the current square and list of property cards ownned
+    }
+
+    public void build() {
+        // TODO check if owns all, check if enough budget
+        // TODO .... (anyways the button would be disabled) build a house or hotel, update views
+    }
 }

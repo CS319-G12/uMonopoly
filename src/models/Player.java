@@ -3,6 +3,7 @@ package models;
 import models.cards.PropertyCard;
 import models.dice.Dice;
 import models.dice.DiceType;
+import models.dice.DiceValue;
 import models.token.Token;
 import models.token.TokenFigure;
 import models.token.TokenType;
@@ -116,6 +117,14 @@ public class Player extends Observable {
 
     public List<PropertyCard> getListOfPropertyCards() {
         return propertyCards;
+    }
+
+    public DiceValue getDiceValue1() {
+        return dice.getValue1();
+    }
+
+    public DiceValue getDiceValue2() {
+        return dice.getValue2();
     }
 
     public static class DiceCannotBeUpgradedException extends Exception {

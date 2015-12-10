@@ -14,4 +14,6 @@ public abstract class CardSquare extends Square {
 
     // METHODS
     public abstract BonusCard pickCard();
+
+    public abstract BonusCard getCard();
 }

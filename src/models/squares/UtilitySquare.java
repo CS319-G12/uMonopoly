@@ -1,6 +1,5 @@
 package models.squares;
 
-import models.cards.PropertyCard;
 import models.cards.UtilityCard;
 
 /**
@@ -24,7 +23,7 @@ public class UtilitySquare extends Square implements PropertySquare {
     }
 
     @Override
-    public PropertyCard getPropertyCard() {
+    public UtilityCard getCard() {
         return theUtilityCard;
     }
 }

@@ -2,7 +2,6 @@ package models.squares;
 
 import gui.Color;
 import models.Rules;
-import models.cards.PropertyCard;
 import models.cards.TownCard;
 
 /**
@@ -63,8 +62,8 @@ public class TownSquare extends Square implements PropertySquare {
         return color;
     }
 
-    public int getHouseCount() {
-        return houseCount;
+    public int getBuildingCount() {
+        return hotel ? 1 : houseCount;
     }
 
     public boolean hasHotel() {
@@ -76,7 +75,7 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     @Override
-    public PropertyCard getPropertyCard() {
+    public TownCard getCard() {
         return theTownCard;
     }
 

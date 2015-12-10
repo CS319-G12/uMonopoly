@@ -1,5 +1,6 @@
 package gui;
 
+import models.Game;
 import models.squares.Square;
 
 import javax.swing.*;
@@ -19,12 +20,13 @@ public class MonopolyBoardView {
     private JPanel centerPn;
 
     // CONSTRUCTOR
-    public MonopolyBoardView(List<Square> squares) { // TODO check
+    public MonopolyBoardView(Game game) { // TODO check
+        List<Square> squares = game.getListOfSquares();
         leftPn = new LeftBoardPanel(squares.subList(0, 11)).getContent();
         rightPn = new RightBoardPanel(squares.subList(11, 20)).getContent();
         topPn = new TopBoardPanel(squares.subList(20, 31)).getContent();
         bottomPn = new BottomBoardPanel(squares.subList(31, 40)).getContent();
-        centerPn = new CenterBoardPanel();
+        centerPn = new CenterBoardPanel(game).getContent();
 
     }
 

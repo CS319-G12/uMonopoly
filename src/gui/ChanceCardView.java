@@ -12,13 +12,13 @@ import javax.swing.text.StyledDocument;
  * @author anikristo
  */
 public class ChanceCardView {
+
+    // ATTRIBUTES
     private JPanel mainPanel;
     private JTextPane descPane;
 
-
+    // CONSTRUCTOR
     public ChanceCardView(ChanceCard card) {
-
-
         // Centering the horizontal text alignment
         StyledDocument doc = descPane.getStyledDocument();
         MutableAttributeSet centerAttributeSet = new SimpleAttributeSet();
@@ -26,5 +26,10 @@ public class ChanceCardView {
         doc.setParagraphAttributes(0, doc.getLength(), centerAttributeSet, false);
 
         descPane.setText(card.getDescription());
+    }
+
+    // METHODS
+    public JPanel getContent() {
+        return mainPanel;
     }
 }

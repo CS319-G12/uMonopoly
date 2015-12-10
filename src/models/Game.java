@@ -5,6 +5,7 @@ import controllers.HelpController;
 import gui.GameScreen;
 import gui.PlayerRegistrationSection;
 import models.cards.PropertyCard;
+import models.dice.DiceValue;
 import models.help.Help;
 import models.squares.PropertySquare;
 import models.squares.Square;
@@ -193,7 +194,7 @@ public class Game extends Observable {
         propertyCardList
                 .addAll(squares.stream()
                         .filter(s -> s instanceof PropertySquare)
-                        .map(s -> ((PropertySquare) s).getPropertyCard())
+                        .map(s -> ((PropertySquare) s).getCard())
                         .collect(Collectors.toList()));
 
         return propertyCardList;
@@ -217,6 +218,18 @@ public class Game extends Observable {
 
     public boolean hasFinished() {
         return hasFinished;
+    }
+
+    public Square getCurrentSquare() {
+        return currentSquares.get(turn);
+    }
+
+    public DiceValue getDiceValue1() {
+        return players.get(turn).getDiceValue1();
+    }
+
+    public DiceValue getDiceValue2() {
+        return players.get(turn).getDiceValue2();
     }
 
     public static class PlayerNotFoundException extends Exception {
