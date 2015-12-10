@@ -25,15 +25,23 @@ public class ChanceFactory extends BonusFactory {
 
         // Instantiate all Chance Cards
         ChanceCardBuilder builder = new ChanceCardBuilder();
-        ChanceCard card1 = builder.amount(200)
+        ChanceCard card1 = builder
+                .amount(200)
                 .description("Advance to GO and collect 200$.")
                 .build();
         cards.add(card1);
 
-        ChanceCard card2 = builder.goTo(24)
+        ChanceCard card2 = builder
+                .goTo(24)
                 .description("Advance to Illinois Avenue. If you pass GO, collect 200$")
                 .build();
         cards.add(card2);
+
+        ChanceCard card3 = builder
+                .description("Advance to St. Charles Place. If you pass GO, collect 200$")
+                .goTo(11)
+                .build();
+        cards.add(card3);
 
 
         // Instantiate all Chance Squares and give them the correct chance cards

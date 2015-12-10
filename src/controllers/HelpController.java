@@ -25,7 +25,7 @@ public class HelpController {
                 "cards facedown on their allotted spaces on the board. Each player chooses one token to represent himther " +
                 "while traveling around the board\n");
 
-        HelpItem item3 = new HelpItem("BANKER", "A Banker who plays in the game must keep hislher personal funds separate " +
+        HelpItem item3 = new HelpItem("BANKER", "A Banker who plays in the game must keep his her personal funds separate " +
                 "from those of the Bank.");
 
         HelpItem item4 = new HelpItem("THE BANK", "the Bank\n" +
@@ -77,7 +77,7 @@ public class HelpController {
                 " on the Ttle Deed card.Only one hotel may be erected on any one property\n");
 
         HelpItem item15 = new HelpItem("BUILDING SHORTAGES", "When the Bank has no houses to sell, players\n" +
-                "wishing to build must wait for some player to return or sell histher\n" +
+                "wishing to build must wait for some player to return or sell his her\n" +
                 "houses to the Bank before building. If there are a limited number of\n" +
                 "houses and hotels available and two or more players wish to buy more\n" +
                 "than the Bank has, the houses or hotels must be sold at auction to the\n" +
@@ -102,7 +102,7 @@ public class HelpController {
                 "player all that you have of value and retire from the\n" +
                 "game\n");
 
-        HelpItem item19 = new HelpItem("MISCEUANEOUS", "Money can be loaned to a player only by the Bank and then " +
+        HelpItem item19 = new HelpItem("MISCELLANEOUS", "Money can be loaned to a player only by the Bank and then " +
                 "only by mortgaging property. No player may borrow from or lend money to another player.\n");
 
         this.helpModel = new Help();
