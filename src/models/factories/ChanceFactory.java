@@ -115,7 +115,8 @@ public class ChanceFactory implements BonusFactory {
     }
 
     // METHODS
-    public List<ChanceCardSquare> getSquare(){
+    @Override
+    public List<ChanceCardSquare> getSquares() {
         return squares;
     }
 }

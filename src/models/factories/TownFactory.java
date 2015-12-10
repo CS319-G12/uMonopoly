@@ -19,7 +19,7 @@ public class TownFactory implements PropertyFactory {
     public TownFactory() {
 
         // Instantiates the property cards
-        TownCard card1 = new TownCard("MEDITERRANEAN AVENUE", Color.BROWN, );
+        TownCard card1 = new TownCard("MEDITERRANEAN AVENUE", Color.BROWN, 60, 30, 4, 10, 30, 90, 160, 250, 50, 50);
 
         // Instantiate the squares
         TownSquare square1 = new TownSquare(1, SquareType.TOWN, card1);
