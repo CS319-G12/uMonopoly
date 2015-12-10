@@ -11,8 +11,8 @@ public class UtilitySquare extends Square implements PropertySquare {
     private final UtilityCard theUtilityCard;
 
     // CONSTRUCTOR
-    public UtilitySquare(int position, String name, SquareType type, UtilityCard theUtilityCard){
-        super(position, name, type);
+    public UtilitySquare(int position, SquareType type, UtilityCard theUtilityCard){
+        super(position, theUtilityCard.getName(), type);
         this.theUtilityCard = theUtilityCard;
     }
 
