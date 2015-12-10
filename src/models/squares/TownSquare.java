@@ -20,11 +20,11 @@ public class TownSquare extends Square implements PropertySquare {
     public boolean hotel;
 
     // CONSTRUCTOR
-    public TownSquare(int position, String name, SquareType type, Color color, int houseCount, boolean hotel, TownCard theTownCard) {
-        super(position, name, type);
-        this.color = color;
-        this.houseCount = houseCount;
-        this.hotel = hotel;
+    public TownSquare(int position, SquareType type, TownCard theTownCard) {
+        super(position, theTownCard.getName(), type);
+        this.color = theTownCard.getColor();
+        this.houseCount = 0;
+        this.hotel = false;
         this.theTownCard = theTownCard;
     }
 
