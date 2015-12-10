@@ -12,7 +12,7 @@ public class ChanceCard extends BonusCard {
     private int payPerHouse;
     private int payPerHotel;
 
-    private ChanceCardView view; // TODO fix this
+    private ChanceCardView view;
 
     // CONSTRUCTOR
     public ChanceCard(int amount, boolean jail, boolean outOfJail, String desc, Integer goTo, int payPerHouse, int payPerHotel) {
@@ -21,6 +21,8 @@ public class ChanceCard extends BonusCard {
         this.goTo = goTo;
         this.payPerHouse = payPerHouse;
         this.payPerHotel = payPerHotel;
+
+        this.view = new ChanceCardView(this);
     }
 
     // METHODS
@@ -34,5 +36,9 @@ public class ChanceCard extends BonusCard {
 
     public int getPayPerHotelAmount() {
         return payPerHotel;
+    }
+
+    public ChanceCardView getView() {
+        return view;
     }
 }

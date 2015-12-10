@@ -13,13 +13,14 @@ public class TownCard extends PropertyCard {
     private int hotelPrice;
     private Color color;
 
-    private TownCardView view; // TODO
+    private TownCardView view;
 
     // CONSTRUCTOR
     public TownCard(String name, Color color, int sellPrice, int mortgagePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rentHotel) {
         super(name, sellPrice, mortgagePrice);
 
         this.color = color;
+        this.view = new TownCardView(this);
         setRentPrices(rent0, rent1, rent2, rent3, rent4, rentHotel);
     }
 
@@ -47,4 +48,7 @@ public class TownCard extends PropertyCard {
         return hotelPrice;
     }
 
+    public TownCardView getView() {
+        return view;
+    }
 }

@@ -33,6 +33,10 @@ public class PlayerView implements Observer {
             Player p = (Player) observable;
             setNameLb(p);
             setBudgetLb(p);
+            if (p.isPlaying())
+                setSelected(true);
+            else
+                setSelected(false);
         }
     }
 
@@ -52,6 +56,11 @@ public class PlayerView implements Observer {
     }
 
     private void setNameLb(Player p) {
-        this.nameLb.setText(String.format("%d. %s (%s)", this.rank, p.getName(), p.getTokenFigure().getName()));
+        this.nameLb.setText(
+                String.format("%d. %s (%s) %s",
+                        this.rank,
+                        p.getName(),
+                        p.getTokenFigure().getName(),
+                        p.isInJail() ? "- JAIL" : ""));
     }
 }

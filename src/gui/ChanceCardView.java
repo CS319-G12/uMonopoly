@@ -1,5 +1,7 @@
 package gui;
 
+import models.cards.ChanceCard;
+
 import javax.swing.*;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
@@ -14,7 +16,7 @@ public class ChanceCardView {
     private JTextPane descPane;
 
 
-    public ChanceCardView() {
+    public ChanceCardView(ChanceCard card) {
 
 
         // Centering the horizontal text alignment
@@ -22,5 +24,7 @@ public class ChanceCardView {
         MutableAttributeSet centerAttributeSet = new SimpleAttributeSet();
         StyleConstants.setAlignment(centerAttributeSet, StyleConstants.ALIGN_CENTER);
         doc.setParagraphAttributes(0, doc.getLength(), centerAttributeSet, false);
+
+        descPane.setText(card.getDescription());
     }
 }

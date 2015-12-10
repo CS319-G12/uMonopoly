@@ -3,11 +3,12 @@ package gui;
 import models.Game;
 
 import javax.swing.*;
+import java.util.Observable;
 
 /**
  * @author anikristo
  */
-public class GameScreen {
+public class GameScreen extends Observable {
 
     // ATTRIBUTES
     private JPanel mainPn;
@@ -19,7 +20,7 @@ public class GameScreen {
     // CONSTRUCTOR
     public GameScreen(Game game) {
         boardView = new MonopolyBoardView(game.getListOfSquares());
-        sidePanel = new SidePanel(game.getListOfPlayers());
+        sidePanel = new SidePanel(game);
 
         centerPn = boardView.getContent();
         rightPn = sidePanel.getContent();

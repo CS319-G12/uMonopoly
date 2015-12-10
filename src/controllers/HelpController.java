@@ -11,11 +11,12 @@ public class HelpController {
     // ATTRIBUTES
     private int currentItem;
     private Help helpModel;
+    private Help help;
 
 
     // CONSTRUCTOR
-    public HelpController(Help helpModel) {
-        this.helpModel = helpModel;
+    public HelpController() {
+        this.helpModel = new Help();
         currentItem = 0;
     }
 
@@ -34,5 +35,13 @@ public class HelpController {
 
     public HelpItem getItemAt(int index) {
         return helpModel.getItemAt(index);
+    }
+
+    public Help getHelp() {
+        return help;
+    }
+
+    public void setHelp(Help help) {
+        this.help = help;
     }
 }

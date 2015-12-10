@@ -5,6 +5,8 @@ import models.Game;
 import models.Rules;
 import models.token.TokenFigure;
 
+import javax.swing.*;
+
 /**
  * @author anikristo
  */
@@ -12,15 +14,15 @@ public class GameController {
 
     // ATTRIBUTES
     private Game game;
-    private int currentPlayer;
 
     // CONSTRUCTOR
-    public GameController() {
-        game = new Game();// todo null not new
+    public GameController(HelpController helpController) {
+        game = new Game(this, helpController);
     }
 
     // METHODS
-    public void createPlayerDetails(String name, TokenFigure tokenFigure) throws PlayerRegistrationSection.NameNotUniqueException {
+    public void createPlayerDetails(String name, TokenFigure tokenFigure)
+            throws PlayerRegistrationSection.NameNotUniqueException {
         game.addPlayer(name, tokenFigure);
     }
 
@@ -61,5 +63,26 @@ public class GameController {
      */
     public void sellProperty() {
         // todo
+    }
+
+    public void viewHelp() {
+        JFrame helpFrame = new JFrame("µMonopoly Help");
+        helpFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        helpFrame.setSize(1152, 720);
+        helpFrame.setContentPane(game.getHelp().getView().getContent());
+        helpFrame.setVisible(true);
+    }
+
+    public void endGame() {
+
+        if (game.hasFinished()) {
+            // TODO save high scores and exit
+        } else {
+            // Todo give warning
+        }
+    }
+
+    public Game getGame() {
+        return game;
     }
 }

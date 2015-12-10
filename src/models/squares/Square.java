@@ -6,34 +6,34 @@ package models.squares;
 public class Square {
 
     // ATTRIBUTES
-    private static int   idCounter = 0;
+    private static int id_counter = 0;
     protected final int id;
     protected final int position;
     protected final String name;
     protected final SquareType type;
 
     // CONSTRUCTOR
-    public Square(int position, String name, SquareType type){
-        this.id       = idCounter++;
+    public Square(int position, String name, SquareType type) {
+        this.id = id_counter++;
         this.position = position;
-        this.name     = name;
-        this.type     = type;
+        this.name = name;
+        this.type = type;
     }
 
     // METHODS
-    public int getID(){
+    public int getID() {
         return id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public SquareType getSquareType(){
+    public SquareType getSquareType() {
         return type;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position;
     }
 }

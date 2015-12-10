@@ -27,4 +27,9 @@ public class PropertyCardSmallView { // TODO test
     JPanel getContent() {
         return mainPanel;
     }
+
+    public void setEnabled(boolean enabled) {
+        mainPanel.setEnabled(enabled);
+        titleLb.setEnabled(enabled);
+    }
 }

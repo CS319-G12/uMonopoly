@@ -1,11 +1,14 @@
 package models;
 
+import models.cards.PropertyCard;
 import models.dice.Dice;
 import models.dice.DiceType;
 import models.token.Token;
 import models.token.TokenFigure;
 import models.token.TokenType;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 /**
@@ -16,17 +19,21 @@ public class Player extends Observable {
     // ATTRIBUTES
     private String name;
     private boolean inJail;
+    private boolean isPlaying;
     private int budget;
     private Token token;
     private Dice dice;
+    private List<PropertyCard> propertyCards;
 
     // CONSTRUCTOR
     public Player(String name, TokenFigure tokenFigure) {
         this.name = name;
         this.budget = Rules.START_BUDGET;
         this.inJail = false;
+        this.isPlaying = false;
         this.dice = new Dice();
         this.token = new Token(tokenFigure);
+        this.propertyCards = new ArrayList<>();
     }
 
     // METHODS
@@ -99,6 +106,17 @@ public class Player extends Observable {
         return dice.getType();
     }
 
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void setPlaying(boolean playing) {
+        this.isPlaying = playing;
+    }
+
+    public List<PropertyCard> getListOfPropertyCards() {
+        return propertyCards;
+    }
 
     public static class DiceCannotBeUpgradedException extends Exception {
         @Override

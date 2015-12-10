@@ -2,13 +2,14 @@ package models.squares;
 
 import gui.Color;
 import models.Rules;
+import models.cards.PropertyCard;
 import models.cards.TownCard;
 
 /**
  * @author Alper Önder
- * Town Square class is the class for manage the towns in the game.  It holds color of the town,
- * card of the town which has diffrent properties for each town.
- * Building house and hotel can be done in this class.
+ *         Town Square class is the class for manage the towns in the game.  It holds color of the town,
+ *         card of the town which has diffrent properties for each town.
+ *         Building house and hotel can be done in this class.
  */
 public class TownSquare extends Square implements PropertySquare {
 
@@ -29,11 +30,12 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     // METHODS
+
     /**
+     * @throws CannotBuildHouseException
      * @pre self.houseCount < Rules.MAX_HOUSE_COUNT
      * @pre self.hotel == false
      * @post self.houseCount == self@pre.houseCount+1
-     * @throws CannotBuildHouseException
      */
     public void addHouse() throws CannotBuildHouseException {
         if (houseCount < Rules.MAX_HOUSE_COUNT && !hotel)
@@ -43,11 +45,11 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     /**
+     * @throws CannotBuildHouseException
      * @pre self.houseCount == Rules.MAX_HOUSE_COUNT
      * @pre self.hotel == false
      * @post self.hotel == true
      * @post self.houseCount == 0
-     * @throws CannotBuildHouseException
      */
     public void addHotel() throws CannotBuildHotelException {
         if (houseCount == Rules.MAX_HOUSE_COUNT && !hotel) {
@@ -71,6 +73,11 @@ public class TownSquare extends Square implements PropertySquare {
 
     public int getRentPrice(int numberOfBuilding) {
         return theTownCard.getRentPrice(numberOfBuilding);
+    }
+
+    @Override
+    public PropertyCard getPropertyCard() {
+        return theTownCard;
     }
 
     public static class CannotBuildHouseException extends Exception {

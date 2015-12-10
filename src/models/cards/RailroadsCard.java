@@ -9,11 +9,13 @@ import gui.RailroadsCardView;
 public class RailroadsCard extends PropertyCard {
 
     // ATTRIBUTES
-    private RailroadsCardView view; // TODO
+    private RailroadsCardView view;
 
     // CONSTRUCTOR
     public RailroadsCard(String name, int sellPrice, int mortgagePrice, int rent1, int rent2, int rent3, int rent4) {
         super(name, sellPrice, mortgagePrice);
+
+        this.view = new RailroadsCardView(this);
 
         setRentPrices(rent1, rent2, rent3, rent4);
     }
@@ -27,5 +29,9 @@ public class RailroadsCard extends PropertyCard {
     @Override
     public Color getColor() {
         return Color.CHARCOAL;
+    }
+
+    public RailroadsCardView getView() {
+        return view;
     }
 }

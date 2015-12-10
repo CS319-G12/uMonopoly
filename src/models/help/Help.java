@@ -1,6 +1,6 @@
 package models.help;
 
-import gui.HelpView;
+import gui.HelpScreen;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,16 +13,20 @@ public class Help {
 
     // ATTRIBUTES
     private List<HelpItem> helpItems;
-    private HelpView helpView; // TODO fix this
+    private HelpScreen helpScreen;
 
     // CONSTRUCTOR
-    public Help(HelpView view, HelpItem... items) {
-        this.helpView = view;
+    public Help(HelpItem... items) {
         this.helpItems = new ArrayList<>(Arrays.asList(items));
+        this.helpScreen = new HelpScreen(this);
     }
 
     // METHODS
     public HelpItem getItemAt(int index) {
         return helpItems.get(index);
+    }
+
+    public HelpScreen getView() {
+        return helpScreen;
     }
 }

@@ -1,6 +1,7 @@
 package gui;
 
 import controllers.GameController;
+import controllers.HelpController;
 
 import javax.swing.*;
 import java.awt.event.WindowEvent;
@@ -21,12 +22,14 @@ public class Window extends JFrame implements WindowListener, Observer {
     private HelpScreen helpScreen;
 
     private GameController gameController;
+    private HelpController helpController;
 
     // CONSTRUCTOR
     public Window() {
         super("µMonopoly");
 
-        gameController = new GameController();
+        helpController = new HelpController();
+        gameController = new GameController(helpController);
 
         setSize(1152, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,12 +37,13 @@ public class Window extends JFrame implements WindowListener, Observer {
         // Instantiating the panels
         homeScreen = new HomeScreen();
         playRegScreen = new PlayerRegistrationScreen(gameController);
-        gameScreen = new GameScreen();
+        gameScreen = gameController.getGame().getView();
         highScoresScreen = new HighScoresScreen();
+        helpScreen = new HelpScreen(helpController.getHelp());
 
         homeScreen.addObserver(this);
         playRegScreen.addObserver(this);
-        gameScreen.addObserver(this);
+        gameScreen.addObserver(this); // TODO board and sidepanel should actually be observable
         highScoresScreen.addObserver(this);
 
         setContentPane(homeScreen.getContent());
@@ -84,7 +88,6 @@ public class Window extends JFrame implements WindowListener, Observer {
             } else if (o == NotificationMsg.HIGH_SCORES) {
                 setContentPane(highScoresScreen.getContent());
             } else if (o == NotificationMsg.HELP) {
-                // TODO new frame when from the game and disable back
                 setContentPane(helpScreen.getContent());
             } else if (o == NotificationMsg.QUIT) {
                 System.exit(0);
@@ -107,7 +110,7 @@ public class Window extends JFrame implements WindowListener, Observer {
 
 
     /**
-     * todo
+     * This is an enumeration for the intent intermediation
      */
     enum NotificationMsg {
         PLAY_REG, HIGH_SCORES, HELP, QUIT, NEW_GAME, BACK

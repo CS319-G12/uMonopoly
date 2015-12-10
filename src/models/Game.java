@@ -1,12 +1,19 @@
 package models;
 
 import controllers.GameController;
+import controllers.HelpController;
+import gui.GameScreen;
 import gui.PlayerRegistrationSection;
+import models.cards.PropertyCard;
+import models.help.Help;
+import models.squares.PropertySquare;
 import models.squares.Square;
 import models.token.TokenFigure;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.stream.Collectors;
 
 /**
  * @author anikristo
@@ -16,23 +23,29 @@ import java.util.List;
  * @invariant self.playerNames.size() > 1 && self.playerNames.size() <= 4
  * @invariant self.players.size() == self.playerNames.size()
  */
-public class Game {
+public class Game extends Observable {
 
     // ATTRIBUTES
     private int turn;
     private List<Square> currentSquares;
-
+    private boolean hasFinished;
     private MonopolyBoard board;
     private List<Player> players;
     private List<String> playerNames;
 
     private GameController controller;
+    private GameScreen view;
 
+    private HelpController helpController;
 
     // CONSTRUCTOR
-    public Game() {
+    public Game(GameController controller, HelpController helpController) {
+        hasFinished = false;
         players = new ArrayList<>(Rules.MAX_PLAYERS);
         playerNames = new ArrayList<>(Rules.MAX_PLAYERS);
+        this.controller = controller;
+        this.helpController = helpController;
+        this.view = new GameScreen(this);
     }
 
     // METHODS
@@ -62,12 +75,12 @@ public class Game {
     }
 
     /**
+     * @param name The name of the player to be removed
+     * @throws PlayerNotFoundException
      * @pre self.players.size() > 0
      * @pre self.playerNames->includes(name)
      * @post self.players.size() == self@pre.players.size() - 1
      * @post self.playerNames.size() == self@pre.playerNames.size() - 1
-     * @param name The name of the player to be removed
-     * @throws PlayerNotFoundException
      */
     public void removePlayer(String name) throws PlayerNotFoundException {
         players.remove(playerNames.indexOf(name));
@@ -76,7 +89,8 @@ public class Game {
 
     public void start() {
 
-        // TODO create cards and squares
+        // TODO create cards and squares using AF
+        hasFinished = false;
 //        one.setText("MEDITERRANEAN\nAVENUE");
 //        one.setBackground(Color.BROWN.awtColor());
 //
@@ -170,6 +184,39 @@ public class Game {
 
     public List<Player> getListOfPlayers() {
         return players;
+    }
+
+    public List<PropertyCard> getListOfPropertyCards() {
+        List<Square> squares = getListOfSquares();
+        List<PropertyCard> propertyCardList = new ArrayList<>(squares.size());
+
+        propertyCardList
+                .addAll(squares.stream()
+                        .filter(s -> s instanceof PropertySquare)
+                        .map(s -> ((PropertySquare) s).getPropertyCard())
+                        .collect(Collectors.toList()));
+
+        return propertyCardList;
+    }
+
+    public GameController getController() {
+        return controller;
+    }
+
+    public Player getCurrentPlayer() {
+        return players.get(turn);
+    }
+
+    public Help getHelp() {
+        return helpController.getHelp();
+    }
+
+    public GameScreen getView() {
+        return view;
+    }
+
+    public boolean hasFinished() {
+        return hasFinished;
     }
 
     public static class PlayerNotFoundException extends Exception {

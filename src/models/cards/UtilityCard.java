@@ -9,12 +9,13 @@ import gui.UtilityCardView;
 public class UtilityCard extends PropertyCard {
 
     // ATTRIBUTES
-    private UtilityCardView view; // TODO
+    private UtilityCardView view;
 
     // CONSTRUCTOR
     public UtilityCard(String name, int sellPrice, int mortgagePrice, int rent1, int rent2) {
         super(name, sellPrice, mortgagePrice);
 
+        this.view = new UtilityCardView(this);
         setRentPrices(rent1, rent2);
     }
 
@@ -27,5 +28,9 @@ public class UtilityCard extends PropertyCard {
     @Override
     public Color getColor() {
         return Color.CHARCOAL;
+    }
+
+    public UtilityCardView getView() {
+        return view;
     }
 }
