@@ -16,6 +16,11 @@ public class HelpController {
 
     // CONSTRUCTOR
     public HelpController() {
+
+        // Instantiate Help items
+        HelpItem item1 = new HelpItem("OBJECT", "The object of the game is to become the wealthiest player through" +
+                " buying, renting and selling property\n");
+
         this.helpModel = new Help();
         currentItem = 0;
     }
