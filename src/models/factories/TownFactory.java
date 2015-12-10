@@ -58,7 +58,7 @@ public class TownFactory implements PropertyFactory {
         TownSquare square13 = new TownSquare(23, SquareType.TOWN, card13);
         TownSquare square14 = new TownSquare(24, SquareType.TOWN, card14);
         TownSquare square15 = new TownSquare(26, SquareType.TOWN, card15);
-        TownSquare square16 = new TownSquare(27, SquareType.TOWN, card16;
+        TownSquare square16 = new TownSquare(27, SquareType.TOWN, card16);
         TownSquare square17 = new TownSquare(29, SquareType.TOWN, card17);
         TownSquare square18 = new TownSquare(31, SquareType.TOWN, card18);
         TownSquare square19 = new TownSquare(32, SquareType.TOWN, card19);

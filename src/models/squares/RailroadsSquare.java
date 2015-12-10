@@ -11,8 +11,8 @@ public class RailroadsSquare extends Square implements PropertySquare {
     private final RailroadsCard theRailroadsCard;
 
     // CONSTRUCTOR
-    public RailroadsSquare(int position, String name, SquareType type, RailroadsCard theRailroadsCard){
-        super(position, name, type);
+    public RailroadsSquare(int position, SquareType type, RailroadsCard theRailroadsCard){
+        super(position, theRailroadsCard.getName(), type);
         this.theRailroadsCard = theRailroadsCard;
     }
 
