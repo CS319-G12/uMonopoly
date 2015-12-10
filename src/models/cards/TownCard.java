@@ -16,12 +16,14 @@ public class TownCard extends PropertyCard {
     private TownCardView view;
 
     // CONSTRUCTOR
-    public TownCard(String name, Color color, int sellPrice, int mortgagePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rentHotel) {
+    public TownCard(String name, Color color, int sellPrice, int mortgagePrice, int rent0, int rent1, int rent2, int rent3, int rent4, int rentHotel, int housePrice, int hotelPrice) {
         super(name, sellPrice, mortgagePrice);
 
         this.color = color;
         this.view = new TownCardView(this);
         setRentPrices(rent0, rent1, rent2, rent3, rent4, rentHotel);
+        this.housePrice = housePrice;
+        this.hotelPrice = hotelPrice;
     }
 
     // METHODS
