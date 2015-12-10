@@ -14,6 +14,21 @@ public class ChanceCardBuilder {
     private int payPerHouse;
     private int payPerHotel;
 
+    // CONSTRUCTOR
+    public ChanceCardBuilder() {
+        init();
+    }
+
+    private void init() {
+        amount = 0;
+        jail = false;
+        outOfJail = false;
+        desc = null;
+        goTo = 0;
+        payPerHouse = 0;
+        payPerHotel = 0;
+    }
+
     // METHODS
     public ChanceCardBuilder amount(int amount) {
         this.amount = amount;
@@ -51,6 +66,7 @@ public class ChanceCardBuilder {
     }
 
     public ChanceCard build() {
+        init();
         return new ChanceCard(amount, jail, outOfJail, desc, goTo, payPerHouse, payPerHotel);
     }
 }
