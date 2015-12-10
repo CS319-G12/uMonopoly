@@ -15,7 +15,7 @@ public class ChanceFactory extends BonusFactory {
 
     // ATTRIBUTES
     List<ChanceCard> cards;
-    List<ChanceCard> squares;
+    List<ChanceCardSquare> squares;
 
     // CONSTRUCTOR
     public ChanceFactory() {
@@ -43,5 +43,7 @@ public class ChanceFactory extends BonusFactory {
     }
 
     // METHODS
-
+    public List<ChanceCardSquare> getSquare(){
+        return squares;
+    }
 }
