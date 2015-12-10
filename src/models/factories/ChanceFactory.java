@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author anikristo
  */
-public class ChanceFactory extends BonusFactory {
+public class ChanceFactory implements BonusFactory {
 
     // ATTRIBUTES
     List<ChanceCard> cards;

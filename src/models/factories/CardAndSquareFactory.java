@@ -6,5 +6,5 @@ import java.util.List;
  * @author Alper Önder
  */
 public interface CardAndSquareFactory {
-    <T> List<T> getSquare();
+    <T> List<T> getSquares();
 }

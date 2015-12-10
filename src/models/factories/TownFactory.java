@@ -27,4 +27,8 @@ public class TownFactory implements PropertyFactory {
     }
 
     // METHOD
+    @Override
+    public <T> List<T> getSquares() {
+        return null;
+    }
 }
