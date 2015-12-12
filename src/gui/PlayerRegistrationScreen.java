@@ -92,8 +92,11 @@ public class PlayerRegistrationScreen extends Observable implements Observer {
             try {
                 gameController.createPlayerDetails(currentSection.getName(), currentSection.getTokenFigure());
                 currentSection.setError(false, null);
-
                 gameController.startGame();
+
+                // Notify Window
+                setChanged();
+                notifyObservers(Window.NotificationMsg.NEW_GAME);
 
             } catch (PlayerRegistrationSection.TokenNotSelectedException e) {
                 playerRegSections.get(shownPlayerSections - 1).setError(true, PlayerRegistrationSection.NO_TOKEN_SELECTED);

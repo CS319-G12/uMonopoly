@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class CornerSquareView implements SquareView {
+public class CornerSquareView extends SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
@@ -19,15 +19,13 @@ public class CornerSquareView implements SquareView {
     private JLabel fourthTokenLb;
 
     // CONSTRUCTOR
-    public CornerSquareView(ImageIcon icon) {
+    public CornerSquareView(Rotation rotation, ImageIcon icon) {
+        super(rotation);
         icon.setImage(icon.getImage());
+        add(mainPanel);
     }
 
     // METHODS
-    public JPanel getContent() {
-        return mainPanel;
-    }
-
     public void addTokenFigure(TokenFigure figure) throws SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());

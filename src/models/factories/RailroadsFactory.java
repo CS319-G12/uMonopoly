@@ -4,19 +4,19 @@ import models.cards.RailroadsCard;
 import models.squares.RailroadsSquare;
 import models.squares.SquareType;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Alper Önder
  */
 public class RailroadsFactory implements PropertyFactory {
     // ATTRIBUTES
-    List<RailroadsSquare> squares;
+    Set<RailroadsSquare> squares;
 
     // CONSTRUCTOR
     public RailroadsFactory(){
-        squares = new ArrayList<>();
+        squares = new HashSet<>();
 
         RailroadsCard card1 = new RailroadsCard("READING RAILROAD",200, 100, 25,50,100,200);
         RailroadsCard card2 = new RailroadsCard("PENNSYLVANIA RAILROAD",200, 100, 25,50,100,200);
@@ -36,7 +36,7 @@ public class RailroadsFactory implements PropertyFactory {
 
     // METHODS
     @Override
-    public List getSquares(){
+    public Set<RailroadsSquare> getSquares() {
         return squares;
     }
 }

@@ -10,8 +10,8 @@ public class TaxSquare extends Square {
     private final int taxAmount;
 
     // CONSTRUCTOR
-    public TaxSquare(int position, String name, SquareType type, int taxAmount) {
-        super(position, name, type);
+    public TaxSquare(int position, String name, int taxAmount) {
+        super(position, name, SquareType.TAX);
         this.taxAmount = taxAmount;
     }
 

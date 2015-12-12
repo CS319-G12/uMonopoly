@@ -14,10 +14,9 @@ public class RailroadsCard extends PropertyCard {
     // CONSTRUCTOR
     public RailroadsCard(String name, int sellPrice, int mortgagePrice, int rent1, int rent2, int rent3, int rent4) {
         super(name, sellPrice, mortgagePrice);
+        setRentPrices(rent1, rent2, rent3, rent4);
 
         this.view = new RailroadsCardView(this);
-
-        setRentPrices(rent1, rent2, rent3, rent4);
     }
 
     //

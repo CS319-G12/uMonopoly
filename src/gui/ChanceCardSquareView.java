@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class ChanceCardSquareView implements SquareView {
+public class ChanceCardSquareView extends SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
@@ -17,11 +17,13 @@ public class ChanceCardSquareView implements SquareView {
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
-    // METHODS
-    public JPanel getContent() {
-        return mainPanel;
+    public ChanceCardSquareView(Rotation rotation) {
+        super(rotation);
+
+        add(mainPanel);
     }
 
+    // METHODS
     public void addTokenFigure(TokenFigure figure) throws SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());

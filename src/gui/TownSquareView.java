@@ -8,7 +8,7 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class TownSquareView implements SquareView {
+public class TownSquareView extends SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
@@ -29,22 +29,20 @@ public class TownSquareView implements SquareView {
     private ImageIcon hotelIcon;
 
     // CONSTRUCTOR
-    public TownSquareView(TownSquare square) {
-        super();
+    public TownSquareView(Rotation rotation, TownSquare square) {
+        super(rotation);
 
-        this.houseIcon = new ImageIcon(getClass().getResource("/img/house_icon"));
-        this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel_icon"));
+        this.houseIcon = new ImageIcon(getClass().getResource("/img/house.png"));
+        this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel.png"));
 
         colorPn.setBackground(square.getColor().awtColor());
         nameLb.setText(square.getName());
 
+        add(mainPanel);
+
     }
 
     // METHODS
-    public JPanel getContent() {
-        return mainPanel;
-    }
-
     public void addHouse() throws SquareFullException {
         if (firstHouseLb.getIcon() == null)
             firstHouseLb.setIcon(houseIcon);

@@ -43,8 +43,8 @@ public class CenterBoardPanel implements Observer {
         sellBtn.addActionListener(actionEvent -> controller.sellProperty());
         buildBtn.addActionListener(actionEvent -> controller.build());
 
-        this.houseIcon = new ImageIcon(getClass().getResource("/img/icon_house_big.png"));
-        this.hotelIcon = new ImageIcon(getClass().getResource("/img/icon_hotel_big.png"));
+        this.houseIcon = new ImageIcon(getClass().getResource("/img/house_big.png"));
+        this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel_big.png"));
     }
 
     // METHODS

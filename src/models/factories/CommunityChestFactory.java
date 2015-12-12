@@ -6,7 +6,9 @@ import models.squares.CommunityChestCardSquare;
 import models.squares.SquareType;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Alper Önder
@@ -15,12 +17,12 @@ public class CommunityChestFactory implements BonusFactory {
 
     // ATTRIBUTES
     List<CommunityChestCard> cards;
-    List<CommunityChestCardSquare> squares;
+    Set<CommunityChestCardSquare> squares;
 
     // CONSTRUCTOR
     public CommunityChestFactory(){
         cards = new ArrayList<>();
-        squares = new ArrayList<>();
+        squares = new HashSet<>();
 
         CommunityChestCardBuilder builder = new CommunityChestCardBuilder();
         CommunityChestCard card1 = builder.amount(200)
@@ -117,7 +119,7 @@ public class CommunityChestFactory implements BonusFactory {
 
     // METHODS
     @Override
-    public List getSquares() {
+    public Set<CommunityChestCardSquare> getSquares() {
         return squares;
     }
 }

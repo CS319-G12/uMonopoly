@@ -6,6 +6,8 @@ import models.Rules;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author anikristo
@@ -14,16 +16,22 @@ public class GameController {
 
     // ATTRIBUTES
     private Game game;
+    private HelpController helpController;
+
+    private Map<String, TokenFigure> playerDetails;
 
     // CONSTRUCTOR
     public GameController(HelpController helpController) {
-        game = new Game(this, helpController);
+        this.helpController = helpController;
+        this.playerDetails = new HashMap<>(Rules.MAX_PLAYERS);
     }
 
     // METHODS
     public void createPlayerDetails(String name, TokenFigure tokenFigure)
             throws PlayerRegistrationSection.NameNotUniqueException {
-        game.addPlayer(name, tokenFigure);
+        if (playerDetails.containsKey(name))
+            throw new PlayerRegistrationSection.NameNotUniqueException();
+        playerDetails.put(name, tokenFigure);
     }
 
     /**
@@ -32,20 +40,18 @@ public class GameController {
      * @post self.game != null
      */
     public void startGame() throws PlayerRegistrationSection.TooFewPlayersException {
+
         // Checking the minimum number of players is satisfied
-        if (game.getNumberOfPlayers() < Rules.MIN_PLAYERS)
+        if (playerDetails.size() < Rules.MIN_PLAYERS)
             throw new PlayerRegistrationSection.TooFewPlayersException();
 
-        game.start();
+        game = new Game(this, helpController, playerDetails);
 
+        game.start();
     }
 
     public void removePlayer(String name) {
-        try {
-            game.removePlayer(name);
-        } catch (Game.PlayerNotFoundException e) {
-            System.out.println("The player was not registered!");// todo
-        }
+        playerDetails.remove(name);
     }
 
     /**

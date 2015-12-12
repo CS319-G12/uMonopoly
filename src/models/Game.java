@@ -3,7 +3,6 @@ package models;
 import controllers.GameController;
 import controllers.HelpController;
 import gui.GameScreen;
-import gui.PlayerRegistrationSection;
 import models.cards.PropertyCard;
 import models.dice.DiceValue;
 import models.help.Help;
@@ -13,6 +12,7 @@ import models.token.TokenFigure;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.stream.Collectors;
 
@@ -40,12 +40,17 @@ public class Game extends Observable {
     private HelpController helpController;
 
     // CONSTRUCTOR
-    public Game(GameController controller, HelpController helpController) {
+    public Game(GameController controller, HelpController helpController, Map<String, TokenFigure> playerDetails) {
         hasFinished = false;
-        players = new ArrayList<>(Rules.MAX_PLAYERS);
+        this.players = new ArrayList<>(Rules.MAX_PLAYERS);
         playerNames = new ArrayList<>(Rules.MAX_PLAYERS);
         this.controller = controller;
         this.helpController = helpController;
+        this.board = new MonopolyBoard();
+
+        for (Map.Entry<String, TokenFigure> entry : playerDetails.entrySet())
+            addPlayer(entry.getKey(), entry.getValue());
+
         this.view = new GameScreen(this);
     }
 
@@ -56,19 +61,16 @@ public class Game extends Observable {
      *
      * @param name        the name of the player to be added as received from the GUI
      * @param tokenFigure the token figure selected from the player at registration
-     * @throws PlayerRegistrationSection.NameNotUniqueException
      * @pre !playerNames->includes(name)
      * @post self.players.size() == self@pre.players.size() + 1
      * @post self.playerNames.size() == self@pre.playerNames.size() + 1
      */
-    public void addPlayer(String name, TokenFigure tokenFigure) throws PlayerRegistrationSection.NameNotUniqueException {
+    public void addPlayer(String name, TokenFigure tokenFigure) {
         Player newPlayer = new Player(name, tokenFigure);
-        if (playerNames.contains(name))
-            throw new PlayerRegistrationSection.NameNotUniqueException();
-        else {
-            players.add(newPlayer);
-            playerNames.add(name);
-        }
+        players.add(newPlayer);
+        playerNames.add(name);
+
+        notifyObservers();
     }
 
     public int getNumberOfPlayers() {
@@ -92,91 +94,6 @@ public class Game extends Observable {
 
         // TODO create cards and squares using AF
         hasFinished = false;
-//        one.setText("MEDITERRANEAN\nAVENUE");
-//        one.setBackground(Color.BROWN.awtColor());
-//
-//        two.setText("BALTIC\nAVENUE");
-//        two.setBackground(Color.BROWN.awtColor());
-//
-//        three.setText("ORIENTAL\nAVENUE");
-//        three.setBackground(Color.LIGHT_BLUE.awtColor());
-//
-//        four.setText("VERMONT\nAVENUE");
-//        four.setBackground(Color.LIGHT_BLUE.awtColor());
-//
-//        five.setText("CONNECTICUT\nAVENUE");
-//        five.setBackground(Color.LIGHT_BLUE.awtColor());
-//
-//        six.setText("ST CHARLES\nPLACE");
-//        six.setBackground(Color.PINK.awtColor());
-//
-//        seven.setText("STATES\nAVENUE");
-//        seven.setBackground(Color.PINK.awtColor());
-//
-//        eight.setText("VIRGINIA\nAVENUE");
-//        eight.setBackground(Color.PINK.awtColor());
-//
-//        nine.setText("ST JAMES\nPLACE");
-//        nine.setBackground(Color.ORANGE.awtColor());
-//
-//        ten.setText("TENNESSEE\nAVENUE");
-//        ten.setBackground(Color.ORANGE.awtColor());
-//
-//        eleven.setText("NEW YORK\nAVENUE");
-//        eleven.setBackground(Color.ORANGE.awtColor());
-//
-//        twelve.setText("KENTUCKY\nAVENUE");
-//        twelve.setBackground(Color.RED.awtColor());
-//
-//        thirteen.setText("INDIANA\nAVENUE");
-//        thirteen.setBackground(Color.RED.awtColor());
-//
-//        fourteen.setText("ILLINOIS\nAVENUE");
-//        fourteen.setBackground(Color.RED.awtColor());
-//
-//        fifteen.setText("ATLANTIC\nAVENUE");
-//        fifteen.setBackground(Color.YELLOW.awtColor());
-//
-//        sixteen.setText("VENTNOR\nAVENUE");
-//        sixteen.setBackground(Color.YELLOW.awtColor());
-//
-//        seventeen.setText("MARVIN\nGARDENS");
-//        seventeen.setBackground(Color.YELLOW.awtColor());
-//
-//        eighteen.setText("PACIFIC\nAVENUE");
-//        eighteen.setBackground(Color.GREEN.awtColor());
-//
-//        nineteen.setText("CAROLINA\nAVENUE");
-//        nineteen.setBackground(Color.GREEN.awtColor());
-//
-//        twenty.setText("PENNSYLVANIA\nAVENUE");
-//        twenty.setBackground(Color.GREEN.awtColor());
-//
-//        twentyone.setText("PARK\nPLACE");
-//        twentyone.setBackground(Color.BLUE.awtColor());
-//
-//        twentytwo.setText("BROADWALK");
-//        twentytwo.setBackground(Color.BLUE.awtColor());
-//
-//        twentythree.setText("ELECTRIC\nCOMPANY");
-//        twentythree.setBackground(Color.CHARCOAL.awtColor());
-//
-//        twentyfour.setText("WATER\nWORKS");
-//        twentyfour.setBackground(Color.CHARCOAL.awtColor());
-//
-//        twentyfive.setText("READING\nRAILROAD");
-//        twentyfive.setBackground(Color.CHARCOAL.awtColor());
-//
-//        twentysix.setText("PENNSYLVANIA\nRAILROAD");
-//        twentysix.setBackground(Color.CHARCOAL.awtColor());
-//
-//        twentyseven.setText("B. & o.\nRAILROAD");
-//        twentyseven.setBackground(Color.CHARCOAL.awtColor());
-//
-//        twentyeight.setText("SHORT\nLINE");
-//        twentyeight.setBackground(Color.CHARCOAL.awtColor());
-//
-
     }
 
     public List<Square> getListOfSquares() {

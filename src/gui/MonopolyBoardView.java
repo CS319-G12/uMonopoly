@@ -22,11 +22,12 @@ public class MonopolyBoardView {
     // CONSTRUCTOR
     public MonopolyBoardView(Game game) { // TODO check
         List<Square> squares = game.getListOfSquares();
-        leftPn = new LeftBoardPanel(squares.subList(0, 11)).getContent();
-        rightPn = new RightBoardPanel(squares.subList(11, 20)).getContent();
-        topPn = new TopBoardPanel(squares.subList(20, 31)).getContent();
-        bottomPn = new BottomBoardPanel(squares.subList(31, 40)).getContent();
-        centerPn = new CenterBoardPanel(game).getContent();
+
+//        bottomPn.add(new BottomBoardPanel(squares.subList(0, 11)).getContent());
+//        leftPn.add(new LeftBoardPanel(squares.subList(11, 20)).getContent());
+//        topPn.add(new TopBoardPanel(squares.subList(20, 31)).getContent());
+//        rightPn.add(new RightBoardPanel(squares.subList(31, 40)).getContent());
+//        centerPn.add(new CenterBoardPanel(game).getContent());
 
     }
 

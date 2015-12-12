@@ -44,7 +44,7 @@ public abstract class PropertyCard {
     }
 
     protected int[] getRentPrices() {
-        return rentPrices.clone();
+        return rentPrices;
     }
 
     protected void setRentPrices(int... rents) {

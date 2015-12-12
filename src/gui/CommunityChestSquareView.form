@@ -17,6 +17,7 @@
         <properties>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
+          <icon value="img/cccs_small.png"/>
           <text value=""/>
         </properties>
       </component>

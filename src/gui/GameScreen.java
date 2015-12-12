@@ -19,11 +19,12 @@ public class GameScreen extends Observable {
 
     // CONSTRUCTOR
     public GameScreen(Game game) {
-        boardView = new MonopolyBoardView(game.getListOfSquares());
+
+        boardView = new MonopolyBoardView(game);
         sidePanel = new SidePanel(game);
 
-        centerPn = boardView.getContent();
-        rightPn = sidePanel.getContent();
+        centerPn.add(boardView.getContent());
+        rightPn.add(sidePanel.getContent());
     }
 
     // METHODS

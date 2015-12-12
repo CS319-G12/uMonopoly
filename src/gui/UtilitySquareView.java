@@ -8,10 +8,10 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class UtilitySquareView {
+public class UtilitySquareView extends SquareView {
 
     // ATTRIBUTES
-    private JPanel mainPn;
+    private JPanel mainPanel;
     private JLabel titleLb;
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
@@ -19,16 +19,15 @@ public class UtilitySquareView {
     private JLabel fourthTokenLb;
 
     // CONSTRUCTOR
-    public UtilitySquareView(UtilitySquare square) {
+    public UtilitySquareView(Rotation rotation, UtilitySquare square) {
+        super(rotation);
         titleLb.setText(square.getName());
+
+        add(mainPanel);
     }
 
 
     // METHODS
-    public JPanel getContent() {
-        return mainPn;
-    }
-
     public void addTokenFigure(TokenFigure figure) throws SquareView.SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());

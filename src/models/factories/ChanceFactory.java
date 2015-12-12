@@ -6,7 +6,9 @@ import models.squares.ChanceCardSquare;
 import models.squares.SquareType;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author anikristo
@@ -15,13 +17,13 @@ public class ChanceFactory implements BonusFactory {
 
     // ATTRIBUTES
     List<ChanceCard> cards;
-    List<ChanceCardSquare> squares;
+    Set<ChanceCardSquare> squares;
 
     // CONSTRUCTOR
     public ChanceFactory() {
 
         cards = new ArrayList<>();
-        squares = new ArrayList<>();
+        squares = new HashSet<>();
 
         // Instantiate all Chance Cards
         ChanceCardBuilder builder = new ChanceCardBuilder();
@@ -112,11 +114,15 @@ public class ChanceFactory implements BonusFactory {
         ChanceCardSquare square1 = new ChanceCardSquare(7, "Chance", SquareType.CHANCE, cards);
         ChanceCardSquare square2 = new ChanceCardSquare(22, "Chance", SquareType.CHANCE, cards);
         ChanceCardSquare square3 = new ChanceCardSquare(36, "Chance", SquareType.CHANCE, cards);
+
+        squares.add(square1);
+        squares.add(square2);
+        squares.add(square3);
     }
 
     // METHODS
     @Override
-    public List<ChanceCardSquare> getSquares() {
+    public Set<ChanceCardSquare> getSquares() {
         return squares;
     }
 }

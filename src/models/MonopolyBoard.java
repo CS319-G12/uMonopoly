@@ -1,5 +1,6 @@
 package models;
 
+import models.factories.SquareFactory;
 import models.squares.Square;
 
 import java.util.List;
@@ -68,6 +69,11 @@ public class MonopolyBoard {
     }
 
     public List<Square> getListOfSquares() {
-        return squareList;
+        if (squareList == null) {
+            // Generate squares
+            squareList = new SquareFactory().getSquares();
+            return squareList;
+        } else
+            return squareList;
     }
 }

@@ -6,8 +6,6 @@ import models.squares.TaxSquare;
 import models.squares.TownSquare;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.util.List;
 
 /**
@@ -18,50 +16,34 @@ public class RightBoardPanel {
     // ATTRIBUTES
     private JPanel mainPn;
 
-    private TownSquareView pacificAvenue;
-    private TownSquareView carolinaAvenue;
-    private CommunityChestSquareView communityChestSquareView;
-    private TownSquareView pennsylvaniaAvenue;
-    private RailroadsSquareView shortLine;
-    private ChanceCardSquareView chanceCardSquareView;
-    private TownSquareView parkPlace;
-    private TaxSquareView taxSquareView;
-    private TownSquareView broadwalk;
-
     // CONSTRUCTOR
     public RightBoardPanel(List<Square> squares) {
 
         // Instantiate
-        pacificAvenue = new TownSquareView((TownSquare) squares.get(0));
-        carolinaAvenue = new TownSquareView((TownSquare) squares.get(1));
-        communityChestSquareView = new CommunityChestSquareView();
-        pennsylvaniaAvenue = new TownSquareView((TownSquare) squares.get(3));
-        shortLine = new RailroadsSquareView((RailroadsSquare) squares.get(4));
-        chanceCardSquareView = new ChanceCardSquareView();
-        parkPlace = new TownSquareView((TownSquare) squares.get(6));
-        taxSquareView = new TaxSquareView((TaxSquare) squares.get(7));
-        broadwalk = new TownSquareView((TownSquare) squares.get(8));
+        TownSquareView pacificAvenue = new TownSquareView(SquareView.Rotation.RIGHT, (TownSquare) squares.get(0));
+        TownSquareView carolinaAvenue = new TownSquareView(SquareView.Rotation.RIGHT, (TownSquare) squares.get(1));
+        CommunityChestSquareView communityChestSquareView = new CommunityChestSquareView(SquareView.Rotation.RIGHT);
+        TownSquareView pennsylvaniaAvenue = new TownSquareView(SquareView.Rotation.RIGHT, (TownSquare) squares.get(3));
+        RailroadsSquareView shortLine = new RailroadsSquareView(SquareView.Rotation.RIGHT, (RailroadsSquare) squares.get(4));
+        ChanceCardSquareView chanceCardSquareView = new ChanceCardSquareView(SquareView.Rotation.RIGHT);
+        TownSquareView parkPlace = new TownSquareView(SquareView.Rotation.RIGHT, (TownSquare) squares.get(6));
+        TaxSquareView taxSquareView = new TaxSquareView(SquareView.Rotation.RIGHT, (TaxSquare) squares.get(7));
+        TownSquareView boardwalk = new TownSquareView(SquareView.Rotation.RIGHT, (TownSquare) squares.get(8));
 
         // Add to the main panel // TODO check order
         mainPn.setLayout(new BoxLayout(mainPn, BoxLayout.Y_AXIS));
-        mainPn.add(rotate(pacificAvenue.getContent()));
-        mainPn.add(rotate(carolinaAvenue.getContent()));
-        mainPn.add(rotate(communityChestSquareView.getContent()));
-        mainPn.add(rotate(pennsylvaniaAvenue.getContent()));
-        mainPn.add(rotate(shortLine.getContent()));
-        mainPn.add(rotate(chanceCardSquareView.getContent()));
-        mainPn.add(rotate(parkPlace.getContent()));
-        mainPn.add(rotate(taxSquareView.getContent()));
-        mainPn.add(rotate(broadwalk.getContent()));
+        mainPn.add(pacificAvenue);
+        mainPn.add(carolinaAvenue);
+        mainPn.add(communityChestSquareView);
+        mainPn.add(pennsylvaniaAvenue);
+        mainPn.add(shortLine);
+        mainPn.add(chanceCardSquareView);
+        mainPn.add(parkPlace);
+        mainPn.add(taxSquareView);
+        mainPn.add(boardwalk);
     }
 
     // METHODS
-    private JPanel rotate(JPanel content) {  // TODO test
-        Graphics2D g = (Graphics2D) content.getGraphics();
-        g.transform(AffineTransform.getQuadrantRotateInstance(3));
-        return content;
-    }
-
     public JPanel getContent() {
         return mainPn;
     }

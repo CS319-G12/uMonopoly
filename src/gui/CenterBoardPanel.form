@@ -132,6 +132,7 @@
               <component id="c6151" class="javax.swing.JLabel" binding="buildingCountLb">
                 <constraints/>
                 <properties>
+                  <font size="36"/>
                   <horizontalAlignment value="0"/>
                   <text value=""/>
                 </properties>

@@ -5,7 +5,8 @@ import models.cards.TownCard;
 import models.squares.SquareType;
 import models.squares.TownSquare;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author anikristo
@@ -13,7 +14,7 @@ import java.util.List;
 public class TownFactory implements PropertyFactory {
 
     // ATTRIBUTES
-    private List<TownSquare> squares;
+    private Set<TownSquare> squares;
 
     // CONSTRUCTOR
     public TownFactory() {
@@ -66,6 +67,7 @@ public class TownFactory implements PropertyFactory {
         TownSquare square21 = new TownSquare(37, SquareType.TOWN, card21);
         TownSquare square22 = new TownSquare(39, SquareType.TOWN, card22);
 
+        squares = new HashSet<>();
         squares.add(square1);
         squares.add(square2);
         squares.add(square3);
@@ -92,7 +94,7 @@ public class TownFactory implements PropertyFactory {
 
     // METHOD
     @Override
-    public List getSquares() {
+    public Set<TownSquare> getSquares() {
         return squares;
     }
 }

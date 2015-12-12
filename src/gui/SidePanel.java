@@ -3,10 +3,12 @@ package gui;
 import controllers.GameController;
 import models.Game;
 import models.Player;
+import models.Rules;
 import models.cards.PropertyCard;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -33,10 +35,13 @@ public class SidePanel implements Observer {
     // CONSTRUCTOR
     public SidePanel(Game game) {
 
+        game.addObserver(this);
+
         this.gameController = game.getController();
         List<Player> listOfPlayers = game.getListOfPlayers();
         List<PropertyCard> listOfPropertyCards = game.getListOfPropertyCards();
 
+        this.playerViewList = new ArrayList<>(Rules.MAX_PLAYERS);
         playersPn.setLayout(new BoxLayout(playersPn, BoxLayout.Y_AXIS));
         for (int i = 1; i < listOfPlayers.size() + 1; i++) {
             PlayerView pv = new PlayerView(i, listOfPlayers.get(i - 1));

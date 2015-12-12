@@ -8,7 +8,7 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class RailroadsSquareView implements SquareView {
+public class RailroadsSquareView extends SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
@@ -20,16 +20,15 @@ public class RailroadsSquareView implements SquareView {
     private JLabel fourthTokenLb;
 
     // CONSTRUCTOR
-    public RailroadsSquareView(RailroadsSquare square) {
+    public RailroadsSquareView(Rotation rotation, RailroadsSquare square) {
+        super(rotation);
         titleLb.setText(square.getName());
+
+        add(mainPanel);
     }
 
 
     // METHODS
-    public JPanel getContent() {
-        return mainPanel;
-    }
-
     public void addTokenFigure(TokenFigure figure) throws SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());

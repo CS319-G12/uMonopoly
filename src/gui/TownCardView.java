@@ -44,7 +44,7 @@ public class TownCardView { // TODO test
         twoHousesRentLb.setText(card.getRentPrice(2) + "$");
         threeHousesRentLb.setText(card.getRentPrice(3) + "$");
         fourHousesRentLb.setText(card.getRentPrice(4) + "$");
-        hotelRentLb.setText(card.getRentPrice(5) + "$");
+        hotelRentLb.setText(card.getHotelRentPrice() + "$");
         mortgageValueLb.setText("Mortgage value " + card.getMortgagePrice() + "$");
         houseCostLb.setText("Houses cost " + card.getHouseBuildPrice() + "$ each");
         hotelCostLb.setText("<html><center>Hotels cost " + card.getHotelBuildPrice() + "$ each<br>plus 4 houses</html>");

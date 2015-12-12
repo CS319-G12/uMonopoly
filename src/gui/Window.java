@@ -34,17 +34,8 @@ public class Window extends JFrame implements WindowListener, Observer {
         setSize(1152, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Instantiating the panels
         homeScreen = new HomeScreen();
-        playRegScreen = new PlayerRegistrationScreen(gameController);
-        gameScreen = gameController.getGame().getView();
-        highScoresScreen = new HighScoresScreen();
-        helpScreen = new HelpScreen(helpController.getHelp());
-
         homeScreen.addObserver(this);
-        playRegScreen.addObserver(this);
-        gameScreen.addObserver(this); // TODO board and sidepanel should actually be observable
-        highScoresScreen.addObserver(this);
 
         setContentPane(homeScreen.getContent());
         setVisible(true);
@@ -84,10 +75,21 @@ public class Window extends JFrame implements WindowListener, Observer {
     public void update(Observable observable, Object o) {
         if (observable == homeScreen) {
             if (o == NotificationMsg.PLAY_REG) {
+                if (playRegScreen == null) {
+                    playRegScreen = new PlayerRegistrationScreen(gameController);
+                    playRegScreen.addObserver(this);
+                }
                 setContentPane(playRegScreen.getContent());
             } else if (o == NotificationMsg.HIGH_SCORES) {
+                if (highScoresScreen == null) {
+                    highScoresScreen = new HighScoresScreen();
+                    highScoresScreen.addObserver(this);
+                }
                 setContentPane(highScoresScreen.getContent());
             } else if (o == NotificationMsg.HELP) {
+                if (helpScreen == null) {
+                    helpScreen = new HelpScreen(helpController.getHelp());
+                }
                 setContentPane(helpScreen.getContent());
             } else if (o == NotificationMsg.QUIT) {
                 System.exit(0);
@@ -97,9 +99,14 @@ public class Window extends JFrame implements WindowListener, Observer {
         } else if (observable == helpScreen) {
             // TODO
         } else if (observable == playRegScreen) {
-            // TODO
             if (o == NotificationMsg.BACK) {
                 setContentPane(homeScreen.getContent());
+            } else if (o == NotificationMsg.NEW_GAME) {
+                if (gameScreen == null) {
+                    gameScreen = gameController.getGame().getView();
+                    gameScreen.addObserver(this); // TODO board and side panel should actually be observable
+                }
+                setContentPane(gameScreen.getContent());
             }
         } else if (observable == gameScreen) {
             // TODO

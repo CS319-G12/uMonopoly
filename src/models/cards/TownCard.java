@@ -20,10 +20,11 @@ public class TownCard extends PropertyCard {
         super(name, sellPrice, mortgagePrice);
 
         this.color = color;
-        this.view = new TownCardView(this);
         setRentPrices(rent0, rent1, rent2, rent3, rent4, rentHotel);
         this.housePrice = housePrice;
         this.hotelPrice = hotelPrice;
+
+        this.view = new TownCardView(this);
     }
 
     // METHODS

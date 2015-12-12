@@ -7,28 +7,24 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class CommunityChestSquareView implements SquareView {
+public class CommunityChestSquareView extends SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
     private JLabel titleLb;
-    private JLabel iconLb;
 
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
-    // CONSTRUCTOR
-    public CommunityChestSquareView() {
-        iconLb.setIcon(new ImageIcon(getClass().getResource("/img/cccs_small.png")));
+    public CommunityChestSquareView(Rotation rotation) {
+        super(rotation);
+
+        add(mainPanel);
     }
 
     // METHODS
-    public JPanel getContent() {
-        return mainPanel;
-    }
-
     public void addTokenFigure(TokenFigure figure) throws SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());
