@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class BRailroadsSquareView extends SquareView {
 

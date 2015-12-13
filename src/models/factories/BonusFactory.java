@@ -3,7 +3,7 @@ package models.factories;
 import java.util.Set;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public interface BonusFactory {
     Set getSquares();

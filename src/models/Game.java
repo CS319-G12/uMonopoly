@@ -18,7 +18,7 @@ import java.util.Observable;
 import java.util.stream.Collectors;
 
 /**
- * @author anikristo & Alper Önder
+ * @author Ani Kristo & Alper Önder
  * @invariant self.turn >= 0 && self.turn < 4
  * @invariant self.currentSquares.size() == 4
  * @invariant self.players.size() > 1 && self.players.size() <= 4
@@ -39,6 +39,7 @@ public class Game extends Observable {
     private GameScreen view;
 
     private HelpController helpController;
+    private boolean playerRolled;
 
     // CONSTRUCTOR
     public Game(GameController controller, HelpController helpController, Map<String, TokenFigure> playerDetails) {
@@ -48,6 +49,7 @@ public class Game extends Observable {
         this.controller = controller;
         this.helpController = helpController;
         this.board = new MonopolyBoard();
+        playerRolled = false;
 
         for (Map.Entry<String, TokenFigure> entry : playerDetails.entrySet())
             addPlayer(entry.getKey(), entry.getValue());
@@ -92,11 +94,21 @@ public class Game extends Observable {
     }
 
     public void start() {
-
         turn = 0;
         hasFinished = false;
+        for (Player p : players)
+            p.setPosition(0);
+        currentSquares = new ArrayList<>();
+        for (int i = 0; i < players.size(); i++)
+            currentSquares.add(0);
+        notifyObservers();
+    }
 
-
+    private void updateCurrentSquares() {
+        for (int i = 0; i < players.size(); i++) {
+            currentSquares.set(i, players.get(i).getPosition());
+        }
+        notifyObservers();
     }
 
     public List<Square> getListOfSquares() {
@@ -145,11 +157,11 @@ public class Game extends Observable {
     }
 
     public DiceValue getDiceValue1() {
-        return players.get(turn).getDiceValue1();
+        return getCurrentPlayer().getDiceValue1();
     }
 
     public DiceValue getDiceValue2() {
-        return players.get(turn).getDiceValue2();
+        return getCurrentPlayer().getDiceValue2();
     }
 
     public void buyProperty() throws NotBuyableException{
@@ -177,7 +189,7 @@ public class Game extends Observable {
             getCurrentPlayer().removePropertyCard(square.getCard());
             square.removeOwner();
             if(square instanceof TownSquare)
-                ((TownSquare) square).removeHouses();
+                ((TownSquare) square).removeBuidlings();
         }
     }
 
@@ -195,6 +207,30 @@ public class Game extends Observable {
                 System.err.println(e.getMessage());
             }
         }
+    }
+
+    public boolean playerRolled() {
+        return playerRolled;
+    }
+
+    public void roll() {
+        getCurrentPlayer().roll();
+        playerRolled = true;
+        updateCurrentSquares();
+        notifyObservers();
+    }
+
+    public void endTurn() {
+        // TODO udate views of the current square and list of property cards owned
+        incrementTurn();
+        playerRolled = false;
+        notifyObservers();
+    }
+
+    private void incrementTurn() {
+        turn++;
+        if (turn == players.size())
+            turn = 0;
     }
 
     public static class PlayerNotFoundException extends Exception {

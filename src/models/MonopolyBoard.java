@@ -6,7 +6,7 @@ import models.squares.Square;
 import java.util.List;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  * @invariant self.squareList.size() == 40
  */
 public class MonopolyBoard {

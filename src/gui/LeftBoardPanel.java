@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.List;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class LeftBoardPanel extends JPanel {
 
@@ -33,14 +33,14 @@ public class LeftBoardPanel extends JPanel {
         setMinimumSize(new Dimension(95, 540));
         setMaximumSize(new Dimension(95, 540));
         setPreferredSize(new Dimension(95, 540));
-        add(stCharlesPlace);
-        add(electricCompany);
-        add(statesAvenue);
-        add(virginiaAvenue);
-        add(pennsylvaniaRailroad);
-        add(stJamesPlace);
-        add(communityChestCardSquare);
-        add(tennesseeAvenue);
         add(newYorkAvenue);
+        add(tennesseeAvenue);
+        add(communityChestCardSquare);
+        add(stJamesPlace);
+        add(pennsylvaniaRailroad);
+        add(virginiaAvenue);
+        add(statesAvenue);
+        add(electricCompany);
+        add(stCharlesPlace);
     }
 }

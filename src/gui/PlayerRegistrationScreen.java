@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.util.*;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class PlayerRegistrationScreen extends Observable implements Observer {
 

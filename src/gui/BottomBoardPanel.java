@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.List;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class BottomBoardPanel extends JPanel {
 

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.Observable;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class HighScoresScreen extends Observable {
     public JPanel getContent() {

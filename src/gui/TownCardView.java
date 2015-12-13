@@ -5,7 +5,7 @@ import models.cards.TownCard;
 import javax.swing.*;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class TownCardView { // TODO test
 

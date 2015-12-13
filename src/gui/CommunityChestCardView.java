@@ -9,7 +9,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class CommunityChestCardView {
 

@@ -5,7 +5,7 @@ import models.token.TokenFigure;
 import javax.swing.*;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class PlayerRegistrationSection extends java.util.Observable {
 
@@ -218,6 +218,7 @@ public class PlayerRegistrationSection extends java.util.Observable {
 
     public void lock() {
         isLocked = true;
+        nameTf.setEnabled(false);
     }
 
     /**

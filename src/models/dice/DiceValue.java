@@ -3,7 +3,7 @@ package models.dice;
 import javax.swing.*;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public enum DiceValue {
 

@@ -6,7 +6,7 @@ import models.Rules;
 import models.cards.TownCard;
 
 /**
- * @author Alper Önder
+ * @author Alper Önder, Ani Kristo
  *         Town Square class is the class for manage the towns in the game.  It holds color of the town,
  *         card of the town which has diffrent properties for each town.
  *         Building house and hotel can be done in this class.
@@ -16,10 +16,9 @@ public class TownSquare extends Square implements PropertySquare {
     // ATTRIBUTES
     private final Color color;
     private final TownCard theTownCard;
-
-    private PropertyGroup<TownSquare> group;
     public int houseCount;
     public boolean hotel;
+    private PropertyGroup<TownSquare> group;
 
     // CONSTRUCTOR
     public TownSquare(int position, SquareType type, TownCard theTownCard) {
@@ -53,11 +52,6 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     @Override
-    public <T extends PropertySquare> void setGroup(PropertyGroup propertyGroup) {
-        this.group = propertyGroup;
-    }
-
-    @Override
     public void setOwner(Player currentPlayer) {
         theTownCard.setOwner(currentPlayer);
         group.setOwner(this, currentPlayer);
@@ -70,11 +64,26 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     @Override
+    public boolean hasOwner() {
+        return theTownCard.getOwner() != null;
+    }
+
+    @Override
+    public boolean isOwner(Player p) {
+        return theTownCard.getOwner() == p;
+    }
+
+    @Override
     public PropertyGroup<TownSquare> getGroup() {
         return group;
     }
 
-    public void removeHouses(){
+    @Override
+    public <T extends PropertySquare> void setGroup(PropertyGroup propertyGroup) {
+        this.group = propertyGroup;
+    }
+
+    public void removeBuidlings() {
         houseCount = 0;
         hotel      = false;
         notifyObservers();
@@ -93,6 +102,10 @@ public class TownSquare extends Square implements PropertySquare {
         } else
             throw new CannotBuildException();
 
+    }
+
+    public boolean isFull() {
+        return hotel && houseCount == 0;
     }
 
     public static class CannotBuildException extends Exception {

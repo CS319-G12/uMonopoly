@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.util.Observable;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class HelpScreen extends Observable {
 

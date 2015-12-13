@@ -5,7 +5,7 @@ import models.cards.RailroadsCard;
 import javax.swing.*;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class RailroadsCardView {
 

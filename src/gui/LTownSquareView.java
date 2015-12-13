@@ -6,7 +6,7 @@ import models.token.TokenFigure;
 import javax.swing.*;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class LTownSquareView extends SquareView {
     private JPanel mainPn;

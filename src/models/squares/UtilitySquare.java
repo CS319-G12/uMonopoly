@@ -31,11 +31,6 @@ public class UtilitySquare extends Square implements PropertySquare {
     }
 
     @Override
-    public <T extends PropertySquare> void setGroup(PropertyGroup propertyGroup) {
-        this.group = propertyGroup;
-    }
-
-    @Override
     public void setOwner(Player currentPlayer) {
         theUtilityCard.setOwner(currentPlayer);
         group.setOwner(this, currentPlayer);
@@ -48,7 +43,22 @@ public class UtilitySquare extends Square implements PropertySquare {
     }
 
     @Override
+    public boolean hasOwner() {
+        return theUtilityCard.getOwner() != null;
+    }
+
+    @Override
+    public boolean isOwner(Player p) {
+        return theUtilityCard.getOwner() == p;
+    }
+
+    @Override
     public PropertyGroup<UtilitySquare> getGroup(){
         return group;
+    }
+
+    @Override
+    public <T extends PropertySquare> void setGroup(PropertyGroup propertyGroup) {
+        this.group = propertyGroup;
     }
 }

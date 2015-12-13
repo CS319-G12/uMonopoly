@@ -1,7 +1,7 @@
 package gui;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public enum Color {
 

@@ -9,7 +9,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class CenterBoardPanel implements Observer {
 
@@ -37,14 +37,83 @@ public class CenterBoardPanel implements Observer {
         this.controller = model.getController();
 
         // Adding action listeners
-        rollBtn.addActionListener(actionEvent -> controller.roll());
-        endBtn.addActionListener(actionEvent -> controller.endTurn());
-        buyBtn.addActionListener(actionEvent -> controller.buyProperty());
-        sellBtn.addActionListener(actionEvent -> controller.sellProperty());
-        buildBtn.addActionListener(actionEvent -> controller.build());
+        rollBtn.addActionListener(actionEvent -> {
+            controller.roll();
+            rollBtn.setEnabled(false);
+            updateButtons();
+
+            // Update the dice views
+            diceV1.setIcon(controller.getGame().getDiceValue1().getIcon());
+            diceV2.setIcon(controller.getGame().getDiceValue2().getIcon());
+        });
+        endBtn.addActionListener(actionEvent -> {
+            controller.endTurn();
+            updateButtons();
+        });
+        buyBtn.addActionListener(actionEvent -> {
+            try {
+                controller.buyProperty();
+            } catch (Game.NotBuyableException e) {
+                // TODO
+            } finally {
+                buyBtn.setEnabled(false);
+                updateButtons();
+            }
+        });
+        sellBtn.addActionListener(actionEvent -> {
+            try {
+                controller.sellProperty();
+            } catch (Game.NotSellableException e) {
+                // TODO
+            } finally {
+                sellBtn.setEnabled(false);
+                updateButtons();
+            }
+        });
+        buildBtn.addActionListener(actionEvent -> {
+            try {
+                controller.build();
+            } catch (Game.NotBuildableException e) {
+                buildBtn.setEnabled(false); // TODO
+            } finally {
+                updateButtons();
+            }
+        });
 
         this.houseIcon = new ImageIcon(getClass().getResource("/img/house_big.png"));
         this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel_big.png"));
+    }
+
+    private void updateButtons() {
+        // Roll Button
+        if (controller.canRoll())
+            rollBtn.setEnabled(true);
+        else
+            rollBtn.setEnabled(false);
+
+        // End Turn Button
+        if (controller.canEndTurn())
+            endBtn.setEnabled(true);
+        else
+            endBtn.setEnabled(false);
+
+        // Buy Button
+        if (controller.canBuy())
+            buyBtn.setEnabled(true);
+        else
+            buyBtn.setEnabled(false);
+
+        // Sell Button
+        if (controller.canSell())
+            sellBtn.setEnabled(true);
+        else
+            sellBtn.setEnabled(false);
+
+        // Build Button
+        if (controller.canBuild())
+            buildBtn.setEnabled(true);
+        else
+            buildBtn.setEnabled(false);
     }
 
     // METHODS
@@ -81,10 +150,7 @@ public class CenterBoardPanel implements Observer {
                 buildingIconLb.setIcon(((TownSquare) currentSquare).hasHotel() ? hotelIcon : houseIcon);
             }
 
-
-            // Update the dice views
-            diceV1.setIcon(game.getDiceValue1().getIcon());
-            diceV2.setIcon(game.getDiceValue2().getIcon());
+            updateButtons();
         }
     }
 }

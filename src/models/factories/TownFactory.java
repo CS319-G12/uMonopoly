@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author anikristo, Alper Önder
+ * @author Ani Kristo, Alper Önder
  */
 public class TownFactory implements PropertyFactory {
 

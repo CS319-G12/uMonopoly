@@ -15,7 +15,7 @@ import java.util.Observer;
 import java.util.stream.Collectors;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class SidePanel implements Observer {
 

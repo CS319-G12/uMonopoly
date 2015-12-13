@@ -30,11 +30,6 @@ public class RailroadsSquare extends Square implements PropertySquare {
     }
 
     @Override
-    public <T extends PropertySquare> void setGroup(PropertyGroup propertyGroup) {
-        this.group = propertyGroup;
-    }
-
-    @Override
     public void setOwner(Player currentPlayer) {
         theRailroadsCard.setOwner(currentPlayer);
         group.setOwner(this, currentPlayer);
@@ -47,7 +42,22 @@ public class RailroadsSquare extends Square implements PropertySquare {
     }
 
     @Override
+    public boolean hasOwner() {
+        return theRailroadsCard.getOwner() != null;
+    }
+
+    @Override
+    public boolean isOwner(Player p) {
+        return theRailroadsCard.getOwner() == p;
+    }
+
+    @Override
     public  PropertyGroup<RailroadsSquare> getGroup() {
         return group;
+    }
+
+    @Override
+    public void setGroup(PropertyGroup propertyGroup) {
+        this.group = propertyGroup;
     }
 }

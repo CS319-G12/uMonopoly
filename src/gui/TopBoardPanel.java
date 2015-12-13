@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.List;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class TopBoardPanel extends JPanel {
 
@@ -19,15 +19,15 @@ public class TopBoardPanel extends JPanel {
 
         // Instantiate
         CornerSquareView freeParking = new CornerSquareView(new ImageIcon(getClass().getResource("/img/square_freeparking.png")));
-        BTownSquareView kentuckyAvenue = new BTownSquareView((TownSquare) squares.get(1));
+        TTownSquareView kentuckyAvenue = new TTownSquareView((TownSquare) squares.get(1));
         BChanceCardSquareView chanceCardSquareView = new BChanceCardSquareView();
-        BTownSquareView indianaAvenue = new BTownSquareView((TownSquare) squares.get(3));
-        BTownSquareView illinoisAvenue = new BTownSquareView((TownSquare) squares.get(4));
+        TTownSquareView indianaAvenue = new TTownSquareView((TownSquare) squares.get(3));
+        TTownSquareView illinoisAvenue = new TTownSquareView((TownSquare) squares.get(4));
         TRailroadsSquareView bnoRailroads = new TRailroadsSquareView((RailroadsSquare) squares.get(5));
-        BTownSquareView atlanticAvenue = new BTownSquareView((TownSquare) squares.get(6));
-        BTownSquareView ventnorAvenue = new BTownSquareView((TownSquare) squares.get(7));
-        LUtilitySquareView waterWorks = new LUtilitySquareView((UtilitySquare) squares.get(8));
-        BTownSquareView marvinGardens = new BTownSquareView((TownSquare) squares.get(9));
+        TTownSquareView atlanticAvenue = new TTownSquareView((TownSquare) squares.get(6));
+        TTownSquareView ventnorAvenue = new TTownSquareView((TownSquare) squares.get(7));
+        TUtilitySquareView waterWorks = new TUtilitySquareView((UtilitySquare) squares.get(8));
+        TTownSquareView marvinGardens = new TTownSquareView((TownSquare) squares.get(9));
         CornerSquareView goToJail = new CornerSquareView(new ImageIcon(getClass().getResource("/img/square_gotojail.png")));
 
         // Add to the main panel // TODO check order

@@ -5,7 +5,7 @@ import models.cards.PropertyCard;
 import javax.swing.*;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class PropertyCardSmallView { // TODO test
 

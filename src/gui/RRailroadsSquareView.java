@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class RRailroadsSquareView extends SquareView {
     private JPanel mainPanel;
@@ -18,7 +18,7 @@ public class RRailroadsSquareView extends SquareView {
     private JLabel titleLb;
 
     // CONSTRUCTOR
-    public R(RailroadsSquare square) {
+    public RRailroadsSquareView(RailroadsSquare square) {
         titleLb.setText(square.getName());
 
         add(mainPanel);

@@ -1,7 +1,7 @@
 package models.squares;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class TaxSquare extends Square {
 

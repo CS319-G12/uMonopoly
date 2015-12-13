@@ -1,7 +1,7 @@
 package models;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class Rules {
     // ATTRIBUTES

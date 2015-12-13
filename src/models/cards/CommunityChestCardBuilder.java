@@ -1,7 +1,7 @@
 package models.cards;
 
 /**
- * @author anikristo
+ * @author Ani Kristo
  */
 public class CommunityChestCardBuilder {
 

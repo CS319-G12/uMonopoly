@@ -2,7 +2,11 @@ package controllers;
 
 import gui.PlayerRegistrationSection;
 import models.Game;
+import models.Player;
 import models.Rules;
+import models.squares.PropertySquare;
+import models.squares.Square;
+import models.squares.TownSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
@@ -10,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author anikristo & Alper Önder
+ * @author Ani Kristo & Alper Önder
  */
 public class GameController {
 
@@ -59,22 +63,22 @@ public class GameController {
      * @pre !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      * @post game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      */
-    public void buyProperty() throws Game.NotBuyableException{
-            game.buyProperty();
+    public void buyProperty() throws Game.NotBuyableException {
+        game.buyProperty();
     }
 
     /**
      * @pre game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      * @post !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      */
-    public void sellProperty() throws Game.NotSellableException{
+    public void sellProperty() throws Game.NotSellableException {
         game.sellProperty();
     }
 
     public void viewHelp() {
         JFrame helpFrame = new JFrame("µMonopoly Help");
         helpFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        helpFrame.setSize(1152, 720);
+        helpFrame.setSize(1152, 730);
         helpFrame.setContentPane(game.getHelp().getView().getContent());
         helpFrame.setVisible(true);
     }
@@ -93,16 +97,71 @@ public class GameController {
     }
 
     public void roll() {
-        // TODO roll, move the token, update curren squares....
+        if (!game.playerRolled())
+            game.roll();
     }
 
     public void endTurn() {
-        // TODO update turn, update current player and views of the current square and list of property cards ownned
+        game.endTurn();
     }
 
-    public void build() throws Game.NotBuildableException{
+    public void build() throws Game.NotBuildableException {
         game.build();
         // TODO Update views
     }
 
+    /**
+     * Conditions: current player has not rolled before
+     */
+    public boolean canRoll() {
+        return !game.playerRolled();
+    }
+
+    /**
+     * Conditions:
+     * 1. Current player rolled
+     */
+    public boolean canEndTurn() {
+        return game.playerRolled();
+    }
+
+    /**
+     * Conditions:
+     * 1. Current square is a PropertySquare
+     * 2. It is not owned
+     * 3. Player has enough budget
+     */
+    public boolean canBuy() {
+        Square currentSquare = game.getCurrentSquare();
+        return currentSquare instanceof PropertySquare
+                && ((PropertySquare) currentSquare).hasOwner()
+                && game.getCurrentPlayer().getBudget() >= ((PropertySquare) currentSquare).getCard().getSellPrice();
+    }
+
+    /**
+     * Conditions:
+     * 1. Current square is a PropertySquare
+     * 2. It is  owned by the current player
+     */
+    public boolean canSell() {
+        Square currentSquare = game.getCurrentSquare();
+        return currentSquare instanceof PropertySquare
+                && ((PropertySquare) currentSquare).isOwner(game.getCurrentPlayer());
+    }
+
+    /**
+     * Conditions:
+     * 1. Current square is a TownSquare
+     * 2. It is owned by the current player
+     * 3. The player has enough budget
+     * 4. There is space to build
+     */
+    public boolean canBuild() {
+        Square currentSquare = game.getCurrentSquare();
+        Player currentPlayer = game.getCurrentPlayer();
+        return currentSquare instanceof TownSquare
+                && ((TownSquare) currentSquare).isOwner(currentPlayer)
+                && currentPlayer.getBudget() >= ((TownSquare) currentSquare).getCard().getHouseBuildPrice()
+                && !((TownSquare) currentSquare).isFull();
+    }
 }
