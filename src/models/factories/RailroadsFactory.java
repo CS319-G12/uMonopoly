@@ -1,9 +1,12 @@
 package models.factories;
 
 import models.cards.RailroadsCard;
+import models.squares.PropertyGroup;
+import models.squares.PropertyGroupType;
 import models.squares.RailroadsSquare;
 import models.squares.SquareType;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,6 +35,8 @@ public class RailroadsFactory implements PropertyFactory {
         squares.add(square2);
         squares.add(square3);
         squares.add(square4);
+
+        new PropertyGroup<RailroadsSquare>(PropertyGroupType.RAILROADS, Arrays.asList(square1, square2,square3, square4));
     }
 
     // METHODS

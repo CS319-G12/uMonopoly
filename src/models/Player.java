@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- * @author anikristo
+ * @author anikristo & Alper Önder
  */
 public class Player extends Observable {
 
@@ -117,6 +117,18 @@ public class Player extends Observable {
 
     public List<PropertyCard> getListOfPropertyCards() {
         return propertyCards;
+    }
+
+    public void addPropertyCard(PropertyCard newPropertyCard){
+        propertyCards.add(newPropertyCard);
+        newPropertyCard.setOwner(this) ;
+    }
+
+    public void removePropertyCard(PropertyCard thePropertyCard){
+        if(propertyCards.contains(thePropertyCard)){
+            propertyCards.remove(propertyCards.indexOf(thePropertyCard));
+            thePropertyCard.removeOwner();
+        }
     }
 
     public DiceValue getDiceValue1() {

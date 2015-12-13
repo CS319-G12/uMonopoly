@@ -1,9 +1,12 @@
 package models.factories;
 
 import models.cards.UtilityCard;
+import models.squares.PropertyGroup;
+import models.squares.PropertyGroupType;
 import models.squares.SquareType;
 import models.squares.UtilitySquare;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +29,8 @@ public class UtilityFactory implements PropertyFactory {
 
         squares.add(square1);
         squares.add(square2);
+
+        new PropertyGroup<UtilitySquare>(PropertyGroupType.UTILITY, Arrays.asList(square1,  square2));
     }
     // METHODS
     @Override

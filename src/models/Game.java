@@ -8,6 +8,7 @@ import models.dice.DiceValue;
 import models.help.Help;
 import models.squares.PropertySquare;
 import models.squares.Square;
+import models.squares.TownSquare;
 import models.token.TokenFigure;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.Observable;
 import java.util.stream.Collectors;
 
 /**
- * @author anikristo
+ * @author anikristo & Alper Önder
  * @invariant self.turn >= 0 && self.turn < 4
  * @invariant self.currentSquares.size() == 4
  * @invariant self.players.size() > 1 && self.players.size() <= 4
@@ -28,7 +29,7 @@ public class Game extends Observable {
 
     // ATTRIBUTES
     private int turn;
-    private List<Square> currentSquares;
+    private List<Integer> currentSquares;
     private boolean hasFinished;
     private MonopolyBoard board;
     private List<Player> players;
@@ -92,8 +93,10 @@ public class Game extends Observable {
 
     public void start() {
 
-        // TODO create cards and squares using AF
+        turn = 0;
         hasFinished = false;
+
+
     }
 
     public List<Square> getListOfSquares() {
@@ -138,7 +141,7 @@ public class Game extends Observable {
     }
 
     public Square getCurrentSquare() {
-        return currentSquares.get(turn);
+        return board.getListOfSquares().get(currentSquares.get(turn));
     }
 
     public DiceValue getDiceValue1() {
@@ -149,10 +152,77 @@ public class Game extends Observable {
         return players.get(turn).getDiceValue2();
     }
 
+    public void buyProperty() throws NotBuyableException{
+        // TODO
+        Square currentSquare = getCurrentSquare();
+        if(!(currentSquare instanceof PropertySquare))
+            throw new NotBuyableException();
+
+        PropertySquare square = (PropertySquare) currentSquare;
+        if(square.getCard().getOwner() == null && getCurrentPlayer().getBudget() >= square.getCard().getSellPrice()){
+            square.setOwner(getCurrentPlayer());
+            getCurrentPlayer().addPropertyCard(square.getCard());
+            getCurrentPlayer().updateBudget((-1) * square.getCard().getSellPrice());
+        }
+    }
+    public void sellProperty() throws NotSellableException{
+        // todo
+        Square currentSquare = getCurrentSquare();
+        if(!(currentSquare instanceof PropertySquare))
+            throw new NotSellableException();
+
+        PropertySquare square = (PropertySquare) currentSquare;
+        if(square.getCard().getOwner() != null){
+            getCurrentPlayer().updateBudget(square.getCard().getMortgagePrice());
+            getCurrentPlayer().removePropertyCard(square.getCard());
+            square.removeOwner();
+            if(square instanceof TownSquare)
+                ((TownSquare) square).removeHouses();
+        }
+    }
+
+    public void build() throws NotBuildableException{
+        Square currentSquare = getCurrentSquare();
+        if(!(currentSquare instanceof PropertySquare))
+            throw new NotBuildableException();
+
+        PropertySquare square = (PropertySquare) currentSquare;
+        if(square.getGroup().ownsAllProperties(getCurrentPlayer()) && getCurrentPlayer().getBudget() >= ((TownSquare)square).getCard().getHouseBuildPrice()){
+            try{
+                ((TownSquare)square).build();
+                getCurrentPlayer().updateBudget((-1) * ((TownSquare)square).getCard().getHouseBuildPrice());
+            }catch (TownSquare.CannotBuildException e){
+                System.err.println(e.getMessage());
+            }
+        }
+    }
+
     public static class PlayerNotFoundException extends Exception {
         @Override
         public String getMessage() {
             return super.getMessage() + "The player is not registered in the game!";
+        }
+    }
+
+    public static class NotSellableException extends Exception {
+        @Override
+        public String getMessage() {
+            return super.getMessage() + "The Player cannot sell the property.";
+        }
+
+    }
+
+    public static class NotBuyableException extends Exception {
+        @Override
+        public String getMessage() {
+            return super.getMessage() + "The player cannot buy the property.";
+        }
+    }
+
+    public static class NotBuildableException extends Exception {
+        @Override
+        public String getMessage() {
+            return super.getMessage() + "The player cannot build house in this square.";
         }
     }
 }

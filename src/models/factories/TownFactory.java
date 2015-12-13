@@ -2,14 +2,17 @@ package models.factories;
 
 import gui.Color;
 import models.cards.TownCard;
+import models.squares.PropertyGroup;
+import models.squares.PropertyGroupType;
 import models.squares.SquareType;
 import models.squares.TownSquare;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author anikristo
+ * @author anikristo, Alper Önder
  */
 public class TownFactory implements PropertyFactory {
 
@@ -90,6 +93,16 @@ public class TownFactory implements PropertyFactory {
         squares.add(square20);
         squares.add(square21);
         squares.add(square22);
+
+        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square1,  square2));
+        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square3,  square4,  square5));
+        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square6,  square7,  square8));
+        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square9,  square10, square11));
+        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square12, square13, square14));
+        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square15, square16, square17));
+        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square18, square19, square20));
+        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square21, square22));
+
     }
 
     // METHOD

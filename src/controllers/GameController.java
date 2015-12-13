@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author anikristo
+ * @author anikristo & Alper Önder
  */
 public class GameController {
 
@@ -59,16 +59,16 @@ public class GameController {
      * @pre !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      * @post game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      */
-    public void buyProperty() {
-        // Todo
+    public void buyProperty() throws Game.NotBuyableException{
+            game.buyProperty();
     }
 
     /**
      * @pre game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      * @post !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      */
-    public void sellProperty() {
-        // todo
+    public void sellProperty() throws Game.NotSellableException{
+        game.sellProperty();
     }
 
     public void viewHelp() {
@@ -100,8 +100,9 @@ public class GameController {
         // TODO update turn, update current player and views of the current square and list of property cards ownned
     }
 
-    public void build() {
-        // TODO check if owns all, check if enough budget
-        // TODO .... (anyways the button would be disabled) build a house or hotel, update views
+    public void build() throws Game.NotBuildableException{
+        game.build();
+        // TODO Update views
     }
+
 }

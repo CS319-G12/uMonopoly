@@ -1,9 +1,11 @@
 package models.squares;
 
+import java.util.Observable;
+
 /**
  * @author Alper Önder
  */
-public class Square {
+public class Square extends Observable{
 
     // ATTRIBUTES
     private static int id_counter = 0;
