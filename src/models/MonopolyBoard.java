@@ -40,7 +40,8 @@ public class MonopolyBoard {
     }
 
     public void buyProperty() {
-        // Todo
+        // TODO
+
     }
 
     public void sellProperty() {

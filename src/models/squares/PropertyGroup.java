@@ -8,18 +8,26 @@ import java.util.List;
 /**
  * @author Alper Önder
  */
-public class PropertyGroup {
+public class PropertyGroup<T extends PropertySquare> {
 
     // ATTRIBUTES
     private PropertyGroupType    type;
-    private List<PropertySquare> properties;
+    private List<T> properties;
     private List<Player>         players;
 
     // CONSTRUCTOR
-    public PropertyGroup(PropertyGroupType type, List<PropertySquare> properties){
+    public PropertyGroup(PropertyGroupType type, List<T> properties){
         this.type       = type;
         this.properties = properties;
         this.players    = new ArrayList<>(properties.size());
+
+        for(T property : properties){
+            property.setGroup(this);
+        }
+
+        for(int i = 0; i < properties.size(); i++){
+            players.add(null); //TODO
+        }
     }
 
     // METHODS
@@ -32,5 +40,13 @@ public class PropertyGroup {
 
     public PropertyGroupType getType(){
         return type;
+    }
+
+    public void setOwner(T propertySquare, Player currentPlayer) {
+        players.set(properties.indexOf(propertySquare),currentPlayer);
+    }
+
+    public void removeOwner(T propertySquare) {
+        players.set(properties.indexOf(propertySquare), null);
     }
 }

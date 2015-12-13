@@ -1,6 +1,7 @@
 package models.squares;
 
 import gui.Color;
+import models.Player;
 import models.Rules;
 import models.cards.TownCard;
 
@@ -16,6 +17,7 @@ public class TownSquare extends Square implements PropertySquare {
     private final Color color;
     private final TownCard theTownCard;
 
+    private PropertyGroup<TownSquare> group;
     public int houseCount;
     public boolean hotel;
 
@@ -29,35 +31,6 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     // METHODS
-
-    /**
-     * @throws CannotBuildHouseException
-     * @pre self.houseCount < Rules.MAX_HOUSE_COUNT
-     * @pre self.hotel == false
-     * @post self.houseCount == self@pre.houseCount+1
-     */
-    public void addHouse() throws CannotBuildHouseException {
-        if (houseCount < Rules.MAX_HOUSE_COUNT && !hotel)
-            houseCount++;
-        else
-            throw new CannotBuildHouseException();
-    }
-
-    /**
-     * @throws CannotBuildHouseException
-     * @pre self.houseCount == Rules.MAX_HOUSE_COUNT
-     * @pre self.hotel == false
-     * @post self.hotel == true
-     * @post self.houseCount == 0
-     */
-    public void addHotel() throws CannotBuildHotelException {
-        if (houseCount == Rules.MAX_HOUSE_COUNT && !hotel) {
-            houseCount = 0;
-            hotel = true;
-        } else
-            throw new CannotBuildHotelException();
-    }
-
     public Color getColor() {
         return color;
     }
@@ -79,17 +52,54 @@ public class TownSquare extends Square implements PropertySquare {
         return theTownCard;
     }
 
-    public static class CannotBuildHouseException extends Exception {
+    @Override
+    public <T extends PropertySquare> void setGroup(PropertyGroup propertyGroup) {
+        this.group = propertyGroup;
+    }
+
+    @Override
+    public void setOwner(Player currentPlayer) {
+        theTownCard.setOwner(currentPlayer);
+        group.setOwner(this, currentPlayer);
+    }
+
+    @Override
+    public void removeOwner() {
+        theTownCard.removeOwner();
+        group.removeOwner(this);
+    }
+
+    @Override
+    public PropertyGroup<TownSquare> getGroup() {
+        return group;
+    }
+
+    public void removeHouses(){
+        houseCount = 0;
+        hotel      = false;
+        notifyObservers();
+    }
+
+/**
+ * @throws CannotBuildException
+ * @post self.houseCount == self@pre.houseCount+1 || self.houseCount == self@pre.houseCount+1
+ */
+    public void build() throws CannotBuildException {
+        if (houseCount < Rules.MAX_HOUSE_COUNT && !hotel)
+            houseCount++;
+        else if (houseCount == Rules.MAX_HOUSE_COUNT && !hotel) {
+            houseCount = 0;
+            hotel = true;
+        } else
+            throw new CannotBuildException();
+
+    }
+
+    public static class CannotBuildException extends Exception {
         @Override
         public String getMessage() {
-            return super.getClass().getName() + ", " + super.getMessage() + "No more than 4 houses can be built!";
+            return super.getClass().getName() + ", " + super.getMessage() + "Cannot build any house or hotel more!";
         }
     }
 
-    public static class CannotBuildHotelException extends Exception {
-        @Override
-        public String getMessage() {
-            return super.getClass().getName() + ", " + super.getMessage() + "Not enough houses to build a Hotel!";
-        }
-    }
 }
