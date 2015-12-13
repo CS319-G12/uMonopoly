@@ -10,7 +10,9 @@
       <minimumSize width="410" height="34"/>
       <preferredSize width="410" height="34"/>
     </properties>
-    <border type="none"/>
+    <border type="empty">
+      <size top="0" left="5" bottom="0" right="5"/>
+    </border>
     <children>
       <component id="75a01" class="javax.swing.JLabel" binding="nameLb">
         <constraints border-constraint="West"/>

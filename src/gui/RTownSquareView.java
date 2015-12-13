@@ -8,18 +8,16 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class TownSquareView extends SquareView {
+public class RTownSquareView extends SquareView {
 
     // ATTRIBUTES
-    private JPanel mainPanel;
-    private JLabel nameLb;
+    private JPanel mainPn;
     private JPanel colorPn;
     private JLabel firstHouseLb;
     private JLabel secondHouseLb;
     private JLabel thirdHouseLb;
     private JLabel fourthHouseLb;
     private JPanel tokenPn;
-
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
@@ -29,16 +27,14 @@ public class TownSquareView extends SquareView {
     private ImageIcon hotelIcon;
 
     // CONSTRUCTOR
-    public TownSquareView(Rotation rotation, TownSquare square) {
-        super(rotation);
-
+    public RTownSquareView(TownSquare square) {
         this.houseIcon = new ImageIcon(getClass().getResource("/img/house.png"));
         this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel.png"));
 
         colorPn.setBackground(square.getColor().awtColor());
-        nameLb.setText(square.getName());
+//        nameLb.setText(square.getName());
 
-        add(mainPanel);
+        add(mainPn);
 
     }
 
@@ -69,6 +65,17 @@ public class TownSquareView extends SquareView {
             throw new InvalidHouseRemovalException();
     }
 
+    public void addHotel() {
+        firstHouseLb.setIcon(hotelIcon);
+        secondHouseLb.setIcon(null);
+        thirdHouseLb.setIcon(null);
+        fourthHouseLb.setIcon(null);
+    }
+
+    public void removeHotel() {
+        firstHouseLb.setIcon(null);
+    }
+
     public void addTokenFigure(TokenFigure figure) throws SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());
@@ -95,6 +102,4 @@ public class TownSquareView extends SquareView {
             throw new InvalidTokenRemovalException();
     }
 
-    public static class InvalidHouseRemovalException extends Exception {
-    }
 }

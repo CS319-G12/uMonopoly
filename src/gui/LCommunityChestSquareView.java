@@ -3,24 +3,21 @@ package gui;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author anikristo
  */
-public class CornerSquareView extends SquareView {
+public class LCommunityChestSquareView extends SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
-    private JLabel iconLb;
-
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
-    // CONSTRUCTOR
-    public CornerSquareView(ImageIcon icon) {
-        iconLb.setIcon(icon);
+    public LCommunityChestSquareView() {
         add(mainPanel);
     }
 
@@ -51,4 +48,10 @@ public class CornerSquareView extends SquareView {
             throw new InvalidTokenRemovalException();
     }
 
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+
+        graphics.drawImage(new ImageIcon(getClass().getResource("/img/communitychest_l.png")).getImage(), 0, 0, null);
+    }
 }

@@ -6,49 +6,46 @@ import models.squares.TaxSquare;
 import models.squares.TownSquare;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 /**
  * @author anikristo
  */
-public class BottomBoardPanel {
-
-    // ATTRIBUTES
-    private JPanel mainPn;
+public class BottomBoardPanel extends JPanel {
 
     // CONSTRUCTOR
     public BottomBoardPanel(List<Square> squares) {
 
         // Instantiate
-        CornerSquareView go = new CornerSquareView(SquareView.Rotation.BOTTOM, new ImageIcon(getClass().getResource("/img/square_go.png")));
-        TownSquareView mediterraneanAvenue = new TownSquareView(SquareView.Rotation.BOTTOM, (TownSquare) squares.get(1));
-        CommunityChestSquareView communityChestSquareView = new CommunityChestSquareView(SquareView.Rotation.BOTTOM);
-        TownSquareView balticAvenue = new TownSquareView(SquareView.Rotation.BOTTOM, (TownSquare) squares.get(3));
-        TaxSquareView taxSquareView = new TaxSquareView(SquareView.Rotation.BOTTOM, (TaxSquare) squares.get(4));
-        RailroadsSquareView reading = new RailroadsSquareView(SquareView.Rotation.BOTTOM, (RailroadsSquare) squares.get(5));
-        TownSquareView orientalAvenue = new TownSquareView(SquareView.Rotation.BOTTOM, (TownSquare) squares.get(6));
-        ChanceCardSquareView chanceCardSquareView = new ChanceCardSquareView(SquareView.Rotation.BOTTOM);
-        TownSquareView vermontAvenue = new TownSquareView(SquareView.Rotation.BOTTOM, (TownSquare) squares.get(8));
-        TownSquareView connecticutAvenue = new TownSquareView(SquareView.Rotation.BOTTOM, (TownSquare) squares.get(9));
-        CornerSquareView jail = new CornerSquareView(SquareView.Rotation.BOTTOM, new ImageIcon(getClass().getResource("/img/square_jail.png")));
+        CornerSquareView go = new CornerSquareView(new ImageIcon(getClass().getResource("/img/square_go.png")));
+        BTownSquareView mediterraneanAvenue = new BTownSquareView((TownSquare) squares.get(1));
+        BCommunityChestSquareView communityChestSquareView = new BCommunityChestSquareView();
+        BTownSquareView balticAvenue = new BTownSquareView((TownSquare) squares.get(3));
+        BTaxSquareView taxSquareView = new BTaxSquareView((TaxSquare) squares.get(4));
+        BRailroadsSquareView reading = new BRailroadsSquareView((RailroadsSquare) squares.get(5));
+        BTownSquareView orientalAvenue = new BTownSquareView((TownSquare) squares.get(6));
+        BChanceCardSquareView chanceCardSquareView = new BChanceCardSquareView();
+        BTownSquareView vermontAvenue = new BTownSquareView((TownSquare) squares.get(8));
+        BTownSquareView connecticutAvenue = new BTownSquareView((TownSquare) squares.get(9));
+        CornerSquareView jail = new CornerSquareView(new ImageIcon(getClass().getResource("/img/square_jail.png")));
 
         // Add to the main panel // TODO check order
-        mainPn.setLayout(new BoxLayout(mainPn, BoxLayout.X_AXIS));
-        mainPn.add(go);
-        mainPn.add(mediterraneanAvenue);
-        mainPn.add(communityChestSquareView);
-        mainPn.add(balticAvenue);
-        mainPn.add(taxSquareView);
-        mainPn.add(reading);
-        mainPn.add(orientalAvenue);
-        mainPn.add(chanceCardSquareView);
-        mainPn.add(vermontAvenue);
-        mainPn.add(connecticutAvenue);
-        mainPn.add(jail);
-    }
-
-    // METHODS
-    public JPanel getContent() {
-        return mainPn;
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        setMinimumSize(new Dimension(730, 95));
+        setMaximumSize(new Dimension(730, 95));
+        setPreferredSize(new Dimension(730, 95));
+        setBorder(null);
+        add(jail);
+        add(connecticutAvenue);
+        add(vermontAvenue);
+        add(chanceCardSquareView);
+        add(orientalAvenue);
+        add(reading);
+        add(taxSquareView);
+        add(balticAvenue);
+        add(communityChestSquareView);
+        add(mediterraneanAvenue);
+        add(go);
     }
 }

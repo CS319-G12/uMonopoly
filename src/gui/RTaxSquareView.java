@@ -1,5 +1,6 @@
 package gui;
 
+import models.squares.TaxSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
@@ -7,20 +8,19 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class CornerSquareView extends SquareView {
-
-    // ATTRIBUTES
+public class RTaxSquareView extends SquareView {
     private JPanel mainPanel;
-    private JLabel iconLb;
-
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
+    private JLabel titleLb;
+
 
     // CONSTRUCTOR
-    public CornerSquareView(ImageIcon icon) {
-        iconLb.setIcon(icon);
+    public RTaxSquareView(TaxSquare square) {
+        titleLb.setText(square.getName());
+
         add(mainPanel);
     }
 
@@ -50,5 +50,4 @@ public class CornerSquareView extends SquareView {
         else
             throw new InvalidTokenRemovalException();
     }
-
 }

@@ -18,7 +18,7 @@ public class PropertyCardSmallView { // TODO test
         super();
 
         mainPanel.setBackground(card.getColor().awtColor());
-        titleLb.setText(String.format("<html><p>%s</p></html>", card.getName()));
+        titleLb.setText(String.format("<html><center><div style=\"width:%dpx;\">%s</div></center></html>", 60, card.getName()));
         if (card.getColor() == Color.CHARCOAL)
             titleLb.setForeground(java.awt.Color.WHITE);
     }

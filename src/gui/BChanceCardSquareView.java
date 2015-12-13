@@ -1,6 +1,5 @@
 package gui;
 
-import models.squares.UtilitySquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
@@ -8,27 +7,21 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class UtilitySquareView extends SquareView {
+public class BChanceCardSquareView extends SquareView {
 
     // ATTRIBUTES
-    private JPanel mainPanel;
-    private JLabel titleLb;
+    private JPanel mainPn;
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
-    // CONSTRUCTOR
-    public UtilitySquareView(Rotation rotation, UtilitySquare square) {
-        super(rotation);
-        titleLb.setText(square.getName());
-
-        add(mainPanel);
+    public BChanceCardSquareView() {
+        add(mainPn);
     }
 
-
     // METHODS
-    public void addTokenFigure(TokenFigure figure) throws SquareView.SquareFullException {
+    public void addTokenFigure(TokenFigure figure) throws SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());
         else if (secondTokenLb.getIcon() == null)
@@ -38,10 +31,10 @@ public class UtilitySquareView extends SquareView {
         else if (fourthTokenLb.getIcon() == null)
             fourthTokenLb.setIcon(figure.getIcon());
         else
-            throw new SquareView.SquareFullException();
+            throw new SquareFullException();
     }
 
-    public void removeTokenFigure(TokenFigure figure) throws SquareView.InvalidTokenRemovalException {
+    public void removeTokenFigure(TokenFigure figure) throws InvalidTokenRemovalException {
         if (firstTokenLb.getIcon() != null)
             firstTokenLb.setIcon(null);
         else if (secondTokenLb.getIcon() != null)
@@ -51,6 +44,6 @@ public class UtilitySquareView extends SquareView {
         else if (fourthTokenLb.getIcon() != null)
             fourthTokenLb.setIcon(null);
         else
-            throw new SquareView.InvalidTokenRemovalException();
+            throw new InvalidTokenRemovalException();
     }
 }

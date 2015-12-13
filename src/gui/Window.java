@@ -106,7 +106,9 @@ public class Window extends JFrame implements WindowListener, Observer {
                     gameScreen = gameController.getGame().getView();
                     gameScreen.addObserver(this); // TODO board and side panel should actually be observable
                 }
-                setContentPane(gameScreen.getContent());
+
+                JScrollPane scrollPane = new JScrollPane(gameScreen.getContent());
+                setContentPane(scrollPane);
             }
         } else if (observable == gameScreen) {
             // TODO

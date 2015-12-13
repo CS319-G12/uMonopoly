@@ -1,17 +1,19 @@
 package gui;
 
+import models.squares.RailroadsSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author anikristo
  */
-public class CornerSquareView extends SquareView {
+public class BRailroadsSquareView extends SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
-    private JLabel iconLb;
+    private JLabel titleLb;
 
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
@@ -19,10 +21,12 @@ public class CornerSquareView extends SquareView {
     private JLabel fourthTokenLb;
 
     // CONSTRUCTOR
-    public CornerSquareView(ImageIcon icon) {
-        iconLb.setIcon(icon);
+    public BRailroadsSquareView(RailroadsSquare square) {
+        titleLb.setText(square.getName());
+
         add(mainPanel);
     }
+
 
     // METHODS
     public void addTokenFigure(TokenFigure figure) throws SquareFullException {
@@ -51,4 +55,10 @@ public class CornerSquareView extends SquareView {
             throw new InvalidTokenRemovalException();
     }
 
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+
+        graphics.drawImage(new ImageIcon(getClass().getResource("/img/railroads_b.png")).getImage(), 0, 0, null);
+    }
 }

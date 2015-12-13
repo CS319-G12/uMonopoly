@@ -1,31 +1,33 @@
 package gui;
 
+import models.squares.UtilitySquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author anikristo
  */
-public class CornerSquareView extends SquareView {
+public class LUtilitySquareView extends SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
-    private JLabel iconLb;
-
+    private JLabel titleLb;
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
     // CONSTRUCTOR
-    public CornerSquareView(ImageIcon icon) {
-        iconLb.setIcon(icon);
+    public LUtilitySquareView(UtilitySquare square) {
+        titleLb.setText(square.getName());
         add(mainPanel);
     }
 
+
     // METHODS
-    public void addTokenFigure(TokenFigure figure) throws SquareFullException {
+    public void addTokenFigure(TokenFigure figure) throws SquareView.SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());
         else if (secondTokenLb.getIcon() == null)
@@ -35,10 +37,10 @@ public class CornerSquareView extends SquareView {
         else if (fourthTokenLb.getIcon() == null)
             fourthTokenLb.setIcon(figure.getIcon());
         else
-            throw new SquareFullException();
+            throw new SquareView.SquareFullException();
     }
 
-    public void removeTokenFigure(TokenFigure figure) throws InvalidTokenRemovalException {
+    public void removeTokenFigure(TokenFigure figure) throws SquareView.InvalidTokenRemovalException {
         if (firstTokenLb.getIcon() != null)
             firstTokenLb.setIcon(null);
         else if (secondTokenLb.getIcon() != null)
@@ -48,7 +50,13 @@ public class CornerSquareView extends SquareView {
         else if (fourthTokenLb.getIcon() != null)
             fourthTokenLb.setIcon(null);
         else
-            throw new InvalidTokenRemovalException();
+            throw new SquareView.InvalidTokenRemovalException();
     }
 
+    @Override
+    public void paintComponents(Graphics graphics) {
+        super.paintComponents(graphics);
+
+        graphics.drawImage(new ImageIcon(getClass().getResource("/img/electric_company_l.png")).getImage(), 0, 0, null);
+    }
 }

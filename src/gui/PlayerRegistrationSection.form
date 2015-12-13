@@ -17,6 +17,7 @@
         <constraints border-constraint="Center"/>
         <properties>
           <background color="-1644826"/>
+          <requestFocusEnabled value="false"/>
         </properties>
         <border type="none"/>
         <children>
@@ -31,6 +32,7 @@
                 <constraints border-constraint="Last"/>
                 <properties>
                   <background color="-1644826"/>
+                  <requestFocusEnabled value="false"/>
                 </properties>
                 <border type="none"/>
                 <children>
@@ -41,6 +43,7 @@
                       <font/>
                       <foreground color="-16777216"/>
                       <icon value="img/playReg_lb_name.png"/>
+                      <requestFocusEnabled value="false"/>
                       <text value=""/>
                     </properties>
                   </component>
@@ -62,6 +65,7 @@
                   <background color="-1644826"/>
                   <font size="12"/>
                   <foreground color="-6710887"/>
+                  <requestFocusEnabled value="false"/>
                   <text value="Player #"/>
                 </properties>
               </component>
@@ -74,6 +78,7 @@
               <contentAreaFilled value="false"/>
               <enabled value="true"/>
               <focusPainted value="false"/>
+              <requestFocusEnabled value="false"/>
               <selected value="false"/>
               <selectedIcon value="img/dog_sel.png"/>
               <text value=""/>
@@ -85,6 +90,7 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
+              <requestFocusEnabled value="false"/>
               <selectedIcon value="img/car_sel.png"/>
               <text value=""/>
             </properties>
@@ -95,6 +101,7 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
+              <requestFocusEnabled value="false"/>
               <selected value="false"/>
               <selectedIcon value="img/iron_sel.png"/>
               <text value=""/>
@@ -106,6 +113,7 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
+              <requestFocusEnabled value="false"/>
               <selectedIcon value="img/hat_sel.png"/>
               <text value=""/>
             </properties>
@@ -116,6 +124,7 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
+              <requestFocusEnabled value="false"/>
               <selectedIcon value="img/thimble_sel.png"/>
               <text value=""/>
             </properties>
@@ -127,6 +136,7 @@
               <contentAreaFilled value="false"/>
               <focusPainted value="false"/>
               <label value=""/>
+              <requestFocusEnabled value="false"/>
               <selectedIcon value="img/shoe_sel.png"/>
               <text value=""/>
             </properties>

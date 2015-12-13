@@ -23,7 +23,7 @@ public class GameScreen extends Observable {
         boardView = new MonopolyBoardView(game);
         sidePanel = new SidePanel(game);
 
-        centerPn.add(boardView.getContent());
+        centerPn.add(boardView);
         rightPn.add(sidePanel.getContent());
     }
 

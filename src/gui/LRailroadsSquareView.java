@@ -4,24 +4,23 @@ import models.squares.RailroadsSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author anikristo
  */
-public class RailroadsSquareView extends SquareView {
+public class LRailroadsSquareView extends SquareView {
 
-    // ATTRIBUTES
-    private JPanel mainPanel;
-    private JLabel titleLb;
 
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
+    private JLabel titleLb;
+    private JPanel mainPanel;
 
     // CONSTRUCTOR
-    public RailroadsSquareView(Rotation rotation, RailroadsSquare square) {
-        super(rotation);
+    public LRailroadsSquareView(RailroadsSquare square) {
         titleLb.setText(square.getName());
 
         add(mainPanel);
@@ -29,7 +28,7 @@ public class RailroadsSquareView extends SquareView {
 
 
     // METHODS
-    public void addTokenFigure(TokenFigure figure) throws SquareFullException {
+    public void addTokenFigure(TokenFigure figure) throws SquareView.SquareFullException {
         if (firstTokenLb.getIcon() == null)
             firstTokenLb.setIcon(figure.getIcon());
         else if (secondTokenLb.getIcon() == null)
@@ -39,10 +38,10 @@ public class RailroadsSquareView extends SquareView {
         else if (fourthTokenLb.getIcon() == null)
             fourthTokenLb.setIcon(figure.getIcon());
         else
-            throw new SquareFullException();
+            throw new SquareView.SquareFullException();
     }
 
-    public void removeTokenFigure(TokenFigure figure) throws InvalidTokenRemovalException {
+    public void removeTokenFigure(TokenFigure figure) throws SquareView.InvalidTokenRemovalException {
         if (firstTokenLb.getIcon() != null)
             firstTokenLb.setIcon(null);
         else if (secondTokenLb.getIcon() != null)
@@ -52,6 +51,13 @@ public class RailroadsSquareView extends SquareView {
         else if (fourthTokenLb.getIcon() != null)
             fourthTokenLb.setIcon(null);
         else
-            throw new InvalidTokenRemovalException();
+            throw new SquareView.InvalidTokenRemovalException();
+    }
+
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+
+        graphics.drawImage(new ImageIcon(getClass().getResource("/img/railroads_l.png")).getImage(), 0, 0, null);
     }
 }

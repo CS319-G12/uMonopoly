@@ -1,30 +1,29 @@
 package gui;
 
-import models.squares.TaxSquare;
+import models.squares.RailroadsSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author anikristo
  */
-public class TaxSquareView extends SquareView {
-
-    // ATTRIBUTES
+public class TRailroadsSquareView extends SquareView {
     private JPanel mainPanel;
-    private JLabel titleLb;
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
+    private JLabel titleLb;
 
     // CONSTRUCTOR
-    public TaxSquareView(Rotation rotation, TaxSquare square) {
-        super(rotation);
+    public TRailroadsSquareView(RailroadsSquare square) {
         titleLb.setText(square.getName());
 
         add(mainPanel);
     }
+
 
     // METHODS
     public void addTokenFigure(TokenFigure figure) throws SquareFullException {
@@ -51,5 +50,12 @@ public class TaxSquareView extends SquareView {
             fourthTokenLb.setIcon(null);
         else
             throw new InvalidTokenRemovalException();
+    }
+
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+
+        graphics.drawImage(new ImageIcon(getClass().getResource("/img/railroads_t.png")).getImage(), 0, 0, null);
     }
 }

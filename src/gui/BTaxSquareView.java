@@ -1,5 +1,6 @@
 package gui;
 
+import models.squares.TaxSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
@@ -7,19 +8,19 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class CommunityChestSquareView extends SquareView {
+public class BTaxSquareView extends SquareView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
     private JLabel titleLb;
-
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
-    public CommunityChestSquareView(Rotation rotation) {
-        super(rotation);
+    // CONSTRUCTOR
+    public BTaxSquareView(TaxSquare square) {
+        titleLb.setText(square.getName());
 
         add(mainPanel);
     }

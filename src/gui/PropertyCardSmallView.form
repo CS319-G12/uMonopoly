@@ -9,7 +9,9 @@
       <minimumSize width="104" height="46"/>
       <preferredSize width="104" height="46"/>
     </properties>
-    <border type="none"/>
+    <border type="line">
+      <color color="-16777216"/>
+    </border>
     <children>
       <component id="318e7" class="javax.swing.JLabel" binding="titleLb">
         <constraints/>

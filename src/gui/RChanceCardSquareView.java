@@ -7,21 +7,17 @@ import javax.swing.*;
 /**
  * @author anikristo
  */
-public class CornerSquareView extends SquareView {
+public class RChanceCardSquareView extends SquareView {
 
     // ATTRIBUTES
-    private JPanel mainPanel;
-    private JLabel iconLb;
-
+    private JPanel mainPn;
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
-    // CONSTRUCTOR
-    public CornerSquareView(ImageIcon icon) {
-        iconLb.setIcon(icon);
-        add(mainPanel);
+    public RChanceCardSquareView() {
+        add(mainPn);
     }
 
     // METHODS
@@ -50,5 +46,4 @@ public class CornerSquareView extends SquareView {
         else
             throw new InvalidTokenRemovalException();
     }
-
 }

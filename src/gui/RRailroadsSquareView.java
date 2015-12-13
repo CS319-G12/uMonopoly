@@ -1,27 +1,29 @@
 package gui;
 
+import models.squares.RailroadsSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author anikristo
  */
-public class ChanceCardSquareView extends SquareView {
-
-    // ATTRIBUTES
+public class RRailroadsSquareView extends SquareView {
     private JPanel mainPanel;
-
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
+    private JLabel titleLb;
 
-    public ChanceCardSquareView(Rotation rotation) {
-        super(rotation);
+    // CONSTRUCTOR
+    public R(RailroadsSquare square) {
+        titleLb.setText(square.getName());
 
         add(mainPanel);
     }
+
 
     // METHODS
     public void addTokenFigure(TokenFigure figure) throws SquareFullException {
@@ -48,5 +50,12 @@ public class ChanceCardSquareView extends SquareView {
             fourthTokenLb.setIcon(null);
         else
             throw new InvalidTokenRemovalException();
+    }
+
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+
+        graphics.drawImage(new ImageIcon(getClass().getResource("/img/railroads_r.png")).getImage(), 0, 0, null);
     }
 }
