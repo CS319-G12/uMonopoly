@@ -228,9 +228,15 @@ public class Game extends Observable {
     }
 
     private void incrementTurn() {
+        players.get(turn).setPlaying(false);
         turn++;
         if (turn == players.size())
             turn = 0;
+
+        if (players.get(turn).hasLost())
+            incrementTurn();
+
+        players.get(turn).setPlaying(true);
     }
 
     public Player getWinner() {

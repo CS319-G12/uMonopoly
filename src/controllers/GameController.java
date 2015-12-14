@@ -100,7 +100,7 @@ public class GameController {
             // Todo give
             int selection = JOptionPane.showConfirmDialog(null, "Confirmation", "Are you sure you want to exit?", JOptionPane.YES_NO_OPTION);
             if(selection == JOptionPane.YES_OPTION){
-                setContentPane(mainScreen);
+//                setContentPane(mainScreen); TODO
             }
         }
     }

@@ -4,6 +4,7 @@ import models.squares.TaxSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author Ani Kristo
@@ -11,8 +12,6 @@ import javax.swing.*;
 public class BTaxSquareView extends SquareView {
 
     // ATTRIBUTES
-    private JPanel mainPanel;
-    private JLabel titleLb;
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
@@ -20,9 +19,28 @@ public class BTaxSquareView extends SquareView {
 
     // CONSTRUCTOR
     public BTaxSquareView(TaxSquare square) {
-        titleLb.setText(square.getName());
+        // Token labels
+        firstTokenLb = new JLabel();
+        secondTokenLb = new JLabel();
+        thirdTokenLb = new JLabel();
+        fourthTokenLb = new JLabel();
 
-        add(mainPanel);
+        // Token panel
+        JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));
+        tokenPn.setMinimumSize(new Dimension(60, 60));
+        tokenPn.setMaximumSize(new Dimension(60, 60));
+        tokenPn.setPreferredSize(new Dimension(60, 60));
+        tokenPn.setBackground(Color.BACKGROUND.awtColor());
+        tokenPn.add(firstTokenLb);
+        tokenPn.add(secondTokenLb);
+        tokenPn.add(thirdTokenLb);
+        tokenPn.add(fourthTokenLb);
+
+        setLayout(new BorderLayout());
+        setMinimumSize(new Dimension(60, 95));
+        setMaximumSize(new Dimension(60, 95));
+        setPreferredSize(new Dimension(60, 95));
+        add(tokenPn, BorderLayout.CENTER);
     }
 
     // METHODS

@@ -20,7 +20,7 @@ public class TopBoardPanel extends JPanel {
         // Instantiate
         CornerSquareView freeParking = new CornerSquareView(new ImageIcon(getClass().getResource("/img/square_freeparking.png")));
         TTownSquareView kentuckyAvenue = new TTownSquareView((TownSquare) squares.get(1));
-        BChanceCardSquareView chanceCardSquareView = new BChanceCardSquareView();
+        TChanceCardSquareView chanceCardSquareView = new TChanceCardSquareView();
         TTownSquareView indianaAvenue = new TTownSquareView((TownSquare) squares.get(3));
         TTownSquareView illinoisAvenue = new TTownSquareView((TownSquare) squares.get(4));
         TRailroadsSquareView bnoRailroads = new TRailroadsSquareView((RailroadsSquare) squares.get(5));

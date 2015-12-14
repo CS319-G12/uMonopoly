@@ -3,6 +3,7 @@ package gui;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author Ani Kristo
@@ -10,14 +11,35 @@ import javax.swing.*;
 public class BChanceCardSquareView extends SquareView {
 
     // ATTRIBUTES
-    private JPanel mainPn;
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
     public BChanceCardSquareView() {
-        add(mainPn);
+
+        // Token labels
+        firstTokenLb = new JLabel();
+        secondTokenLb = new JLabel();
+        thirdTokenLb = new JLabel();
+        fourthTokenLb = new JLabel();
+
+        // Token panel
+        JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));
+        tokenPn.setMinimumSize(new Dimension(60, 60));
+        tokenPn.setMaximumSize(new Dimension(60, 60));
+        tokenPn.setPreferredSize(new Dimension(60, 60));
+        tokenPn.setOpaque(false);
+        tokenPn.add(firstTokenLb);
+        tokenPn.add(secondTokenLb);
+        tokenPn.add(thirdTokenLb);
+        tokenPn.add(fourthTokenLb);
+
+        setLayout(new BorderLayout());
+        setMinimumSize(new Dimension(60, 95));
+        setMaximumSize(new Dimension(60, 95));
+        setPreferredSize(new Dimension(60, 95));
+        add(tokenPn, BorderLayout.CENTER);
     }
 
     // METHODS
@@ -45,5 +67,12 @@ public class BChanceCardSquareView extends SquareView {
             fourthTokenLb.setIcon(null);
         else
             throw new InvalidTokenRemovalException();
+    }
+
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+
+        graphics.drawImage(new ImageIcon(getClass().getResource("/img/chance_b.png")).getImage(), 0, 0, null);
     }
 }

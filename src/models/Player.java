@@ -21,6 +21,7 @@ public class Player extends Observable {
     private String name;
     private boolean inJail;
     private boolean isPlaying;
+    private boolean hasLost;
     private int budget;
     private Token token;
     private Dice dice;
@@ -32,6 +33,7 @@ public class Player extends Observable {
         this.budget = Rules.START_BUDGET;
         this.inJail = false;
         this.isPlaying = false;
+        this.hasLost = false;
         this.dice = new Dice();
         this.token = new Token(tokenFigure);
         this.propertyCards = new ArrayList<>();
@@ -105,6 +107,8 @@ public class Player extends Observable {
 
     private void updatePosition(int val) {
         setPosition(getPosition() + val);
+        if (getPosition() >= Rules.SQUARE_COUNT)
+            setPosition(getPosition() - Rules.SQUARE_COUNT);
     }
 
     public DiceType getDiceType() {
@@ -141,6 +145,14 @@ public class Player extends Observable {
 
     public DiceValue getDiceValue2() {
         return dice.getValue2();
+    }
+
+    public boolean hasLost() {
+        return hasLost;
+    }
+
+    public void lost() {
+        hasLost = true;
     }
 
     public static class DiceCannotBeUpgradedException extends Exception {

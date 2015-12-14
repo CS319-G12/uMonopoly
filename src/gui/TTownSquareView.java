@@ -4,6 +4,7 @@ import models.squares.TownSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author Ani Kristo
@@ -11,9 +12,6 @@ import javax.swing.*;
 public class TTownSquareView extends SquareView {
 
     // ATTRIBUTES
-    private JPanel mainPn;
-    private JPanel tokenPn;
-    private JPanel colorPn;
     private JLabel firstHouseLb;
     private JLabel secondHouseLb;
     private JLabel thirdHouseLb;
@@ -22,7 +20,6 @@ public class TTownSquareView extends SquareView {
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
-
     private ImageIcon houseIcon;
     private ImageIcon hotelIcon;
 
@@ -31,9 +28,46 @@ public class TTownSquareView extends SquareView {
         this.houseIcon = new ImageIcon(getClass().getResource("/img/house.png"));
         this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel.png"));
 
+        // House labels
+        firstHouseLb = new JLabel();
+        secondHouseLb = new JLabel();
+        thirdHouseLb = new JLabel();
+        fourthHouseLb = new JLabel();
+
+        // Color panel
+        JPanel colorPn = new JPanel(new GridLayout(1, 4, 0, 0));
+        colorPn.setMinimumSize(new Dimension(60, 24));
+        colorPn.setMaximumSize(new Dimension(60, 24));
+        colorPn.setPreferredSize(new Dimension(60, 24));
         colorPn.setBackground(square.getColor().awtColor());
-//        nameLb.setText(square.getName());
-        add(mainPn);
+        colorPn.add(firstHouseLb);
+        colorPn.add(secondHouseLb);
+        colorPn.add(thirdHouseLb);
+        colorPn.add(fourthHouseLb);
+
+        // Token labels
+        firstTokenLb = new JLabel();
+        secondTokenLb = new JLabel();
+        thirdTokenLb = new JLabel();
+        fourthTokenLb = new JLabel();
+
+        // Token panel
+        JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));
+        tokenPn.setMinimumSize(new Dimension(60, 60));
+        tokenPn.setMaximumSize(new Dimension(60, 60));
+        tokenPn.setPreferredSize(new Dimension(60, 60));
+        tokenPn.setBackground(Color.BACKGROUND.awtColor());
+        tokenPn.add(firstTokenLb);
+        tokenPn.add(secondTokenLb);
+        tokenPn.add(thirdTokenLb);
+        tokenPn.add(fourthTokenLb);
+
+        setLayout(new BorderLayout());
+        setMinimumSize(new Dimension(60, 95));
+        setMaximumSize(new Dimension(60, 95));
+        setPreferredSize(new Dimension(60, 95));
+        add(colorPn, BorderLayout.SOUTH);
+        add(tokenPn, BorderLayout.CENTER);
 
     }
 

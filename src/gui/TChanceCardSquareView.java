@@ -1,24 +1,21 @@
 package gui;
 
-import models.squares.UtilitySquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author Ani Kristo
+ * @author anikristo
  */
-public class LUtilitySquareView extends SquareView {
+public class TChanceCardSquareView extends SquareView {
 
-    // ATTRIBUTES
     private JLabel firstTokenLb;
     private JLabel secondTokenLb;
     private JLabel thirdTokenLb;
     private JLabel fourthTokenLb;
 
-    // CONSTRUCTOR
-    public LUtilitySquareView(UtilitySquare square) {
+    public TChanceCardSquareView() {
         // Token labels
         firstTokenLb = new JLabel();
         secondTokenLb = new JLabel();
@@ -37,12 +34,11 @@ public class LUtilitySquareView extends SquareView {
         tokenPn.add(fourthTokenLb);
 
         setLayout(new BorderLayout());
-        setMinimumSize(new Dimension(95, 60));
-        setMaximumSize(new Dimension(95, 60));
-        setPreferredSize(new Dimension(95, 60));
+        setMinimumSize(new Dimension(60, 95));
+        setMaximumSize(new Dimension(60, 95));
+        setPreferredSize(new Dimension(60, 95));
         add(tokenPn, BorderLayout.CENTER);
     }
-
 
     // METHODS
     public void addTokenFigure(TokenFigure figure) throws SquareView.SquareFullException {
@@ -72,9 +68,9 @@ public class LUtilitySquareView extends SquareView {
     }
 
     @Override
-    public void paintComponents(Graphics graphics) {
-        super.paintComponents(graphics);
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
 
-        graphics.drawImage(new ImageIcon(getClass().getResource("/img/electric_company_l.png")).getImage(), 0, 0, null);
+        graphics.drawImage(new ImageIcon(getClass().getResource("/img/chance_t.png")).getImage(), 0, 0, null);
     }
 }
