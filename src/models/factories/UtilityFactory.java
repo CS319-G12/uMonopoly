@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public class UtilityFactory implements PropertyFactory {
     // ATTRIBUTES
-    Set<UtilitySquare> squares;
+    private Set<UtilitySquare> squares;
 
     // CONSTRUCTOR
     public UtilityFactory(){

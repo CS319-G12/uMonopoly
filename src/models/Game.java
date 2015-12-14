@@ -68,7 +68,7 @@ public class Game extends Observable {
      * @post self.players.size() == self@pre.players.size() + 1
      * @post self.playerNames.size() == self@pre.playerNames.size() + 1
      */
-    public void addPlayer(String name, TokenFigure tokenFigure) {
+    private void addPlayer(String name, TokenFigure tokenFigure) {
         Player newPlayer = new Player(name, tokenFigure);
         players.add(newPlayer);
         playerNames.add(name);
@@ -88,7 +88,7 @@ public class Game extends Observable {
      * @post self.players.size() == self@pre.players.size() - 1
      * @post self.playerNames.size() == self@pre.playerNames.size() - 1
      */
-    public void removePlayer(String name) throws PlayerNotFoundException {
+    public void removePlayer(String name) {
         players.remove(playerNames.indexOf(name));
         playerNames.remove(playerNames.indexOf(name));
     }
@@ -256,7 +256,7 @@ public class Game extends Observable {
         }); */
     }
 
-    public static class PlayerNotFoundException extends Exception {
+    private static class PlayerNotFoundException extends Exception {
         @Override
         public String getMessage() {
             return super.getMessage() + "The player is not registered in the game!";

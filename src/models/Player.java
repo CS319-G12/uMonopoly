@@ -155,14 +155,14 @@ public class Player extends Observable {
         hasLost = true;
     }
 
-    public static class DiceCannotBeUpgradedException extends Exception {
+    private static class DiceCannotBeUpgradedException extends Exception {
         @Override
         public String getMessage() {
             return super.getMessage() + "The dice has reached the maximum upgrade level!";
         }
     }
 
-    public static class TokenCannotBeUpgradedException extends Exception {
+    private static class TokenCannotBeUpgradedException extends Exception {
         @Override
         public String getMessage() {
             return super.getMessage() + "The token has reached the maximum upgrade level!";

@@ -5,6 +5,6 @@ import java.util.Set;
 /**
  * @author Ani Kristo
  */
-public interface PropertyFactory {
+interface PropertyFactory {
     Set getSquares();
 }

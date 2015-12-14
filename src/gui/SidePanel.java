@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 /**
  * @author Ani Kristo
  */
-public class SidePanel implements Observer {
+class SidePanel implements Observer {
 
     // ATTRIBUTES
     private JPanel mainPn;

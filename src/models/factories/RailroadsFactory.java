@@ -4,7 +4,6 @@ import models.cards.RailroadsCard;
 import models.squares.PropertyGroup;
 import models.squares.PropertyGroupType;
 import models.squares.RailroadsSquare;
-import models.squares.SquareType;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -15,7 +14,7 @@ import java.util.Set;
  */
 public class RailroadsFactory implements PropertyFactory {
     // ATTRIBUTES
-    Set<RailroadsSquare> squares;
+    private Set<RailroadsSquare> squares;
 
     // CONSTRUCTOR
     public RailroadsFactory(){
@@ -26,10 +25,10 @@ public class RailroadsFactory implements PropertyFactory {
         RailroadsCard card3 = new RailroadsCard("B. 'n O. RAILROAD",200, 100, 25,50,100,200);
         RailroadsCard card4 = new RailroadsCard("SHORT LINE",200, 100, 25,50,100,200);
 
-        RailroadsSquare square1 = new RailroadsSquare(5, SquareType.RAILROADS, card1);
-        RailroadsSquare square2 = new RailroadsSquare(15, SquareType.RAILROADS, card2);
-        RailroadsSquare square3 = new RailroadsSquare(25, SquareType.RAILROADS, card3);
-        RailroadsSquare square4 = new RailroadsSquare(35, SquareType.RAILROADS, card4);
+        RailroadsSquare square1 = new RailroadsSquare(5, card1);
+        RailroadsSquare square2 = new RailroadsSquare(15, card2);
+        RailroadsSquare square3 = new RailroadsSquare(25, card3);
+        RailroadsSquare square4 = new RailroadsSquare(35, card4);
 
         squares.add(square1);
         squares.add(square2);

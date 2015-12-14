@@ -21,7 +21,7 @@ public enum Color {
     CYAN(0x29abe2);
 
     // ATTRIBUTES
-    private java.awt.Color color;
+    private final java.awt.Color color;
 
     // CONSTRUCTOR
     Color(int hex) {

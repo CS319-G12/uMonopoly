@@ -3,7 +3,6 @@ package models.factories;
 import models.cards.ChanceCard;
 import models.cards.ChanceCardBuilder;
 import models.squares.ChanceCardSquare;
-import models.squares.SquareType;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,8 +15,8 @@ import java.util.Set;
 public class ChanceFactory implements BonusFactory {
 
     // ATTRIBUTES
-    List<ChanceCard> cards;
-    Set<ChanceCardSquare> squares;
+    private final List<ChanceCard> cards;
+    private final Set<ChanceCardSquare> squares;
 
     // CONSTRUCTOR
     public ChanceFactory() {
@@ -111,9 +110,9 @@ public class ChanceFactory implements BonusFactory {
         cards.add(card13);
 
         // Instantiate all Chance Squares and give them the correct chance cards
-        ChanceCardSquare square1 = new ChanceCardSquare(7, "Chance", SquareType.CHANCE, cards);
-        ChanceCardSquare square2 = new ChanceCardSquare(22, "Chance", SquareType.CHANCE, cards);
-        ChanceCardSquare square3 = new ChanceCardSquare(36, "Chance", SquareType.CHANCE, cards);
+        ChanceCardSquare square1 = new ChanceCardSquare(7, cards);
+        ChanceCardSquare square2 = new ChanceCardSquare(22, cards);
+        ChanceCardSquare square3 = new ChanceCardSquare(36, cards);
 
         squares.add(square1);
         squares.add(square2);

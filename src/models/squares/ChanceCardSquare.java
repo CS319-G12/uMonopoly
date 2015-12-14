@@ -19,8 +19,8 @@ public class ChanceCardSquare extends CardSquare {
 
 
     // CONSTRUCTOR
-    public ChanceCardSquare(int position, String name, SquareType type, List<ChanceCard> theChanceCardList) {
-        super(position, name, type);
+    public ChanceCardSquare(int position, List<ChanceCard> theChanceCardList) {
+        super(position, "Chance", SquareType.CHANCE);
         this.theChanceCardList = theChanceCardList;
         maxSelectableCardSize = theChanceCardList.size();
         selectableCardSize = maxSelectableCardSize;

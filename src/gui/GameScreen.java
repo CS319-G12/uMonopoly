@@ -14,14 +14,12 @@ public class GameScreen extends Observable {
     private JPanel mainPn;
     private JPanel centerPn;
     private JPanel rightPn;
-    private MonopolyBoardView boardView;
-    private SidePanel sidePanel;
 
     // CONSTRUCTOR
     public GameScreen(Game game) {
 
-        boardView = new MonopolyBoardView(game);
-        sidePanel = new SidePanel(game);
+        MonopolyBoardView boardView = new MonopolyBoardView(game);
+        SidePanel sidePanel = new SidePanel(game);
 
         centerPn.add(boardView);
         rightPn.add(sidePanel.getContent());

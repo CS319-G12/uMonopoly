@@ -8,9 +8,9 @@ import gui.CommunityChestCardView;
 public class CommunityChestCard extends BonusCard {
 
     // ATTRIBUTES
-    private int getEach;
+    private final int getEach;
 
-    private CommunityChestCardView view;
+    private final CommunityChestCardView view;
 
     // CONSTRUCTOR
     public CommunityChestCard(int amount, boolean jail, boolean outOfJail, String desc, int getEach) {

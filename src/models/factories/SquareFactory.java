@@ -11,7 +11,7 @@ import java.util.*;
 public class SquareFactory {
 
     // ATTRIBUTES
-    List<Square> list;
+    private List<Square> list;
 
     // CONSTRUCTOR
     public SquareFactory() {

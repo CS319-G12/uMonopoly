@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * @author Ani Kristo
  */
-public class PropertyCardSmallView { // TODO test
+class PropertyCardSmallView { // TODO test
 
     // ATTRIBUTES
     private JPanel mainPanel;

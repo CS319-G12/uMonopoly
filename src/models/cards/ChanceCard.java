@@ -8,9 +8,9 @@ import gui.ChanceCardView;
 public class ChanceCard extends BonusCard {
 
     // ATTRIBUTES
-    private Integer goTo;
-    private int payPerHouse;
-    private int payPerHotel;
+    private final Integer goTo;
+    private final int payPerHouse;
+    private final int payPerHotel;
 
     private ChanceCardView view;
 

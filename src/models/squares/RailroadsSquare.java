@@ -13,8 +13,8 @@ public class RailroadsSquare extends Square implements PropertySquare {
     private PropertyGroup<RailroadsSquare> group;
 
     // CONSTRUCTOR
-    public RailroadsSquare(int position, SquareType type, RailroadsCard theRailroadsCard){
-        super(position, theRailroadsCard.getName(), type);
+    public RailroadsSquare(int position, RailroadsCard theRailroadsCard) {
+        super(position, theRailroadsCard.getName(), SquareType.RAILROADS);
         this.theRailroadsCard = theRailroadsCard;
     }
 

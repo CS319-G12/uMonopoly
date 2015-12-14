@@ -9,7 +9,7 @@ import java.util.List;
  * @author Ani Kristo
  * @invariant self.squareList.size() == 40
  */
-public class MonopolyBoard {
+class MonopolyBoard {
 
     // ATTRIBUTES
     private List<Square> squareList;

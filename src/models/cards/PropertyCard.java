@@ -21,7 +21,7 @@ public abstract class PropertyCard {
     private String name;
 
     // CONSTRUCTOR
-    protected PropertyCard(String name, int sellPrice, int mortgagePrice) {
+    PropertyCard(String name, int sellPrice, int mortgagePrice) {
         this.id = id_count++;
         this.sellPrice = sellPrice;
         this.mortgagePrice = mortgagePrice;
@@ -43,11 +43,11 @@ public abstract class PropertyCard {
         return mortgagePrice;
     }
 
-    protected int[] getRentPrices() {
+    int[] getRentPrices() {
         return rentPrices;
     }
 
-    protected void setRentPrices(int... rents) {
+    void setRentPrices(int... rents) {
         rentPrices = rents;
     }
 

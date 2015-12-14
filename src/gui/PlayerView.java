@@ -9,7 +9,7 @@ import java.util.Observer;
 /**
  * @author Ani Kristo
  */
-public class PlayerView implements Observer {
+class PlayerView implements Observer {
 
     // ATTRIBUTES
     private JPanel mainPanel;
@@ -44,7 +44,7 @@ public class PlayerView implements Observer {
         return mainPanel;
     }
 
-    public void setSelected(boolean selected) {
+    private void setSelected(boolean selected) {
         if (selected)
             mainPanel.setBackground(new java.awt.Color(0xaae0fa));
         else

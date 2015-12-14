@@ -18,8 +18,8 @@ public class CommunityChestCardSquare extends CardSquare {
     private CommunityChestCard chosenCard;
 
     // CONSTRUCTOR
-    public CommunityChestCardSquare(int position, String name, SquareType type, List<CommunityChestCard> theCommunityChestCard) {
-        super(position, name, type);
+    public CommunityChestCardSquare(int position, List<CommunityChestCard> theCommunityChestCard) {
+        super(position, "Communty Chest", SquareType.COMMUNITY_CHEST);
         this.theCommunityChestCard = theCommunityChestCard;
         maxSelectableCardSize = theCommunityChestCard.size();
         selectableCardSize = maxSelectableCardSize;

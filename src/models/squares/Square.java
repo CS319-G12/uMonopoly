@@ -9,10 +9,10 @@ public class Square extends Observable{
 
     // ATTRIBUTES
     private static int id_counter = 0;
-    protected final int id;
-    protected final int position;
-    protected final String name;
-    protected final SquareType type;
+    private final int id;
+    private final int position;
+    private final String name;
+    private final SquareType type;
 
     // CONSTRUCTOR
     public Square(int position, String name, SquareType type) {

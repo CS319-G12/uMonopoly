@@ -17,11 +17,4 @@ public class Rules {
         public static final String ELECTRIC_COMPANY = "ELECTRIC COMPANY";
         public static final String WATER_WORKS = "WATER WORKS";
     }
-
-    public static class Railroads {
-        public static final String READING = "READING RAILROAD";
-        public static final String PENNSYLVANIA = "PENNSYLVANIA RAILROAD";
-        public static final String BO = "B. & O RAILROAD";
-        public static final String SHORT_LINE = "SHORT_LINE";
-    }
 }

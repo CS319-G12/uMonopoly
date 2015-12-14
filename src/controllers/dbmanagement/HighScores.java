@@ -3,7 +3,7 @@ package controllers.dbmanagement;
 /**
  * @author Alper Önder
  */
-public class HighScores {
+class HighScores {
 
     // ATTRIBUTES
     private int id;

@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author Ani Kristo
  */
-public class RightBoardPanel extends JPanel {
+class RightBoardPanel extends JPanel {
 
     // CONSTRUCTOR
     public RightBoardPanel(List<Square> squares) {

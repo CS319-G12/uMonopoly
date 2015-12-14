@@ -16,13 +16,13 @@ public class TownSquare extends Square implements PropertySquare {
     // ATTRIBUTES
     private final Color color;
     private final TownCard theTownCard;
-    public int houseCount;
-    public boolean hotel;
+    private int houseCount;
+    private boolean hotel;
     private PropertyGroup<TownSquare> group;
 
     // CONSTRUCTOR
-    public TownSquare(int position, SquareType type, TownCard theTownCard) {
-        super(position, theTownCard.getName(), type);
+    public TownSquare(int position, TownCard theTownCard) {
+        super(position, theTownCard.getName(), SquareType.TOWN);
         this.color = theTownCard.getColor();
         this.houseCount = 0;
         this.hotel = false;

@@ -5,6 +5,6 @@ import java.util.Set;
 /**
  * @author Ani Kristo
  */
-public interface BonusFactory {
+interface BonusFactory {
     Set getSquares();
 }

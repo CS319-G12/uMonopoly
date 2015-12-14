@@ -6,7 +6,7 @@ import java.util.Observable;
 /**
  * @author Ani Kristo
  */
-public class HomeScreen extends Observable {
+class HomeScreen extends Observable {
 
     // ATTRIBUTES
     private JPanel content;

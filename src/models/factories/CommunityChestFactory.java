@@ -3,7 +3,6 @@ package models.factories;
 import models.cards.CommunityChestCard;
 import models.cards.CommunityChestCardBuilder;
 import models.squares.CommunityChestCardSquare;
-import models.squares.SquareType;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,8 +15,8 @@ import java.util.Set;
 public class CommunityChestFactory implements BonusFactory {
 
     // ATTRIBUTES
-    List<CommunityChestCard> cards;
-    Set<CommunityChestCardSquare> squares;
+    private final List<CommunityChestCard> cards;
+    private final Set<CommunityChestCardSquare> squares;
 
     // CONSTRUCTOR
     public CommunityChestFactory(){
@@ -108,9 +107,9 @@ public class CommunityChestFactory implements BonusFactory {
                 .build();
         cards.add(card16);
 
-        CommunityChestCardSquare square1 = new CommunityChestCardSquare(2, "Community Chest", SquareType.COMMUNITY_CHEST, cards);
-        CommunityChestCardSquare square2 = new CommunityChestCardSquare(17, "Community Chest", SquareType.COMMUNITY_CHEST, cards);
-        CommunityChestCardSquare square3 = new CommunityChestCardSquare(33, "Community Chest", SquareType.COMMUNITY_CHEST, cards);
+        CommunityChestCardSquare square1 = new CommunityChestCardSquare(2, cards);
+        CommunityChestCardSquare square2 = new CommunityChestCardSquare(17, cards);
+        CommunityChestCardSquare square3 = new CommunityChestCardSquare(33, cards);
 
         squares.add(square1);
         squares.add(square2);

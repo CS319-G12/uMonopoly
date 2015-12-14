@@ -11,8 +11,11 @@ import java.util.Observer;
 /**
  * @author Ani Kristo
  */
-public class CenterBoardPanel implements Observer {
+class CenterBoardPanel implements Observer {
 
+    private final ImageIcon houseIcon;
+    private final ImageIcon hotelIcon;
+    private final GameController controller;
     // ATTRIBUTES
     private JPanel mainPn;
     private JButton rollBtn;
@@ -25,11 +28,6 @@ public class CenterBoardPanel implements Observer {
     private JLabel buildingCountLb;
     private JLabel buildingIconLb;
     private JPanel cardDisplayPn;
-
-    private ImageIcon houseIcon;
-    private ImageIcon hotelIcon;
-
-    private GameController controller;
 
     // CONSTRUCTOR
     public CenterBoardPanel(Game model) {

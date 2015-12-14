@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * @author Ani Kristo
  */
-public class PlayerRegistrationScreen extends Observable implements Observer {
+class PlayerRegistrationScreen extends Observable implements Observer {
 
     // ATTRIBUTES
     private java.util.List<PlayerRegistrationSection> playerRegSections;
