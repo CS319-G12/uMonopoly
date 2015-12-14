@@ -221,7 +221,7 @@ public class Game extends Observable {
     }
 
     public void endTurn() {
-        // TODO udate views of the current square and list of property cards owned
+        // TODO update views of the current square and list of property cards owned
         incrementTurn();
         playerRolled = false;
         notifyObservers();
