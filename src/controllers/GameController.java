@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.dbmanagement.DatabaseHelper;
 import gui.PlayerRegistrationSection;
 import models.Game;
 import models.Player;
@@ -10,6 +11,9 @@ import models.squares.TownSquare;
 import models.token.TokenFigure;
 
 import javax.swing.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -87,8 +91,17 @@ public class GameController {
 
         if (game.hasFinished()) {
             // TODO save high scores and exit
+             game.getWinner();
+
+            Date today = new Date();
+            DateFormat dayMonthYearFormat = new SimpleDateFormat("dd/MM/yyyy");
+            new DatabaseHelper().insertHighScoreToDB(game.getWinner().getName(), game.getWinner().getTokenFigure().getName(), game.getWinner().getBudget(), dayMonthYearFormat.format(today));
         } else {
-            // Todo give warning
+            // Todo give
+            int selection = JOptionPane.showConfirmDialog(null, "Confirmation", "Are you sure you want to exit?", JOptionPane.YES_NO_OPTION);
+            if(selection == JOptionPane.YES_OPTION){
+                setContentPane(mainScreen);
+            }
         }
     }
 

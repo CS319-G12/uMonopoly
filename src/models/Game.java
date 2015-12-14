@@ -233,6 +233,23 @@ public class Game extends Observable {
             turn = 0;
     }
 
+    public Player getWinner() {
+        int id = 0;
+        for(int i = 0; i < players.size(); i++){
+            if (players.get(i).getBudget() > players.get(id).getBudget())
+                id = i;
+        }
+        return players.get(id);
+      /*  Collections.max(players, (o1, o2) -> {
+            if(o1.getBudget() > o2.getBudget())
+                return 1;
+            else  if(o1.getBudget() < o2.getBudget())
+                return -1;
+            else
+                return 0;
+        }); */
+    }
+
     public static class PlayerNotFoundException extends Exception {
         @Override
         public String getMessage() {
