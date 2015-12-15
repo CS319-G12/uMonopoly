@@ -174,6 +174,8 @@ public class GameController {
         // TODO
         if (p.getBudget() <= 0)
             p.lost();
+
+        game.notifyObservers();
     }
 
     private void applyBonusCard(BonusCard card, Square s, Player p) {

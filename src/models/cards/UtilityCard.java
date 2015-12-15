@@ -3,6 +3,8 @@ package models.cards;
 import gui.Color;
 import gui.UtilityCardView;
 
+import javax.swing.*;
+
 /**
  * @author buseburcu
  */
@@ -30,7 +32,8 @@ public class UtilityCard extends PropertyCard {
         return Color.CHARCOAL;
     }
 
-    public UtilityCardView getView() {
-        return view;
+    @Override
+    public JPanel getView() {
+        return view.getContent();
     }
 }

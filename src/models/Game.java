@@ -198,6 +198,9 @@ public class Game extends Observable {
             getCurrentPlayer().addPropertyCard(square.getCard());
             getCurrentPlayer().updateBudget((-1) * square.getCard().getSellPrice());
         }
+
+        setChanged();
+        notifyObservers();
     }
 
     public void sellProperty() throws NotSellableException {
@@ -214,6 +217,9 @@ public class Game extends Observable {
             if (square instanceof TownSquare)
                 ((TownSquare) square).removebuildings();
         }
+
+        setChanged();
+        notifyObservers();
     }
 
     public void build() throws NotBuildableException {
@@ -230,6 +236,9 @@ public class Game extends Observable {
                 System.err.println(e.getMessage());
             }
         }
+
+        setChanged();
+        notifyObservers();
     }
 
     public boolean playerRolled() {
@@ -240,7 +249,7 @@ public class Game extends Observable {
         playerHadDoubles = getCurrentPlayer().roll();
         playerRolled = true;
         updateCurrentSquares();
-        notifyObservers();
+        setChanged();
     }
 
     public void endTurn() {
@@ -248,6 +257,7 @@ public class Game extends Observable {
         // TODo make player had doubles false
         incrementTurn();
         playerRolled = false;
+        setChanged();
         notifyObservers();
     }
 

@@ -5,6 +5,7 @@ import models.Game;
 import models.squares.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -13,10 +14,11 @@ import java.util.Observer;
  */
 class CenterBoardPanel implements Observer {
 
+    // ATTRIBUTES
     private final ImageIcon houseIcon;
     private final ImageIcon hotelIcon;
     private final GameController controller;
-    // ATTRIBUTES
+
     private JPanel mainPn;
     private JButton rollBtn;
     private JButton endBtn;
@@ -30,9 +32,9 @@ class CenterBoardPanel implements Observer {
     private JPanel cardDisplayPn;
 
     // CONSTRUCTOR
-    public CenterBoardPanel(Game model) {
-        model.addObserver(this);
-        this.controller = model.getController();
+    public CenterBoardPanel(Game game) {
+        game.addObserver(this);
+        this.controller = game.getController();
 
         // Adding action listeners
         rollBtn.addActionListener(actionEvent -> {
@@ -132,26 +134,25 @@ class CenterBoardPanel implements Observer {
             // Update the card view
             Square currentSquare = game.getCurrentSquare();
 
-            if (currentSquare instanceof TownSquare)
-                cardDisplayPn = ((TownSquare) currentSquare).getCard().getView().getContent();
+            if (currentSquare instanceof PropertySquare) {
+                cardDisplayPn.setSize(new Dimension(200, 318));
+                cardDisplayPn = ((PropertySquare) currentSquare).getCard().getView();
+                mainPn.repaint();
+            } else if (currentSquare instanceof ChanceCardSquare) {
+                cardDisplayPn.setSize(new Dimension(318, 200));
+                cardDisplayPn = ((ChanceCardSquare) currentSquare).getCard().getView();
+                mainPn.repaint();
+            } else if (currentSquare instanceof CommunityChestCardSquare) {
+                cardDisplayPn.setSize(new Dimension(318, 200));
+                cardDisplayPn = ((CommunityChestCardSquare) currentSquare).getCard().getView();
+                mainPn.repaint();
+            }
 
-            else if (currentSquare instanceof UtilitySquare)
-                cardDisplayPn = ((UtilitySquare) currentSquare).getCard().getView().getContent();
-
-            else if (currentSquare instanceof RailroadsSquare)
-                cardDisplayPn = ((RailroadsSquare) currentSquare).getCard().getView().getContent();
-
-            else if (currentSquare instanceof ChanceCardSquare)
-                cardDisplayPn = ((ChanceCardSquare) currentSquare).getCard().getView().getContent();
-
-            else if (currentSquare instanceof CommunityChestCardSquare)
-                cardDisplayPn = ((CommunityChestCardSquare) currentSquare).getCard().getView().getContent();
-
+            // Building count view
             if (currentSquare instanceof TownSquare) {
                 buildingCountLb.setText(((TownSquare) currentSquare).getBuildingCount() + "");
                 buildingIconLb.setIcon(((TownSquare) currentSquare).hasHotel() ? hotelIcon : houseIcon);
             }
-
             updateButtons();
         }
     }

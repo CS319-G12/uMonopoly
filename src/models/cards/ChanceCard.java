@@ -2,6 +2,8 @@ package models.cards;
 
 import gui.ChanceCardView;
 
+import javax.swing.*;
+
 /**
  * @author buseburcu
  */
@@ -38,7 +40,8 @@ public class ChanceCard extends BonusCard {
         return payPerHotel;
     }
 
-    public ChanceCardView getView() {
-        return view;
+    @Override
+    public JPanel getView() {
+        return view.getContent();
     }
 }

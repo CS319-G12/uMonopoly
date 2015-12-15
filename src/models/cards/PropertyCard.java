@@ -3,6 +3,8 @@ package models.cards;
 import gui.Color;
 import models.Player;
 
+import javax.swing.*;
+
 /**
  * @author buseburcu
  */
@@ -70,4 +72,6 @@ public abstract class PropertyCard {
     public void removeOwner() {
         owner = null;
     }
+
+    public abstract JPanel getView();
 }

@@ -3,6 +3,8 @@ package models.cards;
 import gui.Color;
 import gui.TownCardView;
 
+import javax.swing.*;
+
 /**
  * @author buseburcu
  */
@@ -51,7 +53,8 @@ public class TownCard extends PropertyCard {
         return hotelPrice;
     }
 
-    public TownCardView getView() {
-        return view;
+    @Override
+    public JPanel getView() {
+        return view.getContent();
     }
 }

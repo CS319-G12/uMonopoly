@@ -3,6 +3,8 @@ package models.cards;
 import gui.Color;
 import gui.RailroadsCardView;
 
+import javax.swing.*;
+
 /**
  * @author buseburcu
  */
@@ -30,7 +32,8 @@ public class RailroadsCard extends PropertyCard {
         return Color.CHARCOAL;
     }
 
-    public RailroadsCardView getView() {
-        return view;
+    @Override
+    public JPanel getView() {
+        return view.getContent();
     }
 }

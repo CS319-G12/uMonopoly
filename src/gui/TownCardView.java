@@ -52,7 +52,7 @@ public class TownCardView { // TODO test
     }
 
     // METHODS
-    JPanel getContent() {
+    public JPanel getContent() {
         return mainPanel;
     }
 }

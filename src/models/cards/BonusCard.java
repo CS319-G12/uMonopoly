@@ -1,5 +1,7 @@
 package models.cards;
 
+import javax.swing.*;
+
 /**
  * @author buseburcu
  */
@@ -46,4 +48,6 @@ public abstract class BonusCard {
     public String getDescription() {
         return desc;
     }
+
+    public abstract JPanel getView();
 }

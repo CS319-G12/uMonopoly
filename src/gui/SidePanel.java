@@ -30,7 +30,7 @@ class SidePanel implements Observer {
 
     private GameController gameController;
     private List<PlayerView> playerViewList;
-    private List<PropertyCardSmallView> propertyCardSmallViewList;
+    private List<PropertyCardSmallView> listOfPropertyCardSmallViews;
 
     // CONSTRUCTOR
     public SidePanel(Game game) {
@@ -50,9 +50,12 @@ class SidePanel implements Observer {
         }
 
         // Setting up the matrix of the property cards
+        listOfPropertyCardSmallViews = new ArrayList<>();
         propertyCardsPn.setLayout(new GridLayout(7, 4));
         for (PropertyCard propertyCard : listOfPropertyCards) {
-            propertyCardsPn.add(new PropertyCardSmallView(propertyCard).getContent());
+            PropertyCardSmallView pcsv = new PropertyCardSmallView(propertyCard);
+            listOfPropertyCardSmallViews.add(pcsv);
+            propertyCardsPn.add(pcsv.getContent());
         }
 
         helpBtn.addActionListener(actionEvent -> gameController.viewHelp());
@@ -91,11 +94,11 @@ class SidePanel implements Observer {
                             .map(PropertyCard::getID)
                             .collect(Collectors.toList());
 
-            for (int i = 0; i < propertyCardSmallViewList.size(); i++) {
+            for (int i = 0; i < listOfPropertyCardSmallViews.size(); i++) {
                 if (propertyCardsIndices.contains(i))
-                    propertyCardSmallViewList.get(i).setEnabled(true);
+                    listOfPropertyCardSmallViews.get(i).setEnabled(true);
                 else
-                    propertyCardSmallViewList.get(i).setEnabled(false);
+                    listOfPropertyCardSmallViews.get(i).setEnabled(false);
             }
 
         }

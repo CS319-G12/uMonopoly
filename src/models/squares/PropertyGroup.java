@@ -11,39 +11,39 @@ import java.util.List;
 public class PropertyGroup<T extends PropertySquare> {
 
     // ATTRIBUTES
-    private PropertyGroupType    type;
+    private PropertyGroupType type;
     private List<T> properties;
-    private List<Player>         players;
+    private List<Player> players;
 
     // CONSTRUCTOR
-    public PropertyGroup(PropertyGroupType type, List<T> properties){
-        this.type       = type;
+    public PropertyGroup(PropertyGroupType type, List<T> properties) {
+        this.type = type;
         this.properties = properties;
-        this.players    = new ArrayList<>(properties.size());
+        this.players = new ArrayList<>(properties.size());
 
-        for(T property : properties){
+        for (T property : properties) {
             property.setGroup(this);
         }
 
-        for(int i = 0; i < properties.size(); i++){
+        for (int i = 0; i < properties.size(); i++) {
             players.add(null); //TODO
         }
     }
 
     // METHODS
-    public boolean ownsAllProperties(Player thePlayer){
-        for(Player a : players)
+    public boolean ownsAllProperties(Player thePlayer) {
+        for (Player a : players)
             if (a != null && !a.equals(thePlayer))
                 return false;
         return true;
     }
 
-    public PropertyGroupType getType(){
+    public PropertyGroupType getType() {
         return type;
     }
 
     public void setOwner(T propertySquare, Player currentPlayer) {
-        players.set(properties.indexOf(propertySquare),currentPlayer);
+        players.set(properties.indexOf(propertySquare), currentPlayer);
     }
 
     public void removeOwner(T propertySquare) {

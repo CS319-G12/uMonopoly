@@ -32,7 +32,7 @@ public class RailroadsCardView {
     }
 
     // METHODS
-    JPanel getContent() {
+    public JPanel getContent() {
         return mainPanel;
     }
 }

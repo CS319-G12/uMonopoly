@@ -2,6 +2,8 @@ package models.cards;
 
 import gui.CommunityChestCardView;
 
+import javax.swing.*;
+
 /**
  * @author buseburcu
  */
@@ -25,8 +27,9 @@ public class CommunityChestCard extends BonusCard {
         return getEach;
     }
 
-    public CommunityChestCardView getView() {
-        return view;
+    @Override
+    public JPanel getView() {
+        return view.getContent();
     }
 
 }
