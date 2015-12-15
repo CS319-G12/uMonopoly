@@ -38,6 +38,8 @@ public class Window extends JFrame implements WindowListener, Observer {
         homeScreen.addObserver(this);
 
         setContentPane(homeScreen.getContent());
+        setResizable(false);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -49,6 +51,7 @@ public class Window extends JFrame implements WindowListener, Observer {
 
     @Override
     public void windowClosing(WindowEvent windowEvent) {
+        // TODO check if game has finished
     }
 
     @Override

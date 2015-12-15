@@ -91,7 +91,7 @@ public class Game extends Observable {
     public void removePlayer(String name) {
         players.remove(playerNames.indexOf(name));
         playerNames.remove(playerNames.indexOf(name));
-    }
+    } // TODO for losing
 
     public void start() {
         turn = 0;
@@ -101,12 +101,31 @@ public class Game extends Observable {
         currentSquares = new ArrayList<>();
         for (int i = 0; i < players.size(); i++)
             currentSquares.add(0);
+
+        Square square = getListOfSquares().get(0);
+        players.forEach(square::addResidingPlayer);
+
         notifyObservers();
     }
 
     private void updateCurrentSquares() {
+
+        List<Square> listOfSquares = getListOfSquares();
+
+        // Remove the old tokens
+        for (Integer i : currentSquares) {
+            listOfSquares.get(i).clearResidingPlayers();
+        }
+
         for (int i = 0; i < players.size(); i++) {
-            currentSquares.set(i, players.get(i).getPosition());
+
+            int position = players.get(i).getPosition();
+
+            // Update Current Squares
+            currentSquares.set(i, position);
+
+            // Update Residing Players
+            listOfSquares.get(position).addResidingPlayer(players.get(i));
         }
         notifyObservers();
     }
@@ -164,46 +183,47 @@ public class Game extends Observable {
         return getCurrentPlayer().getDiceValue2();
     }
 
-    public void buyProperty() throws NotBuyableException{
+    public void buyProperty() throws NotBuyableException {
         // TODO
         Square currentSquare = getCurrentSquare();
-        if(!(currentSquare instanceof PropertySquare))
+        if (!(currentSquare instanceof PropertySquare))
             throw new NotBuyableException();
 
         PropertySquare square = (PropertySquare) currentSquare;
-        if(square.getCard().getOwner() == null && getCurrentPlayer().getBudget() >= square.getCard().getSellPrice()){
+        if (square.getCard().getOwner() == null && getCurrentPlayer().getBudget() >= square.getCard().getSellPrice()) {
             square.setOwner(getCurrentPlayer());
             getCurrentPlayer().addPropertyCard(square.getCard());
             getCurrentPlayer().updateBudget((-1) * square.getCard().getSellPrice());
         }
     }
-    public void sellProperty() throws NotSellableException{
+
+    public void sellProperty() throws NotSellableException {
         // todo
         Square currentSquare = getCurrentSquare();
-        if(!(currentSquare instanceof PropertySquare))
+        if (!(currentSquare instanceof PropertySquare))
             throw new NotSellableException();
 
         PropertySquare square = (PropertySquare) currentSquare;
-        if(square.getCard().getOwner() != null){
+        if (square.getCard().getOwner() != null) {
             getCurrentPlayer().updateBudget(square.getCard().getMortgagePrice());
             getCurrentPlayer().removePropertyCard(square.getCard());
             square.removeOwner();
-            if(square instanceof TownSquare)
+            if (square instanceof TownSquare)
                 ((TownSquare) square).removeBuidlings();
         }
     }
 
-    public void build() throws NotBuildableException{
+    public void build() throws NotBuildableException {
         Square currentSquare = getCurrentSquare();
-        if(!(currentSquare instanceof PropertySquare))
+        if (!(currentSquare instanceof PropertySquare))
             throw new NotBuildableException();
 
         PropertySquare square = (PropertySquare) currentSquare;
-        if(square.getGroup().ownsAllProperties(getCurrentPlayer()) && getCurrentPlayer().getBudget() >= ((TownSquare)square).getCard().getHouseBuildPrice()){
-            try{
-                ((TownSquare)square).build();
-                getCurrentPlayer().updateBudget((-1) * ((TownSquare)square).getCard().getHouseBuildPrice());
-            }catch (TownSquare.CannotBuildException e){
+        if (square.getGroup().ownsAllProperties(getCurrentPlayer()) && getCurrentPlayer().getBudget() >= ((TownSquare) square).getCard().getHouseBuildPrice()) {
+            try {
+                ((TownSquare) square).build();
+                getCurrentPlayer().updateBudget((-1) * ((TownSquare) square).getCard().getHouseBuildPrice());
+            } catch (TownSquare.CannotBuildException e) {
                 System.err.println(e.getMessage());
             }
         }
@@ -241,7 +261,7 @@ public class Game extends Observable {
 
     public Player getWinner() {
         int id = 0;
-        for(int i = 0; i < players.size(); i++){
+        for (int i = 0; i < players.size(); i++) {
             if (players.get(i).getBudget() > players.get(id).getBudget())
                 id = i;
         }

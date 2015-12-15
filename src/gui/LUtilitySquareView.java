@@ -12,6 +12,8 @@ class LUtilitySquareView extends SquareView {
 
     // CONSTRUCTOR
     public LUtilitySquareView(UtilitySquare square) {
+        super(square);
+
         // Token panel
         JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));
         tokenPn.setMinimumSize(new Dimension(60, 60));

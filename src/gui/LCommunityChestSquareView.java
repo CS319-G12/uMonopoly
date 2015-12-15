@@ -1,5 +1,7 @@
 package gui;
 
+import models.squares.Square;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,18 +10,8 @@ import java.awt.*;
  */
 public class LCommunityChestSquareView extends SquareView {
 
-    // ATTRIBUTES
-    private JLabel firstTokenLb;
-    private JLabel secondTokenLb;
-    private JLabel thirdTokenLb;
-    private JLabel fourthTokenLb;
-
-    public LCommunityChestSquareView() {
-        // Token labels
-        firstTokenLb = new JLabel();
-        secondTokenLb = new JLabel();
-        thirdTokenLb = new JLabel();
-        fourthTokenLb = new JLabel();
+    public LCommunityChestSquareView(Square s) {
+        super(s);
 
         // Token panel
         JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));

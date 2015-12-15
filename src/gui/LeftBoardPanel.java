@@ -24,7 +24,7 @@ class LeftBoardPanel extends JPanel {
         LTownSquareView virginiaAvenue = new LTownSquareView((TownSquare) squares.get(3));
         LRailroadsSquareView pennsylvaniaRailroad = new LRailroadsSquareView((RailroadsSquare) squares.get(4));
         LTownSquareView stJamesPlace = new LTownSquareView((TownSquare) squares.get(5));
-        LCommunityChestSquareView communityChestCardSquare = new LCommunityChestSquareView();
+        LCommunityChestSquareView communityChestCardSquare = new LCommunityChestSquareView(squares.get(6));
         LTownSquareView tennesseeAvenue = new LTownSquareView((TownSquare) squares.get(7));
         LTownSquareView newYorkAvenue = new LTownSquareView((TownSquare) squares.get(8));
 

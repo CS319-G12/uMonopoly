@@ -20,10 +20,10 @@ class RightBoardPanel extends JPanel {
         // Instantiate
         RTownSquareView pacificAvenue = new RTownSquareView((TownSquare) squares.get(0));
         RTownSquareView carolinaAvenue = new RTownSquareView((TownSquare) squares.get(1));
-        RCommunityChestSquareView communityChestSquareView = new RCommunityChestSquareView();
+        RCommunityChestSquareView communityChestSquareView = new RCommunityChestSquareView(squares.get(2));
         RTownSquareView pennsylvaniaAvenue = new RTownSquareView((TownSquare) squares.get(3));
         RRailroadsSquareView shortLine = new RRailroadsSquareView((RailroadsSquare) squares.get(4));
-        RChanceCardSquareView chanceCardSquareView = new RChanceCardSquareView();
+        RChanceCardSquareView chanceCardSquareView = new RChanceCardSquareView(squares.get(5));
         RTownSquareView parkPlace = new RTownSquareView((TownSquare) squares.get(6));
         RTaxSquareView taxSquareView = new RTaxSquareView((TaxSquare) squares.get(7));
         RTownSquareView boardwalk = new RTownSquareView((TownSquare) squares.get(8));

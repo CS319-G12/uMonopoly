@@ -12,6 +12,7 @@ public class BTaxSquareView extends SquareView {
 
     // CONSTRUCTOR
     public BTaxSquareView(TaxSquare square) {
+        super(square);
 
         // Token panel
         JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));

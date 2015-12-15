@@ -21,7 +21,7 @@ abstract class SquareView extends JPanel implements Observer {
     final JLabel fourthTokenLb;
 
     // METHODS
-    SquareView() {
+    SquareView(Square s) {
         setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK.awtColor()));
 
         firstTokenLb = new JLabel();
@@ -43,6 +43,8 @@ abstract class SquareView extends JPanel implements Observer {
         fourthTokenLb.setMinimumSize(new Dimension(30, 30));
         fourthTokenLb.setMaximumSize(new Dimension(30, 30));
         fourthTokenLb.setPreferredSize(new Dimension(30, 30));
+
+        s.addObserver(this);
     }
 
     @Override
@@ -57,24 +59,20 @@ abstract class SquareView extends JPanel implements Observer {
 
     final void addTokenFigure(TokenFigure figure) {
         if (firstTokenLb.getIcon() == null)
-            firstTokenLb.setIcon(figure.getIcon());
+            firstTokenLb.setIcon(figure.getSmallIcon());
         else if (secondTokenLb.getIcon() == null)
-            secondTokenLb.setIcon(figure.getIcon());
+            secondTokenLb.setIcon(figure.getSmallIcon());
         else if (thirdTokenLb.getIcon() == null)
-            thirdTokenLb.setIcon(figure.getIcon());
+            thirdTokenLb.setIcon(figure.getSmallIcon());
         else if (fourthTokenLb.getIcon() == null)
-            fourthTokenLb.setIcon(figure.getIcon());
+            fourthTokenLb.setIcon(figure.getSmallIcon());
+
     }
 
-    private final void removeAllTokens() {
+    private void removeAllTokens() {
         firstTokenLb.setIcon(null);
         secondTokenLb.setIcon(null);
         thirdTokenLb.setIcon(null);
         fourthTokenLb.setIcon(null);
-    }
-
-    // INNER CLASSES
-    class InvalidHouseRemovalException extends Exception {
-
     }
 }

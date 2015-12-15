@@ -1,5 +1,7 @@
 package gui;
 
+import models.squares.Square;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,7 +13,9 @@ class CornerSquareView extends SquareView {
     private ImageIcon icon;
 
     // CONSTRUCTOR
-    public CornerSquareView(ImageIcon icon) {
+    public CornerSquareView(Square s, ImageIcon icon) {
+        super(s);
+
         this.icon = icon;
 
         // Token panel

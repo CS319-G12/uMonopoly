@@ -4,7 +4,6 @@ import gui.Color;
 import models.cards.TownCard;
 import models.squares.PropertyGroup;
 import models.squares.PropertyGroupType;
-import models.squares.SquareType;
 import models.squares.TownSquare;
 
 import java.util.Arrays;
@@ -47,28 +46,28 @@ public class TownFactory implements PropertyFactory {
         TownCard card22 = new TownCard("BOARDWALK", Color.BLUE, 400, 200, 50, 200, 600, 1400, 1700, 2000, 200, 200);
 
         // Instantiate the squares
-        TownSquare square1 = new TownSquare(1, SquareType.TOWN, card1);
-        TownSquare square2 = new TownSquare(3, SquareType.TOWN, card2);
-        TownSquare square3 = new TownSquare(6, SquareType.TOWN, card3);
-        TownSquare square4 = new TownSquare(8, SquareType.TOWN, card4);
-        TownSquare square5 = new TownSquare(9, SquareType.TOWN, card5);
-        TownSquare square6 = new TownSquare(11, SquareType.TOWN, card6);
-        TownSquare square7 = new TownSquare(13, SquareType.TOWN, card7);
-        TownSquare square8 = new TownSquare(14, SquareType.TOWN, card8);
-        TownSquare square9 = new TownSquare(16, SquareType.TOWN, card9);
-        TownSquare square10 = new TownSquare(18, SquareType.TOWN, card10);
-        TownSquare square11 = new TownSquare(19, SquareType.TOWN, card11);
-        TownSquare square12 = new TownSquare(21, SquareType.TOWN, card12);
-        TownSquare square13 = new TownSquare(23, SquareType.TOWN, card13);
-        TownSquare square14 = new TownSquare(24, SquareType.TOWN, card14);
-        TownSquare square15 = new TownSquare(26, SquareType.TOWN, card15);
-        TownSquare square16 = new TownSquare(27, SquareType.TOWN, card16);
-        TownSquare square17 = new TownSquare(29, SquareType.TOWN, card17);
-        TownSquare square18 = new TownSquare(31, SquareType.TOWN, card18);
-        TownSquare square19 = new TownSquare(32, SquareType.TOWN, card19);
-        TownSquare square20 = new TownSquare(34, SquareType.TOWN, card20);
-        TownSquare square21 = new TownSquare(37, SquareType.TOWN, card21);
-        TownSquare square22 = new TownSquare(39, SquareType.TOWN, card22);
+        TownSquare square1 = new TownSquare(1, card1);
+        TownSquare square2 = new TownSquare(3, card2);
+        TownSquare square3 = new TownSquare(6, card3);
+        TownSquare square4 = new TownSquare(8, card4);
+        TownSquare square5 = new TownSquare(9, card5);
+        TownSquare square6 = new TownSquare(11, card6);
+        TownSquare square7 = new TownSquare(13, card7);
+        TownSquare square8 = new TownSquare(14, card8);
+        TownSquare square9 = new TownSquare(16, card9);
+        TownSquare square10 = new TownSquare(18, card10);
+        TownSquare square11 = new TownSquare(19, card11);
+        TownSquare square12 = new TownSquare(21, card12);
+        TownSquare square13 = new TownSquare(23, card13);
+        TownSquare square14 = new TownSquare(24, card14);
+        TownSquare square15 = new TownSquare(26, card15);
+        TownSquare square16 = new TownSquare(27, card16);
+        TownSquare square17 = new TownSquare(29, card17);
+        TownSquare square18 = new TownSquare(31, card18);
+        TownSquare square19 = new TownSquare(32, card19);
+        TownSquare square20 = new TownSquare(34, card20);
+        TownSquare square21 = new TownSquare(37, card21);
+        TownSquare square22 = new TownSquare(39, card22);
 
         squares = new HashSet<>();
         squares.add(square1);

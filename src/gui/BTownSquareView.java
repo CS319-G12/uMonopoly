@@ -8,26 +8,11 @@ import java.awt.*;
 /**
  * @author Ani Kristo
  */
-public class BTownSquareView extends SquareView {
-
-    // ATTRIBUTES
-    private final JLabel firstHouseLb;
-    private final JLabel secondHouseLb;
-    private final JLabel thirdHouseLb;
-    private final JLabel fourthHouseLb;
-    private final ImageIcon houseIcon;
-    private final ImageIcon hotelIcon;
+public class BTownSquareView extends TownSquareView {
 
     // CONSTRUCTOR
     public BTownSquareView(TownSquare square) {
-        this.houseIcon = new ImageIcon(getClass().getResource("/img/house.png"));
-        this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel.png"));
-
-        // House labels
-        firstHouseLb = new JLabel();
-        secondHouseLb = new JLabel();
-        thirdHouseLb = new JLabel();
-        fourthHouseLb = new JLabel();
+        super(square);
 
         // Color panel
         JPanel colorPn = new JPanel(new GridLayout(1, 4, 0, 0));
@@ -57,41 +42,5 @@ public class BTownSquareView extends SquareView {
         setPreferredSize(new Dimension(60, 95));
         add(colorPn, BorderLayout.NORTH);
         add(tokenPn, BorderLayout.CENTER);
-    }
-
-    // METHODS
-    public void addHouse() {
-        if (firstHouseLb.getIcon() == null)
-            firstHouseLb.setIcon(houseIcon);
-        else if (secondHouseLb.getIcon() == null)
-            secondHouseLb.setIcon(houseIcon);
-        else if (thirdHouseLb.getIcon() == null)
-            thirdHouseLb.setIcon(houseIcon);
-        else if (fourthHouseLb.getIcon() == null)
-            fourthHouseLb.setIcon(houseIcon);
-    }
-
-    public void removeHouse() throws InvalidHouseRemovalException {
-        if (fourthHouseLb.getIcon() != null)
-            fourthHouseLb.setIcon(null);
-        else if (thirdHouseLb.getIcon() != null)
-            thirdHouseLb.setIcon(null);
-        else if (secondHouseLb.getIcon() != null)
-            secondHouseLb.setIcon(null);
-        else if (firstHouseLb.getIcon() != null)
-            firstHouseLb.setIcon(null);
-        else
-            throw new InvalidHouseRemovalException();
-    }
-
-    public void addHotel() {
-        firstHouseLb.setIcon(hotelIcon);
-        secondHouseLb.setIcon(null);
-        thirdHouseLb.setIcon(null);
-        fourthHouseLb.setIcon(null);
-    }
-
-    public void removeHotel() {
-        firstHouseLb.setIcon(null);
     }
 }

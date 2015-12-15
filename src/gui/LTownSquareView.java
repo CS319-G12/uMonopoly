@@ -8,30 +8,11 @@ import java.awt.*;
 /**
  * @author Ani Kristo
  */
-public class LTownSquareView extends SquareView {
-
-    // ATTRIBUTES
-    private JLabel firstTokenLb;
-    private JLabel secondTokenLb;
-    private JLabel thirdTokenLb;
-    private JLabel fourthTokenLb;
-    private JLabel firstHouseLb;
-    private JLabel secondHouseLb;
-    private JLabel thirdHouseLb;
-    private JLabel fourthHouseLb;
-    private ImageIcon houseIcon;
-    private ImageIcon hotelIcon;
+public class LTownSquareView extends TownSquareView {
 
     // CONSTRUCTOR
     public LTownSquareView(TownSquare square) {
-        this.houseIcon = new ImageIcon(getClass().getResource("/img/house.png"));
-        this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel.png"));
-
-        // House labels
-        firstHouseLb = new JLabel();
-        secondHouseLb = new JLabel();
-        thirdHouseLb = new JLabel();
-        fourthHouseLb = new JLabel();
+        super(square);
 
         // Color panel
         JPanel colorPn = new JPanel(new GridLayout(4, 1, 0, 0));
@@ -43,12 +24,6 @@ public class LTownSquareView extends SquareView {
         colorPn.add(secondHouseLb);
         colorPn.add(thirdHouseLb);
         colorPn.add(fourthHouseLb);
-
-        // Token labels
-        firstTokenLb = new JLabel();
-        secondTokenLb = new JLabel();
-        thirdTokenLb = new JLabel();
-        fourthTokenLb = new JLabel();
 
         // Token panel
         JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));
@@ -69,41 +44,4 @@ public class LTownSquareView extends SquareView {
         add(tokenPn, BorderLayout.CENTER);
 
     }
-
-    // METHODS
-    public void addHouse() {
-        if (firstHouseLb.getIcon() == null)
-            firstHouseLb.setIcon(houseIcon);
-        else if (secondHouseLb.getIcon() == null)
-            secondHouseLb.setIcon(houseIcon);
-        else if (thirdHouseLb.getIcon() == null)
-            thirdHouseLb.setIcon(houseIcon);
-        else if (fourthHouseLb.getIcon() == null)
-            fourthHouseLb.setIcon(houseIcon);
-    }
-
-    public void removeHouse() throws InvalidHouseRemovalException {
-        if (fourthHouseLb.getIcon() != null)
-            fourthHouseLb.setIcon(null);
-        else if (thirdHouseLb.getIcon() != null)
-            thirdHouseLb.setIcon(null);
-        else if (secondHouseLb.getIcon() != null)
-            secondHouseLb.setIcon(null);
-        else if (firstHouseLb.getIcon() != null)
-            firstHouseLb.setIcon(null);
-        else
-            throw new InvalidHouseRemovalException();
-    }
-
-    public void addHotel() {
-        firstHouseLb.setIcon(hotelIcon);
-        secondHouseLb.setIcon(null);
-        thirdHouseLb.setIcon(null);
-        fourthHouseLb.setIcon(null);
-    }
-
-    public void removeHotel() {
-        firstHouseLb.setIcon(null);
-    }
-
 }

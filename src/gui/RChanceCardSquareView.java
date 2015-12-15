@@ -1,5 +1,7 @@
 package gui;
 
+import models.squares.Square;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,7 +10,8 @@ import java.awt.*;
  */
 class RChanceCardSquareView extends SquareView {
 
-    public RChanceCardSquareView() {
+    public RChanceCardSquareView(Square s) {
+        super(s);
 
         // Token panel
         JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));

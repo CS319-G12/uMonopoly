@@ -9,20 +9,9 @@ import java.awt.*;
  * @author Ani Kristo
  */
 public class LRailroadsSquareView extends SquareView {
-
-
-    private JLabel firstTokenLb;
-    private JLabel secondTokenLb;
-    private JLabel thirdTokenLb;
-    private JLabel fourthTokenLb;
-
     // CONSTRUCTOR
     public LRailroadsSquareView(RailroadsSquare square) {
-        // Token labels
-        firstTokenLb = new JLabel();
-        secondTokenLb = new JLabel();
-        thirdTokenLb = new JLabel();
-        fourthTokenLb = new JLabel();
+        super(square);
 
         // Token panel
         JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));

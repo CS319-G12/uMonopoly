@@ -15,9 +15,9 @@
       <grid id="9dd55" binding="centerPn" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints border-constraint="Center"/>
         <properties>
-          <maximumSize width="750" height="750"/>
-          <minimumSize width="730" height="730"/>
-          <preferredSize width="730" height="730"/>
+          <maximumSize width="752" height="752"/>
+          <minimumSize width="752" height="752"/>
+          <preferredSize width="752" height="752"/>
         </properties>
         <border type="none"/>
         <children/>
