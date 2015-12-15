@@ -136,24 +136,37 @@ class CenterBoardPanel implements Observer {
             Square currentSquare = game.getCurrentSquare();
 
             if (currentSquare instanceof PropertySquare) {
-                cardDisplayPn.setSize(new Dimension(200, 318));
+                cardDisplayPn.setMinimumSize(new Dimension(200, 318));
+                cardDisplayPn.setMaximumSize(new Dimension(200, 318));
+                cardDisplayPn.setPreferredSize(new Dimension(200, 318));
                 cardDisplayPn.removeAll();
                 cardDisplayPn.add(((PropertySquare) currentSquare).getCard().getView());
                 mainPn.repaint();
             } else if (currentSquare instanceof ChanceCardSquare) {
-                cardDisplayPn.setSize(new Dimension(318, 200));
+                cardDisplayPn.setMinimumSize(new Dimension(318, 200));
+                cardDisplayPn.setMaximumSize(new Dimension(318, 200));
+                cardDisplayPn.setPreferredSize(new Dimension(318, 200));
                 cardDisplayPn.removeAll();
                 cardDisplayPn.add(((ChanceCardSquare) currentSquare).getCard().getView());
                 mainPn.repaint();
             } else if (currentSquare instanceof CommunityChestCardSquare) {
-                cardDisplayPn.setSize(new Dimension(318, 200));
+                cardDisplayPn.setMinimumSize(new Dimension(318, 200));
+                cardDisplayPn.setMaximumSize(new Dimension(318, 200));
+                cardDisplayPn.setPreferredSize(new Dimension(318, 200));
                 cardDisplayPn.removeAll();
                 cardDisplayPn.add(((CommunityChestCardSquare) currentSquare).getCard().getView());
                 mainPn.repaint();
+            } else {
+                cardDisplayPn.removeAll();
             }
+
+            buildingCountLb.setVisible(false);
+            buildingIconLb.setVisible(false);
 
             // Building count view
             if (currentSquare instanceof TownSquare) {
+                buildingCountLb.setVisible(true);
+                buildingIconLb.setVisible(true);
                 buildingCountLb.setText(((TownSquare) currentSquare).getBuildingCount() + "");
                 buildingIconLb.setIcon(((TownSquare) currentSquare).hasHotel() ? hotelIcon : houseIcon);
             }

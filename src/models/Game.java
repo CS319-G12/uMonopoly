@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
 
 /**
  * @author Ani Kristo & Alper Önder
- * @invariant self.turn >= 0 && self.turn < 4
- * @invariant self.currentSquares.size() == 4
- * @invariant self.players.size() > 1 && self.players.size() <= 4
- * @invariant self.playerNames.size() > 1 && self.playerNames.size() <= 4
- * @invariant self.players.size() == self.playerNames.size()
+ * INV: self.turn >= 0 && self.turn < 4
+ * INV: self.currentSquares.size() == 4
+ * INV: self.players.size() > 1 && self.players.size() <= 4
+ * INV: self.playerNames.size() > 1 && self.playerNames.size() <= 4
+ * INV: self.players.size() == self.playerNames.size()
  */
 public class Game extends Observable {
 
@@ -70,9 +70,9 @@ public class Game extends Observable {
      *
      * @param name        the name of the player to be added as received from the GUI
      * @param tokenFigure the token figure selected from the player at registration
-     * @pre !playerNames->includes(name)
-     * @post self.players.size() == self@pre.players.size() + 1
-     * @post self.playerNames.size() == self@pre.playerNames.size() + 1
+     * PRE: !playerNames->includes(name)
+     * POST: self.players.size() == selfPRE:.players.size() + 1
+     * POST: self.playerNames.size() == selfPRE:.playerNames.size() + 1
      */
     private void addPlayer(String name, TokenFigure tokenFigure) {
         Player newPlayer = new Player(name, tokenFigure);
@@ -82,17 +82,12 @@ public class Game extends Observable {
         notifyObservers();
     }
 
-    public int getNumberOfPlayers() {
-        return players.size();
-    }
-
     /**
      * @param name The name of the player to be removed
-     * @throws PlayerNotFoundException
-     * @pre self.players.size() > 0
-     * @pre self.playerNames->includes(name)
-     * @post self.players.size() == self@pre.players.size() - 1
-     * @post self.playerNames.size() == self@pre.playerNames.size() - 1
+     * PRE: self.players.size() > 0
+     * PRE: self.playerNames->includes(name)
+     * POST: self.players.size() == selfPRE:.players.size() - 1
+     * POST: self.playerNames.size() == selfPRE:.playerNames.size() - 1
      */
     public void removePlayer(String name) {
         players.remove(playerNames.indexOf(name));
@@ -223,7 +218,7 @@ public class Game extends Observable {
             getCurrentPlayer().removePropertyCard(square.getCard());
             square.removeOwner();
             if (square instanceof TownSquare)
-                ((TownSquare) square).removebuildings();
+                ((TownSquare) square).removeBuildings();
         }
 
         setChanged();
@@ -283,7 +278,6 @@ public class Game extends Observable {
     }
 
     public void endTurn() {
-        // TODO update views of the current square and list of property cards owned
         incrementTurn();
         playerRolled = false;
         numberOfDoubles = 0;

@@ -32,9 +32,12 @@ public class PropertyGroup<T extends PropertySquare> {
 
     // METHODS
     public boolean ownsAllProperties(Player thePlayer) {
-        for (Player a : players)
-            if (a != null && !a.equals(thePlayer))
+        for (Player a : players) {
+            if (a == null)
                 return false;
+            else if (!a.equals(thePlayer))
+                return false;
+        }
         return true;
     }
 

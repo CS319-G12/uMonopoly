@@ -49,6 +49,8 @@ public class TownCardView { // TODO test
         houseCostLb.setText("Houses cost " + card.getHouseBuildPrice() + "$ each");
         hotelCostLb.setText("<html><center>Hotels cost " + card.getHotelBuildPrice() + "$ each<br>plus 4 houses</html>");
 
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
     }
 
     // METHODS

@@ -28,9 +28,9 @@ public class DatabaseHelper {
 
     // METHODS
     /**
-     * @post self.dbConnection.isClosed()
-     * @post self.stmt.isClosed()
-     * @post self.dbConnection.isCommited()
+     * POST: self.dbConnection.isClosed()
+     * POST: self.stmt.isClosed()
+     * POST: self.dbConnection.isCommited()
      */
     public ArrayList<HighScores> getHighScoresFromDB()
     {
@@ -68,9 +68,9 @@ public class DatabaseHelper {
      * @param tokenFigure is used token by player won
      * @param amount is the money which is had by player won
      * @param date is the date the game played
-     * @post self.dbConnection.isClosed()
-     * @post self.stmt.isClosed()
-     * @post self.dbConnection.isCommited()
+     * POST: self.dbConnection.isClosed()
+     * POST: self.stmt.isClosed()
+     * POST: self.dbConnection.isCommited()
      */
     public void insertHighScoreToDB(String name, String tokenFigure, int amount, String date)
     {
@@ -100,9 +100,9 @@ public class DatabaseHelper {
 
     /**
      * @param selectedID is the id of the score which is selected for deleting
-     * @post self.dbConnection.isClosed()
-     * @post self.stmt.isClosed()
-     * @post self.dbConnection.isCommited()
+     * POST: self.dbConnection.isClosed()
+     * POST: self.stmt.isClosed()
+     * POST: self.dbConnection.isCommited()
      */
     public void removeHighScoreFromDB(int selectedID) // 0 means remove All
     {

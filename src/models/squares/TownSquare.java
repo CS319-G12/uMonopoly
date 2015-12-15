@@ -88,15 +88,16 @@ public class TownSquare extends Square implements PropertySquare {
         this.group = propertyGroup;
     }
 
-    public void removebuildings() {
+    public void removeBuildings() {
         nrOfHouses = 0;
         hotel = false;
+        setChanged();
         notifyObservers();
     }
 
     /**
      * @throws CannotBuildException
-     * @post self.nrOfHouses == self@pre.nrOfHouses+1 || self.nrOfHouses == self@pre.nrOfHouses+1
+     * POST: self.nrOfHouses == selfPRE:.nrOfHouses+1 || self.nrOfHouses == selfPRE:.nrOfHouses+1
      */
     public void build() throws CannotBuildException {
         if (nrOfHouses < Rules.MAX_HOUSE_COUNT && !hotel)
@@ -107,6 +108,8 @@ public class TownSquare extends Square implements PropertySquare {
         } else
             throw new CannotBuildException();
 
+        setChanged();
+        notifyObservers();
     }
 
     public boolean isFull() {

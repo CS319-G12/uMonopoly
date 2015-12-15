@@ -2,9 +2,9 @@ package models.token;
 
 /**
  * @author Ali Gocer
- * @invariant position >= 0 && position < 40
- * @invariant type == TokenType.SIMPLE || type == TokenType.PLATINUM || type == TokenType.GOLDEN
- * @invariant figure == TokenFigure.DOG || figure == TokenFigure.CAR || figure == TokenFigure.HAT
+ * INV: position >= 0 && position < 40
+ * INV: type == TokenType.SIMPLE || type == TokenType.PLATINUM || type == TokenType.GOLDEN
+ * INV: figure == TokenFigure.DOG || figure == TokenFigure.CAR || figure == TokenFigure.HAT
  *                      TokenFigure.THIMBLE || figure == TokenFigure.SHOE || figure == TokenFigure.IRON
  */
 public class Token {

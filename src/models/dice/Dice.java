@@ -4,8 +4,8 @@ package models.dice;
  * @author Ali Gocer
  * This is a simulation of the two dice used in the Monopoly Game.
  * It providevrs the rolling method tailored for the different Dice Types.
- * @invariant self.value1 > 0 && self.value1 < 7
- * @invariant self.value2 > 0 && self.value2 < 7
+ * INV: self.value1 > 0 && self.value1 < 7
+ * INV: self.value2 > 0 && self.value2 < 7
  */
 public class Dice {
 
@@ -64,8 +64,8 @@ public class Dice {
      *
      * @return The total value of the roll. The sum if it is simple type, double the sum if it is platinum
      * and two roll's value if it is golden.
-     * @pre nDice == DiceType.SIMPLE || nDice == DiceType.GOLDEN || nDice == DiceType.PLATINUM
-     * @post self.value1 != @pre.self.value1 && self.value2 != @pre.self.value2
+     * PRE: nDice == DiceType.SIMPLE || nDice == DiceType.GOLDEN || nDice == DiceType.PLATINUM
+     * POST: self.value1 != PRE:.self.value1 && self.value2 != PRE:.self.value2
      */
     public int rollAndGetTotalValue() {
         int total;

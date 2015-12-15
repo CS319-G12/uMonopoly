@@ -44,8 +44,8 @@ public class GameController {
 
     /**
      * @throws PlayerRegistrationSection.TooFewPlayersException
-     * @pre self.game == null
-     * @post self.game != null
+     * PRE: self.game == null
+     * POST: self.game != null
      */
     public void startGame() throws PlayerRegistrationSection.TooFewPlayersException {
 
@@ -63,17 +63,17 @@ public class GameController {
     }
 
     /**
-     * @pre game.getPlayer(currentPlayer).getBudget() >= game.getSquare(currentSquare).getPrice()
-     * @pre !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
-     * @post game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
+     * PRE: game.getPlayer(currentPlayer).getBudget() >= game.getSquare(currentSquare).getPrice()
+     * PRE: !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
+     * POST: game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      */
     public void buyProperty() throws Game.NotBuyableException {
         game.buyProperty();
     }
 
     /**
-     * @pre game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
-     * @post !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
+     * PRE: game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
+     * POST: !game.getPlayer(currentPlayer).ownsProperty(game.getSquare(currentSquare))
      */
     public void sellProperty() throws Game.NotSellableException {
         game.sellProperty();
@@ -192,7 +192,6 @@ public class GameController {
             game.finished();
             endGame();
         }
-
 
         game.notifyObservers();
     }

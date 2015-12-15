@@ -19,7 +19,7 @@
         </constraints>
         <properties>
           <foreground color="-16777216"/>
-          <text value="Label"/>
+          <text value=""/>
         </properties>
       </component>
       <vspacer id="e3928">
@@ -33,7 +33,7 @@
         </constraints>
         <properties>
           <foreground color="-16777216"/>
-          <text value="Label"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="2bf9a" class="javax.swing.JLabel" binding="twoUtilitiesLb">
@@ -42,7 +42,7 @@
         </constraints>
         <properties>
           <foreground color="-16777216"/>
-          <text value="Label"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="912cf" class="javax.swing.JLabel" binding="mortgageValueLb">
@@ -51,7 +51,7 @@
         </constraints>
         <properties>
           <foreground color="-16777216"/>
-          <text value="Label"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="9691c" class="javax.swing.JLabel" binding="titleLb">
@@ -61,7 +61,7 @@
         <properties>
           <font size="16"/>
           <foreground color="-16777216"/>
-          <text value="Label"/>
+          <text value=""/>
         </properties>
       </component>
     </children>

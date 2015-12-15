@@ -27,11 +27,13 @@ public class UtilityCardView {
         else if (card.getName().equals(Rules.Utilities.WATER_WORKS))
             pictureLb.setIcon(new ImageIcon(getClass().getResource("/img/water_works.png")));
         titleLb.setText(card.getName());
-        oneUtilityLb.setText("If one Utility is owned, the rent is " + card.getRentPrice(1) + " times amount" +
+        oneUtilityLb.setText("If one Utility is owned, the rent is " + card.getRentPrice(1) + " times amount " +
                 "shown on the dice.");
-        twoUtilitiesLb.setText("If both Utilities are owned, the rent is " + card.getRentPrice(2) + " times amount" +
+        twoUtilitiesLb.setText("If both Utilities are owned, the rent is " + card.getRentPrice(2) + " times amount " +
                 "shown on the dice.");
         mortgageValueLb.setText("Mortgage value " + card.getMortgagePrice() + "$");
+
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
     }
 

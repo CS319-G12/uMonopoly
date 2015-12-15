@@ -25,6 +25,8 @@ public class CommunityChestCardView {
         doc.setParagraphAttributes(0, doc.getLength(), centerAttributeSet, false);
 
         descPane.setText(card.getDescription());
+
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
 
     // METHODS

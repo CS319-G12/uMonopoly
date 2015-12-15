@@ -3,6 +3,7 @@ package gui;
 import models.squares.TownSquare;
 
 import javax.swing.*;
+import java.util.Observable;
 
 /**
  * @author anikristo
@@ -43,15 +44,11 @@ public class TownSquareView extends SquareView {
             fourthHouseLb.setIcon(houseIcon);
     }
 
-    public void removeHouse() {
-        if (fourthHouseLb.getIcon() != null)
-            fourthHouseLb.setIcon(null);
-        else if (thirdHouseLb.getIcon() != null)
-            thirdHouseLb.setIcon(null);
-        else if (secondHouseLb.getIcon() != null)
-            secondHouseLb.setIcon(null);
-        else if (firstHouseLb.getIcon() != null)
-            firstHouseLb.setIcon(null);
+    public void removeHouses() {
+        fourthHouseLb.setIcon(null);
+        thirdHouseLb.setIcon(null);
+        secondHouseLb.setIcon(null);
+        firstHouseLb.setIcon(null);
     }
 
     public void addHotel() {
@@ -63,5 +60,27 @@ public class TownSquareView extends SquareView {
 
     public void removeHotel() {
         firstHouseLb.setIcon(null);
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        super.update(observable, o);
+
+        if (observable instanceof TownSquare) {
+            TownSquare s = (TownSquare) observable;
+
+            if (!s.hasOwner()) {
+                removeHouses();
+                removeHotel();
+            } else if (!s.hasHotel()) {
+                removeHouses();
+                for (int i = 0; i < s.getBuildingCount(); i++) {
+                    addHouse();
+                }
+            } else {
+                removeHouses();
+                addHotel();
+            }
+        }
     }
 }

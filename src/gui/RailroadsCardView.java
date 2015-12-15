@@ -29,6 +29,8 @@ public class RailroadsCardView {
         fourStationsRentLb.setText(card.getRentPrice(4) + "$");
         mortgageValueLb.setText("Mortgage value " + card.getMortgagePrice() + "$");
 
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
     }
 
     // METHODS
