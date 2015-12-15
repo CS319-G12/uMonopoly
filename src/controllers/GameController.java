@@ -98,9 +98,14 @@ public class GameController {
             new DatabaseHelper().insertHighScoreToDB(game.getWinner().getName(), game.getWinner().getTokenFigure().getName(), game.getWinner().getBudget(), dayMonthYearFormat.format(today));
         } else {
             // Todo give
-            int selection = JOptionPane.showConfirmDialog(null, "Confirmation", "Are you sure you want to exit?", JOptionPane.YES_NO_OPTION);
-            if(selection == JOptionPane.YES_OPTION){
-//                setContentPane(mainScreen); TODO
+            JOptionPane exitQuestionJOP = new JOptionPane("Are you sure you want to exit?\nProgression and score will not be saved!", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+            JDialog exitQuestionJOPD = exitQuestionJOP.createDialog("Confirmation");
+            exitQuestionJOPD.setAlwaysOnTop(true);
+            exitQuestionJOPD.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+            exitQuestionJOPD.show();
+            int JOPSelectedOption= (int) exitQuestionJOP.getValue();
+            if(JOPSelectedOption == JOptionPane.YES_OPTION){
+                //setContentPane(mainScreen); // TODO
             }
         }
     }
