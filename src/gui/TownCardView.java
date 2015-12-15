@@ -3,11 +3,12 @@ package gui;
 import models.cards.TownCard;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 /**
  * @author Ani Kristo
  */
-public class TownCardView { // TODO test
+public class TownCardView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
@@ -34,7 +35,9 @@ public class TownCardView { // TODO test
 
         // Fixing form design
         titlePn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, java.awt.Color.BLACK));
-        rentPn.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, java.awt.Color.BLACK));
+        Border border1 = BorderFactory.createMatteBorder(1, 1, 1, 1, java.awt.Color.BLACK);
+        Border border2 = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        rentPn.setBorder(BorderFactory.createCompoundBorder(border1, border2));
 
         // Setting up the card view
         titlePn.setBackground(card.getColor().awtColor());

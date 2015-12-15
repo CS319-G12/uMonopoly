@@ -20,10 +20,10 @@ public class RailroadsFactory implements PropertyFactory {
     public RailroadsFactory(){
         squares = new HashSet<>();
 
-        RailroadsCard card1 = new RailroadsCard("READING RAILROAD",200, 100, 25,50,100,200);
-        RailroadsCard card2 = new RailroadsCard("PENNSYLVANIA RAILROAD",200, 100, 25,50,100,200);
-        RailroadsCard card3 = new RailroadsCard("B. 'n O. RAILROAD",200, 100, 25,50,100,200);
-        RailroadsCard card4 = new RailroadsCard("SHORT LINE",200, 100, 25,50,100,200);
+        RailroadsCard card1 = new RailroadsCard(2, "READING RAILROAD", 200, 100, 25, 50, 100, 200);
+        RailroadsCard card2 = new RailroadsCard(10, "PENNSYLVANIA RAILROAD", 200, 100, 25, 50, 100, 200);
+        RailroadsCard card3 = new RailroadsCard(17, "B. 'n O. RAILROAD", 200, 100, 25, 50, 100, 200);
+        RailroadsCard card4 = new RailroadsCard(25, "SHORT LINE", 200, 100, 25, 50, 100, 200);
 
         RailroadsSquare square1 = new RailroadsSquare(5, card1);
         RailroadsSquare square2 = new RailroadsSquare(15, card2);

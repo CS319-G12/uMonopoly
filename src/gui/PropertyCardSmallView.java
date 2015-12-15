@@ -7,23 +7,26 @@ import javax.swing.*;
 /**
  * @author Ani Kristo
  */
-class PropertyCardSmallView { // TODO test
+class PropertyCardSmallView {
 
     // ATTRIBUTES
     private JPanel mainPanel;
     private JLabel titleLb;
 
-    private java.awt.Color color;
+    private java.awt.Color backgroundColor;
+    private java.awt.Color foregroundColor;
 
     // CONSTRUCTOR
     public PropertyCardSmallView(PropertyCard card) {
         super();
 
-        color = card.getColor().awtColor();
-        mainPanel.setBackground(color);
+        backgroundColor = card.getColor().awtColor();
+        mainPanel.setBackground(backgroundColor);
         titleLb.setText(String.format("<html><center><div style=\"width:%dpx;\">%s</div></center></html>", 60, card.getName()));
+        foregroundColor = java.awt.Color.BLACK;
         if (card.getColor() == Color.CHARCOAL)
-            titleLb.setForeground(java.awt.Color.WHITE);
+            foregroundColor = java.awt.Color.WHITE;
+        titleLb.setForeground(foregroundColor);
     }
 
     // METHODS
@@ -32,10 +35,12 @@ class PropertyCardSmallView { // TODO test
     }
 
     public void setEnabled(boolean enabled) {
-        if (!enabled)
+        if (!enabled) {
             mainPanel.setBackground(Color.DISABLED.awtColor());
-        else
-            mainPanel.setBackground(color);
-        titleLb.setEnabled(enabled);
+            titleLb.setForeground(java.awt.Color.WHITE);
+        } else {
+            mainPanel.setBackground(backgroundColor);
+            titleLb.setForeground(foregroundColor);
+        }
     }
 }

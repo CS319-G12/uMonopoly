@@ -221,9 +221,6 @@ public class PlayerRegistrationSection extends java.util.Observable {
         nameTf.setEnabled(false);
     }
 
-    /**
-     * TODO
-     */
     public static class NameNotUniqueException extends Exception {
         @Override
         public String getMessage() {
@@ -231,9 +228,6 @@ public class PlayerRegistrationSection extends java.util.Observable {
         }
     }
 
-    /**
-     * TODO
-     */
     public static class TooFewPlayersException extends Exception {
         @Override
         public String getMessage() {
@@ -241,9 +235,6 @@ public class PlayerRegistrationSection extends java.util.Observable {
         }
     }
 
-    /**
-     * TODO
-     */
     class TokenNotSelectedException extends Exception {
         @Override
         public String getMessage() {
@@ -251,9 +242,6 @@ public class PlayerRegistrationSection extends java.util.Observable {
         }
     }
 
-    /**
-     * TODO
-     */
     class NameNotEnteredException extends Exception {
         @Override
         public String getMessage() {

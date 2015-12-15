@@ -41,10 +41,6 @@ class PlayerView implements Observer {
                 setSelected(true);
             else
                 setSelected(false);
-
-            if (p.isInJail()) {
-                // TODO show the icon of jail
-            }
         }
     }
 
@@ -65,10 +61,13 @@ class PlayerView implements Observer {
 
     private void setNameLb(Player p) {
         this.nameLb.setText(
-                String.format("%d. %s (%s) %s",
+                String.format("%d. %s (%s) %s %s",
                         this.rank,
                         p.getName(),
                         p.getTokenFigure().getName(),
-                        p.isInJail() ? "- JAIL" : ""));
+                        p.isInJail() ? "- JAIL" : "",
+                        p.hasLost() ? "- LOST" : ""));
+        if (p.hasLost())
+            nameLb.setEnabled(false);
     }
 }

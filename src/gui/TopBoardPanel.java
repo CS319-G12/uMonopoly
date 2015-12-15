@@ -30,7 +30,7 @@ class TopBoardPanel extends JPanel {
         TTownSquareView marvinGardens = new TTownSquareView((TownSquare) squares.get(9));
         CornerSquareView goToJail = new CornerSquareView(squares.get(10), new ImageIcon(getClass().getResource("/img/square_gotojail.png")));
 
-        // Add to the main panel // TODO check order
+        // Add to the main panel
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setMinimumSize(new Dimension(730, 95));
         setMaximumSize(new Dimension(730, 95));

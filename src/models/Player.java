@@ -56,7 +56,7 @@ public class Player extends Observable {
 
     public void setPosition(int position) {
         token.setPosition(position);
-        notifyObservers(); // TODO see if is changed
+        notifyObservers();
     }
 
     public void upgradeToken() throws TokenCannotBeUpgradedException {

@@ -90,6 +90,8 @@ public class GameController {
     public void endGame() {
 
         if (game.hasFinished()) {
+            // TODO show a dialog for information
+            // TODO disable buttons
             // TODO save high scores and exit
             game.getWinner();
 
@@ -97,7 +99,7 @@ public class GameController {
             DateFormat dayMonthYearFormat = new SimpleDateFormat("dd/MM/yyyy");
             new DatabaseHelper().insertHighScoreToDB(game.getWinner().getName(), game.getWinner().getTokenFigure().getName(), game.getWinner().getBudget(), dayMonthYearFormat.format(today));
         } else {
-            // Todo give
+            // Todo give it to Window
             int selection = JOptionPane.showConfirmDialog(null, "Confirmation", "Are you sure you want to exit?", JOptionPane.YES_NO_OPTION);
             if (selection == JOptionPane.YES_OPTION) {
 //                setContentPane(mainScreen); TODO
@@ -122,7 +124,6 @@ public class GameController {
 
         // Town Squares
         if (s instanceof TownSquare) {
-            // TODO
             if (((TownSquare) s).hasOwner() && !((TownSquare) s).isOwner(p)) {
                 int amount = ((TownSquare) s).getRentPrice();
                 p.updateBudget(-amount);
@@ -132,7 +133,6 @@ public class GameController {
 
         // Utility Squares
         else if (s instanceof UtilitySquare) {
-            // TODO
             if (((UtilitySquare) s).hasOwner() && !((UtilitySquare) s).isOwner(p)) {
                 int amount = ((UtilitySquare) s).getRentPrice() * (p.getDiceValue1().getValue() + p.getDiceValue2().getValue());
                 p.updateBudget(-amount);
@@ -142,7 +142,6 @@ public class GameController {
 
         // Railroads Squares
         else if (s instanceof RailroadsSquare) {
-            // TODO
             if (((RailroadsSquare) s).hasOwner() && !((RailroadsSquare) s).isOwner(p)) {
                 int amount = ((RailroadsSquare) s).getRentPrice();
                 p.updateBudget(-amount);
@@ -152,13 +151,11 @@ public class GameController {
 
         // Chance Squares
         else if (s instanceof ChanceCardSquare) {
-            // TODO just getCard afterwards
             applyBonusCard(((ChanceCardSquare) s).pickCard(), s, p);
         }
 
         // Community Chest Squares
         else if (s instanceof CommunityChestCardSquare) {
-            // TODO just getCard afterwards
             applyBonusCard(((CommunityChestCardSquare) s).pickCard(), s, p);
         }
 
@@ -178,7 +175,6 @@ public class GameController {
             }
         }
 
-        // TODO
         if (p.getBudget() <= 0)
             p.lost();
 
@@ -206,7 +202,6 @@ public class GameController {
 
     public void build() throws Game.NotBuildableException {
         game.build();
-        // TODO Update views
     }
 
     /**

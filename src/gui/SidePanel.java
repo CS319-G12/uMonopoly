@@ -88,12 +88,10 @@ class SidePanel implements Observer {
 
             // Update (enable / disable) the properties they own
             List<Integer> propertyCardsIndices =
-                    ((Game) observable).getCurrentPlayer()
-                            .getListOfPropertyCards()
+                    ((Game) observable).getCurrentPlayer().getListOfPropertyCards()
                             .stream()
                             .map(PropertyCard::getID)
                             .collect(Collectors.toList());
-
             for (int i = 0; i < listOfPropertyCardSmallViews.size(); i++) {
                 if (propertyCardsIndices.contains(i))
                     listOfPropertyCardSmallViews.get(i).setEnabled(true);

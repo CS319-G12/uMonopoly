@@ -26,7 +26,7 @@ public class PropertyGroup<T extends PropertySquare> {
         }
 
         for (int i = 0; i < properties.size(); i++) {
-            players.add(null); //TODO
+            players.add(null);
         }
     }
 

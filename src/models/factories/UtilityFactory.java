@@ -21,8 +21,8 @@ public class UtilityFactory implements PropertyFactory {
     public UtilityFactory(){
         squares = new HashSet<>();
 
-        UtilityCard card1 = new UtilityCard("ELECTRIC COMPANY", 150, 75, 4, 10);
-        UtilityCard card2 = new UtilityCard("WATER WORKS", 150, 75, 4, 10);
+        UtilityCard card1 = new UtilityCard(7, "ELECTRIC COMPANY", 150, 75, 4, 10);
+        UtilityCard card2 = new UtilityCard(20, "WATER WORKS", 150, 75, 4, 10);
 
         UtilitySquare square1 = new UtilitySquare(12 ,SquareType.ELECTRIC_COMPANY, card1);
         UtilitySquare square2 = new UtilitySquare(28 ,SquareType.WATER_WORKS, card2);

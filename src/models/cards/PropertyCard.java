@@ -9,10 +9,6 @@ import javax.swing.*;
  * @author buseburcu
  */
 public abstract class PropertyCard {
-
-    // CONSTANT UNIQUE ID
-    private static int id_count = 0;
-
     // PROPERTIES
     private final int id;
     private int sellPrice;
@@ -23,8 +19,8 @@ public abstract class PropertyCard {
     private String name;
 
     // CONSTRUCTOR
-    PropertyCard(String name, int sellPrice, int mortgagePrice) {
-        this.id = id_count++;
+    PropertyCard(int id, String name, int sellPrice, int mortgagePrice) {
+        this.id = id;
         this.sellPrice = sellPrice;
         this.mortgagePrice = mortgagePrice;
         this.name = name;

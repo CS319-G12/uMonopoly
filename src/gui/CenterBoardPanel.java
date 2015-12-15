@@ -30,6 +30,7 @@ class CenterBoardPanel implements Observer {
     private JLabel buildingCountLb;
     private JLabel buildingIconLb;
     private JPanel cardDisplayPn;
+    private JPanel buildingPn;
 
     // CONSTRUCTOR
     public CenterBoardPanel(Game game) {
@@ -87,6 +88,8 @@ class CenterBoardPanel implements Observer {
 
         this.houseIcon = new ImageIcon(getClass().getResource("/img/house_big.png"));
         this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel_big.png"));
+
+        buildingPn.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
     }
 
     private void updateButtons() {

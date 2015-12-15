@@ -6,7 +6,7 @@ package gui;
 public enum Color {
 
     BLACK(0x000000),
-    CHARCOAL(0x888888),
+    CHARCOAL(0x555555),
     BACKGROUND(0xcde6d0),
     BROWN(0x955436),
     LIGHT_BLUE(0xaae0fa),

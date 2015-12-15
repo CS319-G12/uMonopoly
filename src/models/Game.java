@@ -82,18 +82,6 @@ public class Game extends Observable {
         notifyObservers();
     }
 
-    /**
-     * @param name The name of the player to be removed
-     * PRE: self.players.size() > 0
-     * PRE: self.playerNames->includes(name)
-     * POST: self.players.size() == selfPRE:.players.size() - 1
-     * POST: self.playerNames.size() == selfPRE:.playerNames.size() - 1
-     */
-    public void removePlayer(String name) {
-        players.remove(playerNames.indexOf(name));
-        playerNames.remove(playerNames.indexOf(name));
-    } // TODO
-
     public void start() {
         turn = 0;
         hasFinished = false;
@@ -190,7 +178,6 @@ public class Game extends Observable {
     }
 
     public void buyProperty() throws NotBuyableException {
-        // TODO
         Square currentSquare = getCurrentSquare();
         if (!(currentSquare instanceof PropertySquare))
             throw new NotBuyableException();
@@ -207,7 +194,6 @@ public class Game extends Observable {
     }
 
     public void sellProperty() throws NotSellableException {
-        // todo
         Square currentSquare = getCurrentSquare();
         if (!(currentSquare instanceof PropertySquare))
             throw new NotSellableException();
@@ -257,7 +243,7 @@ public class Game extends Observable {
             updateCurrentSquares();
             p.incrementJailTurns();
             updateCurrentSquares();
-            endTurn();// TODO
+            endTurn();
             return;
         }
 
@@ -268,7 +254,7 @@ public class Game extends Observable {
             p.setInJail(true);
             playerRolled = true;
             updateCurrentSquares();
-            endTurn(); // TODO
+            endTurn();
             return;
         }
 

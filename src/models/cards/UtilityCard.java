@@ -14,8 +14,8 @@ public class UtilityCard extends PropertyCard {
     private UtilityCardView view;
 
     // CONSTRUCTOR
-    public UtilityCard(String name, int sellPrice, int mortgagePrice, int rent1, int rent2) {
-        super(name, sellPrice, mortgagePrice);
+    public UtilityCard(int id, String name, int sellPrice, int mortgagePrice, int rent1, int rent2) {
+        super(id, name, sellPrice, mortgagePrice);
         setRentPrices(rent1, rent2);
 
         this.view = new UtilityCardView(this);

@@ -28,7 +28,7 @@ class RightBoardPanel extends JPanel {
         RTaxSquareView taxSquareView = new RTaxSquareView((TaxSquare) squares.get(7));
         RTownSquareView boardwalk = new RTownSquareView((TownSquare) squares.get(8));
 
-        // Add to the main panel // TODO check order
+        // Add to the main panel
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setMinimumSize(new Dimension(95, 540));
         setMaximumSize(new Dimension(95, 540));
