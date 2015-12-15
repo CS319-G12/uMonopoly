@@ -37,12 +37,11 @@ class CenterBoardPanel implements Observer {
         // Adding action listeners
         rollBtn.addActionListener(actionEvent -> {
             controller.roll();
-            rollBtn.setEnabled(false);
-            updateButtons();
 
             // Update the dice views
             diceV1.setIcon(controller.getGame().getDiceValue1().getIcon());
             diceV2.setIcon(controller.getGame().getDiceValue2().getIcon());
+            updateButtons();
         });
         endBtn.addActionListener(actionEvent -> {
             controller.endTurn();

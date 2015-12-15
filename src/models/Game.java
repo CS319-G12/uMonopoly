@@ -39,7 +39,9 @@ public class Game extends Observable {
     private GameScreen view;
 
     private HelpController helpController;
+
     private boolean playerRolled;
+    private boolean playerHadDoubles;
 
     // CONSTRUCTOR
     public Game(GameController controller, HelpController helpController, Map<String, TokenFigure> playerDetails) {
@@ -50,6 +52,7 @@ public class Game extends Observable {
         this.helpController = helpController;
         this.board = new MonopolyBoard();
         playerRolled = false;
+        playerHadDoubles = false;
 
         for (Map.Entry<String, TokenFigure> entry : playerDetails.entrySet())
             addPlayer(entry.getKey(), entry.getValue());
@@ -234,7 +237,7 @@ public class Game extends Observable {
     }
 
     public void roll() {
-        getCurrentPlayer().roll();
+        playerHadDoubles = getCurrentPlayer().roll();
         playerRolled = true;
         updateCurrentSquares();
         notifyObservers();
@@ -274,6 +277,10 @@ public class Game extends Observable {
             else
                 return 0;
         }); */
+    }
+
+    public boolean playerHadDoubles() {
+        return playerHadDoubles;
     }
 
     private static class PlayerNotFoundException extends Exception {

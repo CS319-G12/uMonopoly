@@ -110,7 +110,7 @@ public class GameController {
     }
 
     public void roll() {
-        if (!game.playerRolled())
+        if (canRoll())
             game.roll();
     }
 
@@ -124,10 +124,13 @@ public class GameController {
     }
 
     /**
-     * Conditions: current player has not rolled before
+     * Conditions:
+     * 1. Current player has not rolled before
+     *          OR
+     * 2. Current player has rolled before and it was doubles
      */
     public boolean canRoll() {
-        return !game.playerRolled();
+        return !game.playerRolled() || (game.playerRolled() && game.playerHadDoubles());
     }
 
     /**

@@ -101,8 +101,12 @@ public class Player extends Observable {
         notifyObservers();
     }
 
-    public void roll() {
+    /**
+     * @return true if it was doubles otherwise false
+     */
+    public boolean roll() {
         updatePosition(dice.rollAndGetTotalValue());
+        return dice.isDoubles();
     }
 
     private void updatePosition(int val) {
