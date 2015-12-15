@@ -33,7 +33,7 @@ public class PropertyGroup<T extends PropertySquare> {
     // METHODS
     public boolean ownsAllProperties(Player thePlayer){
         for(Player a : players)
-            if(!a.equals(thePlayer))
+            if (a != null && !a.equals(thePlayer))
                 return false;
         return true;
     }
@@ -48,5 +48,15 @@ public class PropertyGroup<T extends PropertySquare> {
 
     public void removeOwner(T propertySquare) {
         players.set(properties.indexOf(propertySquare), null);
+    }
+
+    public int getNumberOfOwnedProperties(Player owner) {
+        int nr = 0;
+        for (PropertySquare s : properties) {
+            if (s.getCard().getOwner() == owner)
+                nr++;
+        }
+
+        return nr;
     }
 }

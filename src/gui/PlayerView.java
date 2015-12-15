@@ -31,12 +31,20 @@ class PlayerView implements Observer {
     public void update(Observable observable, Object o) {
         if (observable instanceof Player) {
             Player p = (Player) observable;
+
             setNameLb(p);
             setBudgetLb(p);
-            if (p.isPlaying())
+
+            if (p.hasLost()) {
+                mainPanel.setEnabled(false);
+            } else if (p.isPlaying())
                 setSelected(true);
             else
                 setSelected(false);
+
+            if (p.isInJail()) {
+                // TODO show the icon of jail
+            }
         }
     }
 

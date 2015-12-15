@@ -16,7 +16,7 @@ public class TownSquare extends Square implements PropertySquare {
     // ATTRIBUTES
     private final Color color;
     private final TownCard theTownCard;
-    private int houseCount;
+    private int nrOfHouses;
     private boolean hotel;
     private PropertyGroup<TownSquare> group;
 
@@ -24,7 +24,7 @@ public class TownSquare extends Square implements PropertySquare {
     public TownSquare(int position, TownCard theTownCard) {
         super(position, theTownCard.getName(), SquareType.TOWN);
         this.color = theTownCard.getColor();
-        this.houseCount = 0;
+        this.nrOfHouses = 0;
         this.hotel = false;
         this.theTownCard = theTownCard;
     }
@@ -35,15 +35,26 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     public int getBuildingCount() {
-        return hotel ? 1 : houseCount;
+        return hotel ? 1 : nrOfHouses;
     }
 
     public boolean hasHotel() {
         return hotel;
     }
 
-    public int getRentPrice(int numberOfBuilding) {
-        return theTownCard.getRentPrice(numberOfBuilding);
+    public int getRentPrice() {
+        if (theTownCard.getOwner() == null)
+            return 0;
+        else if (group.ownsAllProperties(theTownCard.getOwner())
+                && nrOfHouses == 0
+                && !hotel) {
+            // Twice the rent price
+            return theTownCard.getRentPrice(0) * 2;
+
+        } else if (hotel)
+            return theTownCard.getHotelRentPrice();
+        else
+            return theTownCard.getRentPrice(nrOfHouses);
     }
 
     @Override
@@ -79,25 +90,25 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     @Override
-    public <T extends PropertySquare> void setGroup(PropertyGroup propertyGroup) {
+    public void setGroup(PropertyGroup propertyGroup) {
         this.group = propertyGroup;
     }
 
-    public void removeBuidlings() {
-        houseCount = 0;
-        hotel      = false;
+    public void removebuildings() {
+        nrOfHouses = 0;
+        hotel = false;
         notifyObservers();
     }
 
-/**
- * @throws CannotBuildException
- * @post self.houseCount == self@pre.houseCount+1 || self.houseCount == self@pre.houseCount+1
- */
+    /**
+     * @throws CannotBuildException
+     * @post self.nrOfHouses == self@pre.nrOfHouses+1 || self.nrOfHouses == self@pre.nrOfHouses+1
+     */
     public void build() throws CannotBuildException {
-        if (houseCount < Rules.MAX_HOUSE_COUNT && !hotel)
-            houseCount++;
-        else if (houseCount == Rules.MAX_HOUSE_COUNT && !hotel) {
-            houseCount = 0;
+        if (nrOfHouses < Rules.MAX_HOUSE_COUNT && !hotel)
+            nrOfHouses++;
+        else if (nrOfHouses == Rules.MAX_HOUSE_COUNT && !hotel) {
+            nrOfHouses = 0;
             hotel = true;
         } else
             throw new CannotBuildException();
@@ -105,7 +116,11 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     public boolean isFull() {
-        return hotel && houseCount == 0;
+        return hotel && nrOfHouses == 0;
+    }
+
+    public boolean hasMonopoly(Player currentPlayer) {
+        return group.ownsAllProperties(currentPlayer);
     }
 
     public static class CannotBuildException extends Exception {

@@ -14,15 +14,21 @@ public class UtilitySquare extends Square implements PropertySquare {
     private PropertyGroup<UtilitySquare> group;
 
     // CONSTRUCTOR
-    public UtilitySquare(int position, SquareType type, UtilityCard theUtilityCard){
+    public UtilitySquare(int position, SquareType type, UtilityCard theUtilityCard) {
         super(position, theUtilityCard.getName(), type);
         this.theUtilityCard = theUtilityCard;
     }
 
     // METHODS
     @Override
-    public int getRentPrice(int numberOfBuildings){
-        return theUtilityCard.getRentPrice(numberOfBuildings);
+    public int getRentPrice() {
+        Player p = theUtilityCard.getOwner();
+        if (p == null)
+            return 0;
+        if (group.ownsAllProperties(p))
+            return theUtilityCard.getRentPrice(2);
+        else
+            return theUtilityCard.getRentPrice(1);
     }
 
     @Override
@@ -53,7 +59,7 @@ public class UtilitySquare extends Square implements PropertySquare {
     }
 
     @Override
-    public PropertyGroup<UtilitySquare> getGroup(){
+    public PropertyGroup<UtilitySquare> getGroup() {
         return group;
     }
 

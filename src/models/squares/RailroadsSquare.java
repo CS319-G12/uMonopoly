@@ -20,8 +20,13 @@ public class RailroadsSquare extends Square implements PropertySquare {
 
     // METHODS
     @Override
-    public int getRentPrice(int numberOfBuildings){
-        return theRailroadsCard.getRentPrice(numberOfBuildings);
+    public int getRentPrice() {
+        Player owner = theRailroadsCard.getOwner();
+        ;
+        if (owner == null)
+            return 0;
+        else
+            return theRailroadsCard.getRentPrice(group.getNumberOfOwnedProperties(owner));
     }
 
     @Override

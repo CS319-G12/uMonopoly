@@ -100,12 +100,12 @@ public class Game extends Observable {
         turn = 0;
         hasFinished = false;
         for (Player p : players)
-            p.setPosition(0);
+            p.setPosition(Rules.GO_POSITION);
         currentSquares = new ArrayList<>();
         for (int i = 0; i < players.size(); i++)
-            currentSquares.add(0);
+            currentSquares.add(Rules.GO_POSITION);
 
-        Square square = getListOfSquares().get(0);
+        Square square = getListOfSquares().get(Rules.GO_POSITION);
         players.forEach(square::addResidingPlayer);
 
         notifyObservers();
@@ -212,7 +212,7 @@ public class Game extends Observable {
             getCurrentPlayer().removePropertyCard(square.getCard());
             square.removeOwner();
             if (square instanceof TownSquare)
-                ((TownSquare) square).removeBuidlings();
+                ((TownSquare) square).removebuildings();
         }
     }
 
@@ -245,6 +245,7 @@ public class Game extends Observable {
 
     public void endTurn() {
         // TODO update views of the current square and list of property cards owned
+        // TODo make player had doubles false
         incrementTurn();
         playerRolled = false;
         notifyObservers();

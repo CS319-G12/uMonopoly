@@ -90,6 +90,10 @@ public class Player extends Observable {
         return inJail;
     }
 
+    public void setInJail(boolean inJail) {
+        this.inJail = inJail;
+    }
+
     public void upgradeDice() throws DiceCannotBeUpgradedException {
         if (dice.getType() == DiceType.SIMPLE)
             dice.setType(DiceType.GOLDEN);
@@ -157,6 +161,7 @@ public class Player extends Observable {
 
     public void lost() {
         hasLost = true;
+        notifyObservers();
     }
 
     private static class DiceCannotBeUpgradedException extends Exception {

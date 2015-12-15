@@ -5,9 +5,8 @@ import gui.PlayerRegistrationSection;
 import models.Game;
 import models.Player;
 import models.Rules;
-import models.squares.PropertySquare;
-import models.squares.Square;
-import models.squares.TownSquare;
+import models.cards.BonusCard;
+import models.squares.*;
 import models.token.TokenFigure;
 
 import javax.swing.*;
@@ -112,6 +111,73 @@ public class GameController {
     public void roll() {
         if (canRoll())
             game.roll();
+
+        checkLandingSquare();
+    }
+
+    private void checkLandingSquare() {
+        Player p = game.getCurrentPlayer();
+        Square s = game.getCurrentSquare();
+
+        // Town Squares
+        if (s instanceof TownSquare) {
+            // TODO
+            if (!((TownSquare) s).isOwner(p)) {
+                p.updateBudget(-((TownSquare) s).getRentPrice());
+            }
+        }
+
+        // Utility Squares
+        else if (s instanceof UtilitySquare) {
+            // TODO
+            if (!((UtilitySquare) s).isOwner(p)) {
+                p.updateBudget(-((UtilitySquare) s).getRentPrice() * (p.getDiceValue1().getValue() + p.getDiceValue2().getValue()));
+            }
+        }
+
+        // Railroads Squares
+        else if (s instanceof RailroadsSquare) {
+            // TODO
+            if (!((RailroadsSquare) s).isOwner(p)) {
+                p.updateBudget(-((RailroadsSquare) s).getRentPrice());
+            }
+        }
+
+        // Chance Squares
+        else if (s instanceof ChanceCardSquare) {
+            // TODO just getCard afterwards
+            applyBonusCard(((ChanceCardSquare) s).pickCard(), s, p);
+        }
+
+        // Community Chest Squares
+        else if (s instanceof CommunityChestCardSquare) {
+            // TODO just getCard afterwards
+            applyBonusCard(((CommunityChestCardSquare) s).pickCard(), s, p);
+        }
+
+        // Tax Squares
+        else if (s instanceof TaxSquare) {
+            p.updateBudget(-((TaxSquare) s).getTaxAmount());
+        }
+
+        // Corner Squares
+        else {
+            if (s.getPosition() == Rules.GO_POSITION) {
+                p.updateBudget(Rules.SALARY);
+
+            } else if (s.getPosition() == Rules.JAIL_POSITION) {
+                p.setPosition(Rules.JAIL_POSITION);
+                p.setInJail(true);
+            }
+        }
+
+        // TODO
+        if (p.getBudget() <= 0)
+            p.lost();
+    }
+
+    private void applyBonusCard(BonusCard card, Square s, Player p) {
+        // TODO
     }
 
     public void endTurn() {
@@ -150,7 +216,7 @@ public class GameController {
     public boolean canBuy() {
         Square currentSquare = game.getCurrentSquare();
         return currentSquare instanceof PropertySquare
-                && ((PropertySquare) currentSquare).hasOwner()
+                && !((PropertySquare) currentSquare).hasOwner()
                 && game.getCurrentPlayer().getBudget() >= ((PropertySquare) currentSquare).getCard().getSellPrice();
     }
 
@@ -168,7 +234,7 @@ public class GameController {
     /**
      * Conditions:
      * 1. Current square is a TownSquare
-     * 2. It is owned by the current player
+     * 2. The current player owns the monopoly
      * 3. The player has enough budget
      * 4. There is space to build
      */
@@ -176,7 +242,7 @@ public class GameController {
         Square currentSquare = game.getCurrentSquare();
         Player currentPlayer = game.getCurrentPlayer();
         return currentSquare instanceof TownSquare
-                && ((TownSquare) currentSquare).isOwner(currentPlayer)
+                && ((TownSquare) currentSquare).hasMonopoly(currentPlayer)
                 && currentPlayer.getBudget() >= ((TownSquare) currentSquare).getCard().getHouseBuildPrice()
                 && !((TownSquare) currentSquare).isFull();
     }

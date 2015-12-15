@@ -20,10 +20,10 @@ public class SquareFactory {
             list.add(null);
         }
 
-        Square go = new Square(0, "GO", SquareType.GO);
-        Square jailVisitor = new Square(10, "JAIL VISITOR", SquareType.JAIL_VISITOR);
-        Square freeParking = new Square(20, "FREE PARKING", SquareType.FREE_PARKING);
-        Square jail = new Square(30, "JAIL", SquareType.JAIL);
+        Square go = new Square(Rules.GO_POSITION, "GO", SquareType.GO);
+        Square jailVisitor = new Square(Rules.JAIL_VISITOR_POSITION, "JAIL VISITOR", SquareType.JAIL_VISITOR);
+        Square freeParking = new Square(Rules.FREE_PARKING_POSITION, "FREE PARKING", SquareType.FREE_PARKING);
+        Square jail = new Square(Rules.JAIL_POSITION, "JAIL", SquareType.JAIL);
 
         TaxSquare tax1 = new TaxSquare(4, "INCOME TAX", 200);
         TaxSquare tax2 = new TaxSquare(38, "LUXURY TAX", 75);

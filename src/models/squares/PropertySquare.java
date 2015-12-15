@@ -7,7 +7,7 @@ import models.cards.PropertyCard;
  * @author Alper Önder
  */
 public interface PropertySquare {
-    int getRentPrice(int numberOfBuildings);
+    int getRentPrice();
 
     PropertyCard getCard();
 

@@ -77,6 +77,11 @@ class CenterBoardPanel implements Observer {
             }
         });
 
+        // Disabling the buttons since the game starts at GO square
+        buyBtn.setEnabled(false);
+        sellBtn.setEnabled(false);
+        buildBtn.setEnabled(false);
+
         this.houseIcon = new ImageIcon(getClass().getResource("/img/house_big.png"));
         this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel_big.png"));
     }
