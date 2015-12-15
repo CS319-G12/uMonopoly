@@ -22,7 +22,6 @@ public class RailroadsSquare extends Square implements PropertySquare {
     @Override
     public int getRentPrice() {
         Player owner = theRailroadsCard.getOwner();
-        ;
         if (owner == null)
             return 0;
         else
@@ -32,12 +31,6 @@ public class RailroadsSquare extends Square implements PropertySquare {
     @Override
     public RailroadsCard getCard() {
         return theRailroadsCard;
-    }
-
-    @Override
-    public void setOwner(Player currentPlayer) {
-        theRailroadsCard.setOwner(currentPlayer);
-        group.setOwner(this, currentPlayer);
     }
 
     @Override
@@ -54,6 +47,17 @@ public class RailroadsSquare extends Square implements PropertySquare {
     @Override
     public boolean isOwner(Player p) {
         return theRailroadsCard.getOwner() == p;
+    }
+
+    @Override
+    public Player getOwner() {
+        return theRailroadsCard.getOwner();
+    }
+
+    @Override
+    public void setOwner(Player currentPlayer) {
+        theRailroadsCard.setOwner(currentPlayer);
+        group.setOwner(this, currentPlayer);
     }
 
     @Override

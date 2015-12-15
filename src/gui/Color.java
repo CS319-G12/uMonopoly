@@ -5,9 +5,8 @@ package gui;
  */
 public enum Color {
 
-    WHITE(0xffffff),
     BLACK(0x000000),
-    CHARCOAL(0x999999),
+    CHARCOAL(0x888888),
     BACKGROUND(0xcde6d0),
     BROWN(0x955436),
     LIGHT_BLUE(0xaae0fa),
@@ -17,8 +16,7 @@ public enum Color {
     YELLOW(0xfef200),
     GREEN(0x1fb25a),
     BLUE(0x0072bb),
-    MAROON(0xc1272d),
-    CYAN(0x29abe2);
+    DISABLED(0xcccccc);
 
     // ATTRIBUTES
     private final java.awt.Color color;

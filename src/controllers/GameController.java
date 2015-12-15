@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -90,7 +91,7 @@ public class GameController {
 
         if (game.hasFinished()) {
             // TODO save high scores and exit
-             game.getWinner();
+            game.getWinner();
 
             Date today = new Date();
             DateFormat dayMonthYearFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -98,7 +99,7 @@ public class GameController {
         } else {
             // Todo give
             int selection = JOptionPane.showConfirmDialog(null, "Confirmation", "Are you sure you want to exit?", JOptionPane.YES_NO_OPTION);
-            if(selection == JOptionPane.YES_OPTION){
+            if (selection == JOptionPane.YES_OPTION) {
 //                setContentPane(mainScreen); TODO
             }
         }
@@ -122,24 +123,30 @@ public class GameController {
         // Town Squares
         if (s instanceof TownSquare) {
             // TODO
-            if (!((TownSquare) s).isOwner(p)) {
-                p.updateBudget(-((TownSquare) s).getRentPrice());
+            if (((TownSquare) s).hasOwner() && !((TownSquare) s).isOwner(p)) {
+                int amount = ((TownSquare) s).getRentPrice();
+                p.updateBudget(-amount);
+                ((TownSquare) s).getOwner().updateBudget(amount);
             }
         }
 
         // Utility Squares
         else if (s instanceof UtilitySquare) {
             // TODO
-            if (!((UtilitySquare) s).isOwner(p)) {
-                p.updateBudget(-((UtilitySquare) s).getRentPrice() * (p.getDiceValue1().getValue() + p.getDiceValue2().getValue()));
+            if (((UtilitySquare) s).hasOwner() && !((UtilitySquare) s).isOwner(p)) {
+                int amount = ((UtilitySquare) s).getRentPrice() * (p.getDiceValue1().getValue() + p.getDiceValue2().getValue());
+                p.updateBudget(-amount);
+                ((UtilitySquare) s).getOwner().updateBudget(amount);
             }
         }
 
         // Railroads Squares
         else if (s instanceof RailroadsSquare) {
             // TODO
-            if (!((RailroadsSquare) s).isOwner(p)) {
-                p.updateBudget(-((RailroadsSquare) s).getRentPrice());
+            if (((RailroadsSquare) s).hasOwner() && !((RailroadsSquare) s).isOwner(p)) {
+                int amount = ((RailroadsSquare) s).getRentPrice();
+                p.updateBudget(-amount);
+                ((RailroadsSquare) s).getOwner().updateBudget(amount);
             }
         }
 
@@ -175,6 +182,18 @@ public class GameController {
         if (p.getBudget() <= 0)
             p.lost();
 
+        // Checking if game has ended
+        int numberOfLostPlayers = 0;
+        List<Player> playersList = game.getListOfPlayers();
+        for (Player player : playersList)
+            if (player.hasLost())
+                numberOfLostPlayers++;
+        if (numberOfLostPlayers == playersList.size() - 1) {
+            game.finished();
+            endGame();
+        }
+
+
         game.notifyObservers();
     }
 
@@ -194,7 +213,7 @@ public class GameController {
     /**
      * Conditions:
      * 1. Current player has not rolled before
-     *          OR
+     * OR
      * 2. Current player has rolled before and it was doubles
      */
     public boolean canRoll() {
@@ -203,10 +222,11 @@ public class GameController {
 
     /**
      * Conditions:
-     * 1. Current player rolled
+     * 1. Current player rolled and it wasn't doubles
+     *
      */
     public boolean canEndTurn() {
-        return game.playerRolled();
+        return !canRoll();
     }
 
     /**

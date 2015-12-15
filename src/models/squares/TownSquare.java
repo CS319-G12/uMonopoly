@@ -63,12 +63,6 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     @Override
-    public void setOwner(Player currentPlayer) {
-        theTownCard.setOwner(currentPlayer);
-        group.setOwner(this, currentPlayer);
-    }
-
-    @Override
     public void removeOwner() {
         theTownCard.removeOwner();
         group.removeOwner(this);
@@ -121,6 +115,17 @@ public class TownSquare extends Square implements PropertySquare {
 
     public boolean hasMonopoly(Player currentPlayer) {
         return group.ownsAllProperties(currentPlayer);
+    }
+
+    @Override
+    public Player getOwner() {
+        return theTownCard.getOwner();
+    }
+
+    @Override
+    public void setOwner(Player currentPlayer) {
+        theTownCard.setOwner(currentPlayer);
+        group.setOwner(this, currentPlayer);
     }
 
     public static class CannotBuildException extends Exception {

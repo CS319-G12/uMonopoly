@@ -83,6 +83,7 @@ class CenterBoardPanel implements Observer {
         buyBtn.setEnabled(false);
         sellBtn.setEnabled(false);
         buildBtn.setEnabled(false);
+        endBtn.setEnabled(false);
 
         this.houseIcon = new ImageIcon(getClass().getResource("/img/house_big.png"));
         this.hotelIcon = new ImageIcon(getClass().getResource("/img/hotel_big.png"));
@@ -136,15 +137,18 @@ class CenterBoardPanel implements Observer {
 
             if (currentSquare instanceof PropertySquare) {
                 cardDisplayPn.setSize(new Dimension(200, 318));
-                cardDisplayPn = ((PropertySquare) currentSquare).getCard().getView();
+                cardDisplayPn.removeAll();
+                cardDisplayPn.add(((PropertySquare) currentSquare).getCard().getView());
                 mainPn.repaint();
             } else if (currentSquare instanceof ChanceCardSquare) {
                 cardDisplayPn.setSize(new Dimension(318, 200));
-                cardDisplayPn = ((ChanceCardSquare) currentSquare).getCard().getView();
+                cardDisplayPn.removeAll();
+                cardDisplayPn.add(((ChanceCardSquare) currentSquare).getCard().getView());
                 mainPn.repaint();
             } else if (currentSquare instanceof CommunityChestCardSquare) {
                 cardDisplayPn.setSize(new Dimension(318, 200));
-                cardDisplayPn = ((CommunityChestCardSquare) currentSquare).getCard().getView();
+                cardDisplayPn.removeAll();
+                cardDisplayPn.add(((CommunityChestCardSquare) currentSquare).getCard().getView());
                 mainPn.repaint();
             }
 

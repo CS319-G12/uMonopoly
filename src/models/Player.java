@@ -26,6 +26,7 @@ public class Player extends Observable {
     private Token token;
     private Dice dice;
     private List<PropertyCard> propertyCards;
+    private int turnsInJail;
 
     // CONSTRUCTOR
     public Player(String name, TokenFigure tokenFigure) {
@@ -37,6 +38,7 @@ public class Player extends Observable {
         this.dice = new Dice();
         this.token = new Token(tokenFigure);
         this.propertyCards = new ArrayList<>();
+        this.turnsInJail = 0;
     }
 
     // METHODS
@@ -92,6 +94,7 @@ public class Player extends Observable {
 
     public void setInJail(boolean inJail) {
         this.inJail = inJail;
+        setPosition(Rules.JAIL_VISITOR_POSITION);
     }
 
     public void upgradeDice() throws DiceCannotBeUpgradedException {
@@ -109,7 +112,17 @@ public class Player extends Observable {
      * @return true if it was doubles otherwise false
      */
     public boolean roll() {
-        updatePosition(dice.rollAndGetTotalValue());
+
+        int roll = dice.rollAndGetTotalValue();
+
+        if ((inJail && dice.isDoubles()) || (inJail && !dice.isDoubles() && turnsInJail == 3)) {
+            inJail = false;
+            turnsInJail = 0;
+            updatePosition(roll);
+        } else if (!inJail) {
+            updatePosition(roll);
+        }
+
         return dice.isDoubles();
     }
 
@@ -162,6 +175,10 @@ public class Player extends Observable {
     public void lost() {
         hasLost = true;
         notifyObservers();
+    }
+
+    public void incrementJailTurns() {
+        turnsInJail++;
     }
 
     private static class DiceCannotBeUpgradedException extends Exception {

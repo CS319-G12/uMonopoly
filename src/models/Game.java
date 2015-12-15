@@ -42,6 +42,7 @@ public class Game extends Observable {
 
     private boolean playerRolled;
     private boolean playerHadDoubles;
+    private int numberOfDoubles;
 
     // CONSTRUCTOR
     public Game(GameController controller, HelpController helpController, Map<String, TokenFigure> playerDetails) {
@@ -53,9 +54,11 @@ public class Game extends Observable {
         this.board = new MonopolyBoard();
         playerRolled = false;
         playerHadDoubles = false;
+        numberOfDoubles = 0;
 
         for (Map.Entry<String, TokenFigure> entry : playerDetails.entrySet())
             addPlayer(entry.getKey(), entry.getValue());
+        players.get(0).setPlaying(true);
 
         this.view = new GameScreen(this);
     }
@@ -94,7 +97,7 @@ public class Game extends Observable {
     public void removePlayer(String name) {
         players.remove(playerNames.indexOf(name));
         playerNames.remove(playerNames.indexOf(name));
-    } // TODO for losing
+    } // TODO
 
     public void start() {
         turn = 0;
@@ -174,6 +177,11 @@ public class Game extends Observable {
         return hasFinished;
     }
 
+    public void finished() {
+        this.hasFinished = true;
+        notifyObservers(); // TODO dialog with winner and disable all buttons and display
+    }
+
     public Square getCurrentSquare() {
         return board.getListOfSquares().get(currentSquares.get(turn));
     }
@@ -246,7 +254,29 @@ public class Game extends Observable {
     }
 
     public void roll() {
-        playerHadDoubles = getCurrentPlayer().roll();
+        Player p = getCurrentPlayer();
+        playerHadDoubles = p.roll();
+
+        if (p.isInJail() && !playerHadDoubles) { // not doubles
+            playerRolled = true;
+            updateCurrentSquares();
+            p.incrementJailTurns();
+            updateCurrentSquares();
+            endTurn();// TODO
+            return;
+        }
+
+        if (playerHadDoubles)
+            numberOfDoubles++;
+
+        if (numberOfDoubles == 3) {
+            p.setInJail(true);
+            playerRolled = true;
+            updateCurrentSquares();
+            endTurn(); // TODO
+            return;
+        }
+
         playerRolled = true;
         updateCurrentSquares();
         setChanged();
@@ -254,9 +284,9 @@ public class Game extends Observable {
 
     public void endTurn() {
         // TODO update views of the current square and list of property cards owned
-        // TODo make player had doubles false
         incrementTurn();
         playerRolled = false;
+        numberOfDoubles = 0;
         setChanged();
         notifyObservers();
     }

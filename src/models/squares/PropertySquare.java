@@ -15,11 +15,13 @@ public interface PropertySquare {
 
     <T extends PropertySquare> void setGroup(PropertyGroup propertyGroup);
 
-    void setOwner(Player currentPlayer);
-
     void removeOwner();
 
     boolean hasOwner();
 
     boolean isOwner(Player p);
+
+    Player getOwner();
+
+    void setOwner(Player currentPlayer);
 }

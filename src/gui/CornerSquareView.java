@@ -39,7 +39,7 @@ class CornerSquareView extends SquareView {
         setMinimumSize(new Dimension(95, 95));
         setMaximumSize(new Dimension(95, 95));
         setPreferredSize(new Dimension(95, 95));
-        add(tokenPn1, BorderLayout.WEST);
+        add(tokenPn1, BorderLayout.EAST);
         add(tokenPn2, BorderLayout.SOUTH);
     }
 

@@ -13,11 +13,14 @@ class PropertyCardSmallView { // TODO test
     private JPanel mainPanel;
     private JLabel titleLb;
 
+    private java.awt.Color color;
+
     // CONSTRUCTOR
     public PropertyCardSmallView(PropertyCard card) {
         super();
 
-        mainPanel.setBackground(card.getColor().awtColor());
+        color = card.getColor().awtColor();
+        mainPanel.setBackground(color);
         titleLb.setText(String.format("<html><center><div style=\"width:%dpx;\">%s</div></center></html>", 60, card.getName()));
         if (card.getColor() == Color.CHARCOAL)
             titleLb.setForeground(java.awt.Color.WHITE);
@@ -29,7 +32,10 @@ class PropertyCardSmallView { // TODO test
     }
 
     public void setEnabled(boolean enabled) {
-        mainPanel.setEnabled(enabled);
+        if (!enabled)
+            mainPanel.setBackground(Color.DISABLED.awtColor());
+        else
+            mainPanel.setBackground(color);
         titleLb.setEnabled(enabled);
     }
 }
