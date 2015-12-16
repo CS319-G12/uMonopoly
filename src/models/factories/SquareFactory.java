@@ -9,12 +9,9 @@ import java.util.*;
  * @author Alper Önder
  */
 public class SquareFactory {
+    public List<Square> getSquares() {
+        List<Square> list;
 
-    // ATTRIBUTES
-    private List<Square> list;
-
-    // CONSTRUCTOR
-    public SquareFactory() {
         list = new ArrayList<>(Rules.SQUARE_COUNT);
         for (int i = 0; i < Rules.SQUARE_COUNT; i++) {
             list.add(null);
@@ -28,11 +25,11 @@ public class SquareFactory {
         TaxSquare tax1 = new TaxSquare(4, "INCOME TAX", 200);
         TaxSquare tax2 = new TaxSquare(38, "LUXURY TAX", 75);
 
-        Set<TownSquare> towns = new TownFactory().getSquares();
-        Set<UtilitySquare> utilities = new UtilityFactory().getSquares();
-        Set<RailroadsSquare> railroads = new RailroadsFactory().getSquares();
-        Set<ChanceCardSquare> chances = new ChanceFactory().getSquares();
-        Set<CommunityChestCardSquare> communities = new CommunityChestFactory().getSquares();
+        Set<TownSquare> towns = new TownFactory().makeSquares();
+        Set<UtilitySquare> utilities = new UtilityFactory().makeSquares();
+        Set<RailroadsSquare> railroads = new RailroadsFactory().makeSquares();
+        Set<ChanceCardSquare> chances = new ChanceFactory().makeSquares();
+        Set<CommunityChestCardSquare> communities = new CommunityChestFactory().makeSquares();
 
         Set<Square> allSquares = new HashSet<>();
         allSquares.add(go);
@@ -53,11 +50,6 @@ public class SquareFactory {
         }
 
         list = Arrays.asList(array);
-
-    }
-
-    // METHOD
-    public List<Square> getSquares() {
         return list;
     }
 }

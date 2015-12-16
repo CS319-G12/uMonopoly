@@ -13,11 +13,9 @@ import java.util.Set;
  * @author Alper Önder
  */
 public class RailroadsFactory implements PropertyFactory {
-    // ATTRIBUTES
-    private Set<RailroadsSquare> squares;
-
-    // CONSTRUCTOR
-    public RailroadsFactory(){
+    @Override
+    public Set<RailroadsSquare> makeSquares() {
+        Set<RailroadsSquare> squares;
         squares = new HashSet<>();
 
         RailroadsCard card1 = new RailroadsCard(2, "READING RAILROAD", 200, 100, 25, 50, 100, 200);
@@ -35,12 +33,7 @@ public class RailroadsFactory implements PropertyFactory {
         squares.add(square3);
         squares.add(square4);
 
-        new PropertyGroup<RailroadsSquare>(PropertyGroupType.RAILROADS, Arrays.asList(square1, square2,square3, square4));
-    }
-
-    // METHODS
-    @Override
-    public Set<RailroadsSquare> getSquares() {
+        new PropertyGroup<>(PropertyGroupType.RAILROADS, Arrays.asList(square1, square2, square3, square4));
         return squares;
     }
 }

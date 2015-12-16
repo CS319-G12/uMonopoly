@@ -14,27 +14,24 @@ import java.util.Set;
  * @author Alper Önder
  */
 public class UtilityFactory implements PropertyFactory {
-    // ATTRIBUTES
-    private Set<UtilitySquare> squares;
+    // METHODS
+    @Override
+    public Set<UtilitySquare> makeSquares() {
 
-    // CONSTRUCTOR
-    public UtilityFactory(){
+        Set<UtilitySquare> squares;
+
         squares = new HashSet<>();
 
         UtilityCard card1 = new UtilityCard(7, "ELECTRIC COMPANY", 150, 75, 4, 10);
         UtilityCard card2 = new UtilityCard(20, "WATER WORKS", 150, 75, 4, 10);
 
-        UtilitySquare square1 = new UtilitySquare(12 ,SquareType.ELECTRIC_COMPANY, card1);
-        UtilitySquare square2 = new UtilitySquare(28 ,SquareType.WATER_WORKS, card2);
+        UtilitySquare square1 = new UtilitySquare(12, SquareType.ELECTRIC_COMPANY, card1);
+        UtilitySquare square2 = new UtilitySquare(28, SquareType.WATER_WORKS, card2);
 
         squares.add(square1);
         squares.add(square2);
 
-        new PropertyGroup<UtilitySquare>(PropertyGroupType.UTILITY, Arrays.asList(square1,  square2));
-    }
-    // METHODS
-    @Override
-    public Set<UtilitySquare> getSquares() {
+        new PropertyGroup<>(PropertyGroupType.UTILITY, Arrays.asList(square1, square2));
         return squares;
     }
 }

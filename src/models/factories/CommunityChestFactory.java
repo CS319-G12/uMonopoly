@@ -13,11 +13,11 @@ import java.util.Set;
  * @author Alper Önder
  */
 public class CommunityChestFactory implements BonusFactory {
+    @Override
+    public Set<CommunityChestCardSquare> makeSquares() {
 
-    private final Set<CommunityChestCardSquare> squares;
+        Set<CommunityChestCardSquare> squares;
 
-    // CONSTRUCTOR
-    public CommunityChestFactory(){
         List<CommunityChestCard> cards = new ArrayList<>();
         squares = new HashSet<>();
 
@@ -112,11 +112,7 @@ public class CommunityChestFactory implements BonusFactory {
         squares.add(square1);
         squares.add(square2);
         squares.add(square3);
-    }
 
-    // METHODS
-    @Override
-    public Set<CommunityChestCardSquare> getSquares() {
         return squares;
     }
 }

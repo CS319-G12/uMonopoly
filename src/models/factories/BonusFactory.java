@@ -1,10 +1,12 @@
 package models.factories;
 
+import models.squares.Square;
+
 import java.util.Set;
 
 /**
  * @author Ani Kristo
  */
 interface BonusFactory {
-    Set getSquares();
+    Set<? extends Square> makeSquares();
 }

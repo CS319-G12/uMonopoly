@@ -14,12 +14,9 @@ import java.util.Set;
  * @author Ani Kristo, Alper Önder
  */
 public class TownFactory implements PropertyFactory {
-
-    // ATTRIBUTES
-    private Set<TownSquare> squares;
-
-    // CONSTRUCTOR
-    public TownFactory() {
+    @Override
+    public Set<TownSquare> makeSquares() {
+        Set<TownSquare> squares;
 
         // Instantiates the property cards
         TownCard card1 = new TownCard(0, "MEDITERRANEAN AVENUE", Color.BROWN, 60, 30, 4, 10, 30, 90, 160, 250, 50, 50);
@@ -93,20 +90,15 @@ public class TownFactory implements PropertyFactory {
         squares.add(square21);
         squares.add(square22);
 
-        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square1,  square2));
-        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square3,  square4,  square5));
-        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square6,  square7,  square8));
-        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square9,  square10, square11));
-        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square12, square13, square14));
-        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square15, square16, square17));
-        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square18, square19, square20));
-        new PropertyGroup<TownSquare>(PropertyGroupType.TOWN, Arrays.asList(square21, square22));
-
-    }
-
-    // METHOD
-    @Override
-    public Set<TownSquare> getSquares() {
+        new PropertyGroup<>(PropertyGroupType.TOWN, Arrays.asList(square1, square2));
+        new PropertyGroup<>(PropertyGroupType.TOWN, Arrays.asList(square3, square4, square5));
+        new PropertyGroup<>(PropertyGroupType.TOWN, Arrays.asList(square6, square7, square8));
+        new PropertyGroup<>(PropertyGroupType.TOWN, Arrays.asList(square9, square10, square11));
+        new PropertyGroup<>(PropertyGroupType.TOWN, Arrays.asList(square12, square13, square14));
+        new PropertyGroup<>(PropertyGroupType.TOWN, Arrays.asList(square15, square16, square17));
+        new PropertyGroup<>(PropertyGroupType.TOWN, Arrays.asList(square18, square19, square20));
+        new PropertyGroup<>(PropertyGroupType.TOWN, Arrays.asList(square21, square22));
+        
         return squares;
     }
 }

@@ -13,11 +13,9 @@ import java.util.Set;
  * @author Ani Kristo
  */
 public class ChanceFactory implements BonusFactory {
-
-    private final Set<ChanceCardSquare> squares;
-
-    // CONSTRUCTOR
-    public ChanceFactory() {
+    @Override
+    public Set<ChanceCardSquare> makeSquares() {
+        Set<ChanceCardSquare> squares;
 
         List<ChanceCard> cards = new ArrayList<>();
         squares = new HashSet<>();
@@ -102,11 +100,7 @@ public class ChanceFactory implements BonusFactory {
         squares.add(square1);
         squares.add(square2);
         squares.add(square3);
-    }
 
-    // METHODS
-    @Override
-    public Set<ChanceCardSquare> getSquares() {
         return squares;
     }
 }

@@ -36,7 +36,7 @@ class TUtilitySquareView extends SquareView {
 
     // METHODS
     @Override
-    public void paintComponents(Graphics graphics) {
+    protected void paintComponent(Graphics graphics) {
         super.paintComponents(graphics);
 
         graphics.drawImage(new ImageIcon(getClass().getResource("/img/water_works_t.png")).getImage(), 0, 0, null);
