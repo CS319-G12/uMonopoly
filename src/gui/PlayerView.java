@@ -1,6 +1,7 @@
 package gui;
 
 import models.Player;
+import models.dice.DiceType;
 
 import javax.swing.*;
 import java.util.Observable;
@@ -60,13 +61,25 @@ class PlayerView implements Observer {
     }
 
     private void setNameLb(Player p) {
-        this.nameLb.setText(
-                String.format("%d. %s (%s) %s %s",
-                        this.rank,
-                        p.getName(),
-                        p.getTokenFigure().getName(),
-                        p.isInJail() ? "- JAIL" : "",
-                        p.hasLost() ? "- LOST" : ""));
+
+        String diceType = p.getDiceType() != DiceType.SIMPLE ? String.format("(%s DICE)", p.getDiceType().toString()) : "";
+        String jail = p.isInJail() ? "- JAIL" : "";
+        String lost = p.hasLost() ? "- LOST" : "";
+
+        this.nameLb.setText("</html><b>"
+                + this.rank
+                + ". </b><i>"
+                + p.getName()
+                + " ("
+                + p.getTokenType().toString() + " " + p.getTokenFigure().toString()
+                + ") "
+                + diceType
+                + "  "
+                + jail
+                + " "
+                + lost
+                + "</i></html>");
+
         if (p.hasLost())
             setSelected(false);
     }

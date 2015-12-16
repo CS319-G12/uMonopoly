@@ -56,7 +56,7 @@ public enum TokenFigure {
         return selectedIcon;
     }
 
-    public String getName() {
+    public String toString() {
         return name;
     }
 

@@ -95,7 +95,7 @@ public class GameController {
         if (game.hasFinished()) {
             Date today = new Date();
             DateFormat dayMonthYearFormat = new SimpleDateFormat("dd/MM/yyyy");
-            new DatabaseHelper().insertHighScoreToDB(game.getWinner().getName(), game.getWinner().getTokenFigure().getName(), game.getWinner().getBudget(), dayMonthYearFormat.format(today));
+            new DatabaseHelper().insertHighScoreToDB(game.getWinner().getName(), game.getWinner().getTokenFigure().toString(), game.getWinner().getBudget(), dayMonthYearFormat.format(today));
             game.getView().closeWindow(true);
         } else {
             game.getView().closeWindow(false);
@@ -237,7 +237,7 @@ public class GameController {
         Square currentSquare = game.getCurrentSquare();
         return currentSquare instanceof PropertySquare
                 && !((PropertySquare) currentSquare).hasOwner()
-                && game.getCurrentPlayer().getBudget() >= ((PropertySquare) currentSquare).getCard().getSellPrice();
+                && game.getCurrentPlayer().getBudget() > ((PropertySquare) currentSquare).getCard().getSellPrice();
     }
 
     /**
@@ -263,7 +263,7 @@ public class GameController {
         Player currentPlayer = game.getCurrentPlayer();
         return currentSquare instanceof TownSquare
                 && ((TownSquare) currentSquare).hasMonopoly(currentPlayer)
-                && currentPlayer.getBudget() >= ((TownSquare) currentSquare).getCard().getHouseBuildPrice()
+                && currentPlayer.getBudget() > ((TownSquare) currentSquare).getCard().getHouseBuildPrice()
                 && !((TownSquare) currentSquare).isFull();
     }
 
@@ -273,5 +273,13 @@ public class GameController {
 
     public boolean isGameOn() {
         return game != null && !game.hasFinished();
+    }
+
+    public void upgradeDice() throws Player.DiceCannotBeUpgradedException {
+        game.getCurrentPlayer().upgradeDice();
+    }
+
+    public void upgradeToken() throws Player.TokenCannotBeUpgradedException {
+        game.getCurrentPlayer().upgradeToken();
     }
 }

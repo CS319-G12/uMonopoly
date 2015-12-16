@@ -59,15 +59,34 @@ class SidePanel implements Observer {
         }
 
         helpBtn.addActionListener(actionEvent -> gameController.viewHelp());
-        exitGameButton.addActionListener(actionEvent -> gameController.endGame());
-        upgradeDiceBtn.setOpaque(true);
-        upgradeTokenBtn.setOpaque(true);
         helpBtn.setOpaque(true);
-        exitGameButton.setOpaque(true);
-        upgradeDiceBtn.setBorderPainted(false);
-        upgradeTokenBtn.setBorderPainted(false);
         helpBtn.setBorderPainted(false);
+
+        exitGameButton.addActionListener(actionEvent -> gameController.endGame());
+        exitGameButton.setOpaque(true);
         exitGameButton.setBorderPainted(false);
+
+        upgradeDiceBtn.addActionListener(actionEvent -> {
+            try {
+                gameController.upgradeDice();
+            } catch (Player.DiceCannotBeUpgradedException e) {
+                upgradeDiceBtn.setEnabled(false);
+            }
+        });
+        upgradeDiceBtn.setOpaque(true);
+        upgradeDiceBtn.setBorderPainted(false);
+
+        upgradeTokenBtn.addActionListener(actionEvent -> {
+            try {
+                gameController.upgradeToken();
+            } catch (Player.TokenCannotBeUpgradedException e) {
+                upgradeTokenBtn.setEnabled(false);
+            }
+        });
+        upgradeTokenBtn.setOpaque(true);
+        upgradeTokenBtn.setBorderPainted(false);
+
+
     }
 
     // METHODS
@@ -79,7 +98,7 @@ class SidePanel implements Observer {
         this.upgradeTokenBtn.setText(String.format("Upgrade Token\n(%d$)", price));
     }
 
-    private void setdiceButtonsPrice(int price) {
+    private void setDiceButtonsPrice(int price) {
         this.upgradeDiceBtn.setText(String.format("Upgrade Dice\n(%d$)", price));
     }
 
@@ -94,9 +113,26 @@ class SidePanel implements Observer {
                 playerViewList.get(i).update(players.get(i), null);
             }
 
+            // Updating the Upgrade buttons
+            Player currentPlayer = ((Game) observable).getCurrentPlayer();
+
+            if (currentPlayer.canUpgradeDice()) {
+                upgradeDiceBtn.setEnabled(true);
+                setDiceButtonsPrice(currentPlayer.getDiceUpgradePrice());
+            } else {
+                upgradeDiceBtn.setEnabled(false);
+            }
+
+            if (currentPlayer.canUpgradeToken()) {
+                upgradeTokenBtn.setEnabled(true);
+                setTokenButtonsPrice(currentPlayer.getTokenUpgradePrice());
+            } else {
+                upgradeTokenBtn.setEnabled(false);
+            }
+
             // Update (enable / disable) the properties they own
             List<Integer> propertyCardsIndices =
-                    ((Game) observable).getCurrentPlayer().getListOfPropertyCards()
+                    currentPlayer.getListOfPropertyCards()
                             .stream()
                             .map(PropertyCard::getID)
                             .collect(Collectors.toList());

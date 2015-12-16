@@ -27,7 +27,7 @@ public class Player extends Observable {
     private Dice dice;
     private List<PropertyCard> propertyCards;
     private int turnsInJail;
-    private int oldPostion;
+    private int oldPosition;
 
     // CONSTRUCTOR
     public Player(String name, TokenFigure tokenFigure) {
@@ -56,30 +56,27 @@ public class Player extends Observable {
     }
 
     public void setPosition(int position) {
-        oldPostion = getPosition();
+        oldPosition = getPosition();
         token.setPosition(position);
         notifyObservers();
     }
 
     public void upgradeToken() throws TokenCannotBeUpgradedException {
-        if (token.getType() == TokenType.SIMPLE)
+        if (token.getType() == TokenType.SIMPLE && canUpgradeToken()) {
+            budget -= Rules.GOLDEN_TOKEN_UPGRADE_PRICE;
             token.setType(TokenType.GOLDEN);
-        else if (token.getType() == TokenType.GOLDEN)
+        } else if (token.getType() == TokenType.GOLDEN && canUpgradeToken()) {
+            budget -= Rules.PLATINUM_TOKEN_UPGRADE_PRICE;
             token.setType(TokenType.PLATINUM);
-        else
+        } else
             throw new TokenCannotBeUpgradedException();
 
+        setChanged();
         notifyObservers();
     }
 
     public TokenType getTokenType() {
         return token.getType();
-    }
-
-    public void move(int difference) {
-        oldPostion = getPosition();
-        token.setPosition(token.getPosition() + difference);
-        notifyObservers();
     }
 
     public int getBudget() {
@@ -98,17 +95,20 @@ public class Player extends Observable {
     public void setInJail(boolean inJail) {
         this.inJail = inJail;
         setPosition(Rules.JAIL_VISITOR_POSITION);
-        oldPostion = getPosition(); // trick
+        oldPosition = getPosition(); // trick
     }
 
     public void upgradeDice() throws DiceCannotBeUpgradedException {
-        if (dice.getType() == DiceType.SIMPLE)
+        if (dice.getType() == DiceType.SIMPLE && canUpgradeDice()) {
+            budget -= Rules.GOLDEN_DICE_UPGRADE_PRICE;
             dice.setType(DiceType.GOLDEN);
-        else if (dice.getType() == DiceType.GOLDEN)
+        } else if (dice.getType() == DiceType.GOLDEN && canUpgradeDice()) {
+            budget -= Rules.PLATINUM_DICE_UPGRADE_PRICE;
             dice.setType(DiceType.PLATINUM);
-        else
+        } else
             throw new DiceCannotBeUpgradedException();
 
+        setChanged();
         notifyObservers();
     }
 
@@ -117,7 +117,7 @@ public class Player extends Observable {
      */
     public boolean roll() {
 
-        oldPostion = getPosition();
+        oldPosition = getPosition();
 
         int roll = dice.rollAndGetTotalValue();
 
@@ -133,7 +133,7 @@ public class Player extends Observable {
     }
 
     private void updatePosition(int val) {
-        oldPostion = getPosition();
+        oldPosition = getPosition();
         setPosition(getPosition() + val);
         if (getPosition() >= Rules.SQUARE_COUNT)
             setPosition(getPosition() - Rules.SQUARE_COUNT);
@@ -189,17 +189,41 @@ public class Player extends Observable {
     }
 
     public int getOldPosition() {
-        return oldPostion;
+        return oldPosition;
     }
 
-    private static class DiceCannotBeUpgradedException extends Exception {
+    public boolean canUpgradeDice() {
+        return getDiceType() != DiceType.PLATINUM && budget > getDiceUpgradePrice();
+    }
+
+    public boolean canUpgradeToken() {
+        return getTokenType() != TokenType.PLATINUM && budget > getTokenUpgradePrice();
+    }
+
+    public int getDiceUpgradePrice() {
+        if (dice.getType() == DiceType.SIMPLE)
+            return Rules.GOLDEN_DICE_UPGRADE_PRICE;
+        if (dice.getType() == DiceType.GOLDEN)
+            return Rules.PLATINUM_DICE_UPGRADE_PRICE;
+        return -1;
+    }
+
+    public int getTokenUpgradePrice() {
+        if (token.getType() == TokenType.SIMPLE)
+            return Rules.GOLDEN_TOKEN_UPGRADE_PRICE;
+        if (token.getType() == TokenType.GOLDEN)
+            return Rules.PLATINUM_TOKEN_UPGRADE_PRICE;
+        return -1;
+    }
+
+    public static class DiceCannotBeUpgradedException extends Exception {
         @Override
         public String getMessage() {
             return super.getMessage() + "The dice has reached the maximum upgrade level!";
         }
     }
 
-    private static class TokenCannotBeUpgradedException extends Exception {
+    public static class TokenCannotBeUpgradedException extends Exception {
         @Override
         public String getMessage() {
             return super.getMessage() + "The token has reached the maximum upgrade level!";

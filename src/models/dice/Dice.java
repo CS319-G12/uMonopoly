@@ -70,11 +70,12 @@ public class Dice {
     public int rollAndGetTotalValue() {
         int total;
         if (type == DiceType.GOLDEN) {
-            this.roll();
+            roll();
             total = value1.getValue() + value2.getValue();
-            this.roll();
+            roll();
             total += value1.getValue() + value2.getValue();
         } else if (type == DiceType.PLATINUM) {
+            roll();
             total = 2 * (value1.getValue() + value2.getValue());
         } else { // DiceType is SIMPLE
             roll();

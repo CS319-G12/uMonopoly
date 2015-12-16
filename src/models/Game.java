@@ -183,7 +183,7 @@ public class Game extends Observable {
             throw new NotBuyableException();
 
         PropertySquare square = (PropertySquare) currentSquare;
-        if (square.getCard().getOwner() == null && getCurrentPlayer().getBudget() >= square.getCard().getSellPrice()) {
+        if (square.getCard().getOwner() == null && getCurrentPlayer().getBudget() > square.getCard().getSellPrice()) {
             square.setOwner(getCurrentPlayer());
             getCurrentPlayer().addPropertyCard(square.getCard());
             getCurrentPlayer().updateBudget((-1) * square.getCard().getSellPrice());
@@ -217,7 +217,7 @@ public class Game extends Observable {
             throw new NotBuildableException();
 
         PropertySquare square = (PropertySquare) currentSquare;
-        if (square.getGroup().ownsAllProperties(getCurrentPlayer()) && getCurrentPlayer().getBudget() >= ((TownSquare) square).getCard().getHouseBuildPrice()) {
+        if (square.getGroup().ownsAllProperties(getCurrentPlayer()) && getCurrentPlayer().getBudget() > ((TownSquare) square).getCard().getHouseBuildPrice()) {
             try {
                 ((TownSquare) square).build();
                 getCurrentPlayer().updateBudget((-1) * ((TownSquare) square).getCard().getHouseBuildPrice());
