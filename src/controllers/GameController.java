@@ -276,10 +276,10 @@ public class GameController {
     }
 
     public void upgradeDice() throws Player.DiceCannotBeUpgradedException {
-        game.getCurrentPlayer().upgradeDice();
+        game.upgradeDice();
     }
 
     public void upgradeToken() throws Player.TokenCannotBeUpgradedException {
-        game.getCurrentPlayer().upgradeToken();
+        game.upgradeToken();
     }
 }

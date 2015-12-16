@@ -304,6 +304,18 @@ public class Game extends Observable {
         return playerHadDoubles;
     }
 
+    public void upgradeDice() throws Player.DiceCannotBeUpgradedException {
+        getCurrentPlayer().upgradeDice();
+        setChanged();
+        notifyObservers();
+    }
+
+    public void upgradeToken() throws Player.TokenCannotBeUpgradedException {
+        getCurrentPlayer().upgradeToken();
+        setChanged();
+        notifyObservers();
+    }
+
     private static class PlayerNotFoundException extends Exception {
         @Override
         public String getMessage() {

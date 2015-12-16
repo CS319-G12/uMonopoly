@@ -66,19 +66,11 @@ class PlayerView implements Observer {
         String jail = p.isInJail() ? "- JAIL" : "";
         String lost = p.hasLost() ? "- LOST" : "";
 
-        this.nameLb.setText("</html><b>"
-                + this.rank
-                + ". </b><i>"
-                + p.getName()
-                + " ("
-                + p.getTokenType().toString() + " " + p.getTokenFigure().toString()
-                + ") "
-                + diceType
-                + "  "
-                + jail
-                + " "
-                + lost
-                + "</i></html>");
+        String text = this.rank + ". " + p.getName()
+                + " (" + p.getTokenType().toString() + " " + p.getTokenFigure().toString() + ") "
+                + diceType + "  " + jail + " " + lost;
+
+        nameLb.setText(text);
 
         if (p.hasLost())
             setSelected(false);

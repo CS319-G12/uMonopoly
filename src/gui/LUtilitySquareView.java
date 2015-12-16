@@ -36,7 +36,7 @@ class LUtilitySquareView extends SquareView {
 
     // METHODS
     @Override
-    public void paintComponents(Graphics graphics) {
+    protected void paintComponent(Graphics graphics) {
         super.paintComponents(graphics);
 
         graphics.drawImage(new ImageIcon(getClass().getResource("/img/electric_company_l.png")).getImage(), 0, 0, null);
