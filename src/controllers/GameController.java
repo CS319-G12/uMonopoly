@@ -90,25 +90,13 @@ public class GameController {
     public void endGame() {
 
         if (game.hasFinished()) {
-            // TODO show a dialog for information
-            // TODO disable buttons
-            // TODO save high scores and exit
-            game.getWinner();
-
             Date today = new Date();
             DateFormat dayMonthYearFormat = new SimpleDateFormat("dd/MM/yyyy");
             new DatabaseHelper().insertHighScoreToDB(game.getWinner().getName(), game.getWinner().getTokenFigure().getName(), game.getWinner().getBudget(), dayMonthYearFormat.format(today));
+            game.getView().closeWindow(true);
         } else {
             // Todo give
-            JOptionPane exitQuestionJOP = new JOptionPane("Are you sure you want to exit?\nProgression and score will not be saved!", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
-            JDialog exitQuestionJOPD = exitQuestionJOP.createDialog("Confirmation");
-            exitQuestionJOPD.setAlwaysOnTop(true);
-            exitQuestionJOPD.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-            exitQuestionJOPD.show();
-            int JOPSelectedOption= (int) exitQuestionJOP.getValue();
-            if(JOPSelectedOption == JOptionPane.YES_OPTION){
-                //setContentPane(mainScreen); // TODO
-            }
+            game.getView().closeWindow(false);
         }
     }
 
@@ -266,5 +254,13 @@ public class GameController {
                 && ((TownSquare) currentSquare).hasMonopoly(currentPlayer)
                 && currentPlayer.getBudget() >= ((TownSquare) currentSquare).getCard().getHouseBuildPrice()
                 && !((TownSquare) currentSquare).isFull();
+    }
+
+    public String getWinnerName() {
+        return game.getWinner().getName();
+    }
+
+    public boolean isGameOn() {
+        return game != null && !game.hasFinished();
     }
 }

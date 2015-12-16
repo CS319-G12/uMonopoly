@@ -29,4 +29,13 @@ public class GameScreen extends Observable {
     public JPanel getContent() {
         return mainPn;
     }
+
+    public void closeWindow(boolean hasGameFinished) {
+        setChanged();
+        if (hasGameFinished) {
+            notifyObservers(Window.NotificationMsg.EXIT_FINISHED);
+        } else {
+            notifyObservers(Window.NotificationMsg.EXIT_NOT_FINISHED);
+        }
+    }
 }

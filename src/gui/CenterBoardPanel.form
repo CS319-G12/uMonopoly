@@ -6,9 +6,9 @@
     </constraints>
     <properties>
       <background color="-3283248"/>
-      <maximumSize width="565" height="565"/>
-      <minimumSize width="565" height="565"/>
-      <preferredSize width="565" height="565"/>
+      <maximumSize width="558" height="554"/>
+      <minimumSize width="558" height="554"/>
+      <preferredSize width="558" height="554"/>
     </properties>
     <border type="none"/>
     <children>

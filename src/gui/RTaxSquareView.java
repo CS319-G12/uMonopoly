@@ -14,6 +14,14 @@ class RTaxSquareView extends SquareView {
     public RTaxSquareView(TaxSquare square) {
         super(square);
 
+        // Title
+        JLabel title = new JLabel(String.format("<html><center>%s<br>(%d$)</center></html>",
+                square.getName(), square.getTaxAmount()));
+        title.setBackground(Color.BACKGROUND.awtColor());
+        title.setOpaque(true);
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setFont(new Font(title.getFont().getName(), Font.BOLD, 10));
+
         // Token panel
         JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));
         tokenPn.setMinimumSize(new Dimension(60, 60));
@@ -30,5 +38,6 @@ class RTaxSquareView extends SquareView {
         setMaximumSize(new Dimension(95, 60));
         setPreferredSize(new Dimension(95, 60));
         add(tokenPn, BorderLayout.CENTER);
+        add(title, BorderLayout.NORTH);
     }
 }

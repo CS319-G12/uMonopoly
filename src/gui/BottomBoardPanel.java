@@ -32,9 +32,9 @@ class BottomBoardPanel extends JPanel {
 
         // Add to the main panel
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        setMinimumSize(new Dimension(730, 95));
-        setMaximumSize(new Dimension(730, 95));
-        setPreferredSize(new Dimension(730, 95));
+        setMinimumSize(new Dimension(748, 95));
+        setMaximumSize(new Dimension(748, 95));
+        setPreferredSize(new Dimension(748, 95));
         setBorder(null);
         add(jail);
         add(connecticutAvenue);

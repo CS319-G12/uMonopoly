@@ -64,7 +64,6 @@ class CenterBoardPanel implements Observer {
             try {
                 controller.sellProperty();
             } catch (Game.NotSellableException e) {
-                // TODO
             } finally {
                 sellBtn.setEnabled(false);
                 updateButtons();
@@ -74,7 +73,7 @@ class CenterBoardPanel implements Observer {
             try {
                 controller.build();
             } catch (Game.NotBuildableException e) {
-                buildBtn.setEnabled(false); // TODO
+                buildBtn.setEnabled(false);
             } finally {
                 updateButtons();
             }

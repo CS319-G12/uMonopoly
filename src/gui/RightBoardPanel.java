@@ -30,9 +30,9 @@ class RightBoardPanel extends JPanel {
 
         // Add to the main panel
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setMinimumSize(new Dimension(95, 540));
-        setMaximumSize(new Dimension(95, 540));
-        setPreferredSize(new Dimension(95, 540));
+        setMinimumSize(new Dimension(95, 554));
+        setMaximumSize(new Dimension(95, 554));
+        setPreferredSize(new Dimension(95, 554));
         add(pacificAvenue);
         add(carolinaAvenue);
         add(communityChestSquareView);

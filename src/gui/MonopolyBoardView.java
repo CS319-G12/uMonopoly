@@ -17,9 +17,9 @@ class MonopolyBoardView extends JPanel {
         List<Square> squares = game.getListOfSquares();
 
         this.setLayout(new BorderLayout());
-        this.setPreferredSize(new Dimension(755, 750));
-        this.setMinimumSize(new Dimension(750, 750));
-        this.setMaximumSize(new Dimension(750, 750));
+        this.setPreferredSize(new Dimension(748, 748));
+        this.setMinimumSize(new Dimension(748, 748));
+        this.setMaximumSize(new Dimension(748, 748));
 
         add(new BottomBoardPanel(squares.subList(0, 11)), BorderLayout.SOUTH);
         add(new LeftBoardPanel(squares.subList(11, 20)), BorderLayout.WEST);

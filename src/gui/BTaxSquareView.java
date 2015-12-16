@@ -14,6 +14,13 @@ public class BTaxSquareView extends SquareView {
     public BTaxSquareView(TaxSquare square) {
         super(square);
 
+        // Title
+        JLabel title = new JLabel(String.format("<html><center>%s<br>(%d$)</center></html>",
+                square.getName(), square.getTaxAmount()));
+        title.setBackground(Color.BACKGROUND.awtColor());
+        title.setOpaque(true);
+        title.setFont(new Font(title.getFont().getName(), Font.BOLD, 10));
+
         // Token panel
         JPanel tokenPn = new JPanel(new GridLayout(2, 2, 0, 0));
         tokenPn.setMinimumSize(new Dimension(60, 60));
@@ -30,5 +37,6 @@ public class BTaxSquareView extends SquareView {
         setMaximumSize(new Dimension(60, 95));
         setPreferredSize(new Dimension(60, 95));
         add(tokenPn, BorderLayout.CENTER);
+        add(title, BorderLayout.NORTH);
     }
 }

@@ -30,9 +30,9 @@ class LeftBoardPanel extends JPanel {
 
         // Add to the main panel
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setMinimumSize(new Dimension(95, 540));
-        setMaximumSize(new Dimension(95, 540));
-        setPreferredSize(new Dimension(95, 540));
+        setMinimumSize(new Dimension(95, 556));
+        setMaximumSize(new Dimension(95, 556));
+        setPreferredSize(new Dimension(95, 554));
         add(newYorkAvenue);
         add(tennesseeAvenue);
         add(communityChestCardSquare);

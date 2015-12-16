@@ -4,15 +4,13 @@ import controllers.GameController;
 import controllers.HelpController;
 
 import javax.swing.*;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.util.Observable;
 import java.util.Observer;
 
 /**
  * @author Ani Kristo
  */
-public class Window extends JFrame implements WindowListener, Observer {
+public class Window extends JFrame implements Observer {
 
     // ATTRIBUTES
     private HomeScreen homeScreen;
@@ -24,6 +22,8 @@ public class Window extends JFrame implements WindowListener, Observer {
     private GameController gameController;
     private HelpController helpController;
 
+    private boolean gameFinished;
+
     // CONSTRUCTOR
     public Window() {
         super("µMonopoly");
@@ -31,13 +31,17 @@ public class Window extends JFrame implements WindowListener, Observer {
         helpController = new HelpController();
         gameController = new GameController(helpController);
 
-        setSize(1152, 720);
+        setSize(1185, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         homeScreen = new HomeScreen();
         homeScreen.addObserver(this);
 
+        gameFinished = false;
+
         setContentPane(homeScreen.getContent());
+        setUndecorated(true);
+        getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -46,38 +50,15 @@ public class Window extends JFrame implements WindowListener, Observer {
 
     // METHODS
     @Override
-    public void windowOpened(WindowEvent windowEvent) {
-    }
-
-    @Override
-    public void windowClosing(WindowEvent windowEvent) {
-        // TODO check if game has finished
-    }
-
-    @Override
-    public void windowClosed(WindowEvent windowEvent) {
-    }
-
-    @Override
-    public void windowIconified(WindowEvent windowEvent) {
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent windowEvent) {
-    }
-
-    @Override
-    public void windowActivated(WindowEvent windowEvent) {
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent windowEvent) {
-    }
-
-    @Override
     public void update(Observable observable, Object o) {
         if (observable == homeScreen) {
             if (o == NotificationMsg.PLAY_REG) {
+                if (gameFinished) {
+                    gameController = new GameController(helpController);
+                    playRegScreen = new PlayerRegistrationScreen(gameController);
+                    playRegScreen.addObserver(this);
+                }
+
                 if (playRegScreen == null) {
                     playRegScreen = new PlayerRegistrationScreen(gameController);
                     playRegScreen.addObserver(this);
@@ -105,16 +86,48 @@ public class Window extends JFrame implements WindowListener, Observer {
             if (o == NotificationMsg.BACK) {
                 setContentPane(homeScreen.getContent());
             } else if (o == NotificationMsg.NEW_GAME) {
-                if (gameScreen == null) {
+                if (gameScreen == null || gameFinished) {
                     gameScreen = gameController.getGame().getView();
                     gameScreen.addObserver(this);
+                    gameFinished = false;
                 }
 
                 JScrollPane scrollPane = new JScrollPane(gameScreen.getContent());
                 setContentPane(scrollPane);
             }
         } else if (observable == gameScreen) {
-            // TODO
+            if (o == NotificationMsg.EXIT_FINISHED) {
+                JOptionPane exitNotificationJOP = new JOptionPane(
+                        String.format("Game has finished and %s is the winner.\nThe scores are saved in the database!",
+                                gameController.getWinnerName()),
+                        JOptionPane.INFORMATION_MESSAGE,
+                        JOptionPane.DEFAULT_OPTION
+                );
+                JDialog exitNotificationJOPD = exitNotificationJOP.createDialog("Game has ended!");
+                exitNotificationJOPD.setAlwaysOnTop(true);
+                exitNotificationJOPD.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+                exitNotificationJOPD.setVisible(true);
+                int JOPSelectedOption = (int) exitNotificationJOP.getValue();
+                if (JOPSelectedOption == JOptionPane.YES_OPTION) {
+                    setContentPane(homeScreen.getContent());
+                    gameFinished = true;
+                }
+            } else if (o == NotificationMsg.EXIT_NOT_FINISHED) {
+                JOptionPane exitQuestionJOP = new JOptionPane(
+                        "Are you sure you want to exit?\nProgress and score will not be saved!",
+                        JOptionPane.QUESTION_MESSAGE,
+                        JOptionPane.YES_NO_OPTION
+                );
+                JDialog exitQuestionJOPD = exitQuestionJOP.createDialog("Confirmation");
+                exitQuestionJOPD.setAlwaysOnTop(true);
+                exitQuestionJOPD.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+                exitQuestionJOPD.setVisible(true);
+                int JOPSelectedOption = (int) exitQuestionJOP.getValue();
+                if (JOPSelectedOption == JOptionPane.YES_OPTION) {
+                    setContentPane(homeScreen.getContent());
+                    gameFinished = true;
+                }
+            }
         }
         repaint();
         revalidate();
@@ -125,6 +138,6 @@ public class Window extends JFrame implements WindowListener, Observer {
      * This is an enumeration for the intent intermediation
      */
     enum NotificationMsg {
-        PLAY_REG, HIGH_SCORES, HELP, QUIT, NEW_GAME, BACK
+        PLAY_REG, HIGH_SCORES, HELP, QUIT, NEW_GAME, BACK, EXIT_FINISHED, EXIT_NOT_FINISHED;
     }
 }

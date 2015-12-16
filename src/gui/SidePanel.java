@@ -106,7 +106,6 @@ class SidePanel implements Observer {
                 else
                     listOfPropertyCardSmallViews.get(i).setEnabled(false);
             }
-
         }
     }
 }
