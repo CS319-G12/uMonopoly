@@ -40,6 +40,8 @@ public class HelpScreen extends Observable {
             setChanged();
             notifyObservers(Window.NotificationMsg.BACK);
         });
+
+        SwingUtilities.invokeLater(() -> scrollPn.getVerticalScrollBar().setValue(0));
     }
 
     // METHODS
