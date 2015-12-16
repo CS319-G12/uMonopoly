@@ -22,8 +22,14 @@ public class ChanceFactory implements BonusFactory {
 
         // Instantiate all Chance Cards
         ChanceCardBuilder builder = new ChanceCardBuilder();
+
+        ChanceCard card0 = builder
+                .goTo(0)
+                .build("Advance to Go. Collect $200");
+        cards.add(card0);
+
         ChanceCard card1 = builder
-                .amount(200)
+                .goTo(0)
                 .build("Advance to GO and collect 200$.");
         cards.add(card1);
 
@@ -38,6 +44,7 @@ public class ChanceFactory implements BonusFactory {
         cards.add(card3);
 
         ChanceCard card4 = builder
+                .goTo(12)
                 .build("Advance to Electric Company utility square." +
                         "If unowned, you may buy it from the Bank. If owned, then" +
                         "pay the rent accordingly.");
@@ -54,8 +61,7 @@ public class ChanceFactory implements BonusFactory {
         cards.add(card6);
 
         ChanceCard card7 = builder
-                .outOfJail(true)
-                .goTo(30)
+                .jail(true)
                 .build("Go to Jail directly. Do not pass Go, do not collect $200");
         cards.add(card7);
 

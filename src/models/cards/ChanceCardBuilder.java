@@ -9,7 +9,7 @@ public class ChanceCardBuilder {
     private int amount;
     private boolean jail;
     private boolean outOfJail;
-    private int goTo;
+    private Integer goTo;
     private int payPerHouse;
     private int payPerHotel;
 
@@ -22,7 +22,7 @@ public class ChanceCardBuilder {
         amount = 0;
         jail = false;
         outOfJail = false;
-        goTo = 0;
+        goTo = null;
         payPerHouse = 0;
         payPerHotel = 0;
     }

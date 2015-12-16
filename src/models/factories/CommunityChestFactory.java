@@ -22,10 +22,6 @@ public class CommunityChestFactory implements BonusFactory {
         squares = new HashSet<>();
 
         CommunityChestCardBuilder builder = new CommunityChestCardBuilder();
-        CommunityChestCard card1 = builder
-                .amount(200)
-                .build("Advance to Go. Collect $200");
-        cards.add(card1);
 
         CommunityChestCard card2 = builder
                 .amount(200)
@@ -53,14 +49,12 @@ public class CommunityChestFactory implements BonusFactory {
         cards.add(card6);
 
         CommunityChestCard card7 = builder
-                .amount(50)
                 .getEach(50)
                 .build("Grand Opera Night. Collect $50 from every player for opening night seats");
         cards.add(card7);
 
         CommunityChestCard card8 = builder
                 .amount(100)
-                .getEach(50)
                 .build("Holiday Fund matures. Receive $100");
         cards.add(card8);
 
@@ -70,7 +64,6 @@ public class CommunityChestFactory implements BonusFactory {
         cards.add(card9);
 
         CommunityChestCard card10 = builder
-                .amount(10)
                 .getEach(10)
                 .build("It's you birthday. Collect 10$ from each player. ");
         cards.add(card10);

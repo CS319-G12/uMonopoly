@@ -6,6 +6,8 @@ import models.Game;
 import models.Player;
 import models.Rules;
 import models.cards.BonusCard;
+import models.cards.ChanceCard;
+import models.cards.CommunityChestCard;
 import models.squares.*;
 import models.token.TokenFigure;
 
@@ -162,7 +164,9 @@ public class GameController {
         // Corner Squares
         else if (s.getPosition() == Rules.JAIL_POSITION) {
             p.setPosition(Rules.JAIL_POSITION);
-            p.setInJail(true);
+
+            if (!p.useOutOfJail())
+                p.setInJail(true);
         }
 
         if (s.getPosition() < p.getOldPosition() && !p.isInJail())
@@ -190,9 +194,57 @@ public class GameController {
     }
 
     private void applyBonusCard(BonusCard card, Square s, Player p) {
-        // TODO
-        if (p.getBudget() <= 0)
-            p.lost();
+
+        // Amount
+        if (card.getPayAmount() != 0) {
+            p.updateBudget(card.getPayAmount());
+        }
+
+        // Jail
+        if (card.isJailCard()) {
+            p.setPosition(Rules.JAIL_POSITION);
+            if (!p.useOutOfJail())
+                p.setInJail(true);
+        }
+
+        // Out of Jail
+        if (card.isOutOfJailCard()) {
+            p.addOutOfJailCard();
+        }
+
+        if (card instanceof ChanceCard) {
+            // Go To
+            Integer goTo = ((ChanceCard) card).getGoToDestination();
+            if (goTo != null) {
+                if (goTo < 0)
+                    p.updatePosition(goTo);
+                else
+                    p.setPosition(goTo);
+            }
+
+            // Pay per house
+            if (((ChanceCard) card).getPayPerHouseAmount() != 0) {
+                p.payPerHouse(((ChanceCard) card).getPayPerHouseAmount());
+            }
+
+            // Pay per Hotel
+            if (((ChanceCard) card).getPayPerHotelAmount() != 0) {
+                p.payPerHotel(((ChanceCard) card).getPayPerHotelAmount());
+            }
+
+        } else if (card instanceof CommunityChestCard) {
+            int amount = ((CommunityChestCard) card).getPayAmountForEachPlayer();
+            if (amount != 0) {
+                // Assign every player the negative of the amount
+                for (Player player : game.getListOfPlayers()) {
+                    player.updateBudget(-amount);
+                }
+
+                p.updateBudget(game.getListOfPlayers().size() * amount);
+            }
+        }
+
+        game.getListOfPlayers().stream().filter(player -> player.getBudget() <= 0).forEach(Player::lost);
         checkIfGameEnded();
     }
 
@@ -269,10 +321,6 @@ public class GameController {
 
     public String getWinnerName() {
         return game.getWinner().getName();
-    }
-
-    public boolean isGameOn() {
-        return game != null && !game.hasFinished();
     }
 
     public void upgradeDice() throws Player.DiceCannotBeUpgradedException {

@@ -32,7 +32,7 @@ public class ChanceCard extends BonusCard {
         return goTo;
     }
 
-    public int getPayperHouseAmount() {
+    public int getPayPerHouseAmount() {
         return payPerHouse;
     }
 

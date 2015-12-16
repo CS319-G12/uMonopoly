@@ -28,6 +28,9 @@ public class Player extends Observable {
     private List<PropertyCard> propertyCards;
     private int turnsInJail;
     private int oldPosition;
+    private int outOfJailCount;
+    private int hotelCount;
+    private int houseCount;
 
     // CONSTRUCTOR
     public Player(String name, TokenFigure tokenFigure) {
@@ -40,6 +43,9 @@ public class Player extends Observable {
         this.token = new Token(tokenFigure);
         this.propertyCards = new ArrayList<>();
         this.turnsInJail = 0;
+        this.outOfJailCount = 0;
+        this.houseCount = 0;
+        this.hotelCount = 0;
     }
 
     // METHODS
@@ -132,11 +138,13 @@ public class Player extends Observable {
         return dice.isDoubles();
     }
 
-    private void updatePosition(int val) {
+    public void updatePosition(int val) {
         oldPosition = getPosition();
         setPosition(getPosition() + val);
         if (getPosition() >= Rules.SQUARE_COUNT)
             setPosition(getPosition() - Rules.SQUARE_COUNT);
+        else if (getPosition() < 0)
+            setPosition(Rules.SQUARE_COUNT - getPosition());
     }
 
     public DiceType getDiceType() {
@@ -181,6 +189,9 @@ public class Player extends Observable {
 
     public void lost() {
         hasLost = true;
+        for (PropertyCard pc : propertyCards)
+            pc.setOwner(null);
+        propertyCards = null;
         notifyObservers();
     }
 
@@ -214,6 +225,41 @@ public class Player extends Observable {
         if (token.getType() == TokenType.GOLDEN)
             return Rules.PLATINUM_TOKEN_UPGRADE_PRICE;
         return -1;
+    }
+
+    public void addOutOfJailCard() {
+        outOfJailCount++;
+    }
+
+    public boolean useOutOfJail() {
+        if (outOfJailCount == 0)
+            return false;
+        outOfJailCount--;
+        return true;
+    }
+
+    public void payPerHouse(int payPerHouseAmount) {
+        updateBudget(-1 * houseCount * payPerHouseAmount);
+    }
+
+    public void payPerHotel(int payPerHotelAmount) {
+        updateBudget(-1 * hotelCount * payPerHotelAmount);
+    }
+
+    public void incrementHotelCount() {
+        hotelCount++;
+    }
+
+    public void incrementHouseCount() {
+        houseCount--;
+    }
+
+    public void decrementHotelCount() {
+        hotelCount--;
+    }
+
+    public void decrementHouseCount(int nrOfHouses) {
+        houseCount -= nrOfHouses;
     }
 
     public static class DiceCannotBeUpgradedException extends Exception {

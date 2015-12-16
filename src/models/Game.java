@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
 
 /**
  * @author Ani Kristo & Alper Önder
- * INV: self.turn >= 0 && self.turn < 4
- * INV: self.currentSquares.size() == 4
- * INV: self.players.size() > 1 && self.players.size() <= 4
- * INV: self.playerNames.size() > 1 && self.playerNames.size() <= 4
- * INV: self.players.size() == self.playerNames.size()
+ *         INV: self.turn >= 0 && self.turn < 4
+ *         INV: self.currentSquares.size() == 4
+ *         INV: self.players.size() > 1 && self.players.size() <= 4
+ *         INV: self.playerNames.size() > 1 && self.playerNames.size() <= 4
+ *         INV: self.players.size() == self.playerNames.size()
  */
 public class Game extends Observable {
 
@@ -70,9 +70,9 @@ public class Game extends Observable {
      *
      * @param name        the name of the player to be added as received from the GUI
      * @param tokenFigure the token figure selected from the player at registration
-     * PRE: !playerNames->includes(name)
-     * POST: self.players.size() == selfPRE:.players.size() + 1
-     * POST: self.playerNames.size() == selfPRE:.playerNames.size() + 1
+     *                    PRE: !playerNames->includes(name)
+     *                    POST: self.players.size() == selfPRE:.players.size() + 1
+     *                    POST: self.playerNames.size() == selfPRE:.playerNames.size() + 1
      */
     private void addPlayer(String name, TokenFigure tokenFigure) {
         Player newPlayer = new Player(name, tokenFigure);
@@ -199,12 +199,26 @@ public class Game extends Observable {
             throw new NotSellableException();
 
         PropertySquare square = (PropertySquare) currentSquare;
+        Player currentPlayer = getCurrentPlayer();
+
         if (square.getCard().getOwner() != null) {
-            getCurrentPlayer().updateBudget(square.getCard().getMortgagePrice());
-            getCurrentPlayer().removePropertyCard(square.getCard());
+
+            currentPlayer.updateBudget(square.getCard().getMortgagePrice());
+            currentPlayer.removePropertyCard(square.getCard());
             square.removeOwner();
-            if (square instanceof TownSquare)
+
+            if (square instanceof TownSquare) {
+
+                int buildings = ((TownSquare) square).getBuildingCount();
+                boolean hadHotel = ((TownSquare) square).hasHotel();
+
+                if (hadHotel)
+                    currentPlayer.decrementHotelCount();
+                else
+                    currentPlayer.decrementHouseCount(buildings);
+
                 ((TownSquare) square).removeBuildings();
+            }
         }
 
         setChanged();
@@ -219,8 +233,13 @@ public class Game extends Observable {
         PropertySquare square = (PropertySquare) currentSquare;
         if (square.getGroup().ownsAllProperties(getCurrentPlayer()) && getCurrentPlayer().getBudget() > ((TownSquare) square).getCard().getHouseBuildPrice()) {
             try {
-                ((TownSquare) square).build();
-                getCurrentPlayer().updateBudget((-1) * ((TownSquare) square).getCard().getHouseBuildPrice());
+                boolean builtHotel = ((TownSquare) square).build();
+                Player p = getCurrentPlayer();
+                p.updateBudget((-1) * ((TownSquare) square).getCard().getHouseBuildPrice());
+                if (builtHotel)
+                    p.incrementHotelCount();
+                else
+                    p.incrementHouseCount();
             } catch (TownSquare.CannotBuildException e) {
                 System.err.println(e.getMessage());
             }

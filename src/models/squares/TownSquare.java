@@ -96,20 +96,23 @@ public class TownSquare extends Square implements PropertySquare {
     }
 
     /**
-     * @throws CannotBuildException
-     * POST: self.nrOfHouses == selfPRE:.nrOfHouses+1 || self.nrOfHouses == selfPRE:.nrOfHouses+1
+     * @return true if it build a hotel, false otherwise
+     * @throws CannotBuildException POST: self.nrOfHouses == selfPRE:.nrOfHouses+1 || self.nrOfHouses == selfPRE:.nrOfHouses+1
      */
-    public void build() throws CannotBuildException {
-        if (nrOfHouses < Rules.MAX_HOUSE_COUNT && !hotel)
+    public boolean build() throws CannotBuildException {
+        if (nrOfHouses < Rules.MAX_HOUSE_COUNT && !hotel) {
             nrOfHouses++;
-        else if (nrOfHouses == Rules.MAX_HOUSE_COUNT && !hotel) {
+            setChanged();
+            notifyObservers();
+            return false;
+        } else if (nrOfHouses == Rules.MAX_HOUSE_COUNT && !hotel) {
             nrOfHouses = 0;
             hotel = true;
+            setChanged();
+            notifyObservers();
+            return true;
         } else
             throw new CannotBuildException();
-
-        setChanged();
-        notifyObservers();
     }
 
     public boolean isFull() {
