@@ -81,9 +81,9 @@ public class GameController {
 
     public void viewHelp() {
         JFrame helpFrame = new JFrame("µMonopoly Help");
-        helpFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        helpFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helpFrame.setSize(1152, 730);
-        helpFrame.setContentPane(game.getHelp().getView().getContent());
+        helpFrame.setContentPane(game.getHelp().getView().getContent(true));
         helpFrame.setVisible(true);
     }
 

@@ -76,8 +76,9 @@ public class Window extends JFrame implements Observer {
             } else if (o == NotificationMsg.HELP) {
                 if (helpScreen == null) {
                     helpScreen = new HelpScreen(helpController.getHelp());
+                    helpScreen.addObserver(this);
                 }
-                setContentPane(helpScreen.getContent());
+                setContentPane(helpScreen.getContent(false));
             } else if (o == NotificationMsg.QUIT) {
                 System.exit(0);
             }
@@ -86,7 +87,8 @@ public class Window extends JFrame implements Observer {
                 setContentPane(homeScreen.getContent());
             }
         } else if (observable == helpScreen) {
-            // TODO
+            if (o == NotificationMsg.BACK)
+                setContentPane(homeScreen.getContent());
         } else if (observable == playRegScreen) {
             if (o == NotificationMsg.BACK) {
                 setContentPane(homeScreen.getContent());

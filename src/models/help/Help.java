@@ -29,4 +29,8 @@ public class Help {
     public HelpScreen getView() {
         return helpScreen;
     }
+
+    public List<HelpItem> getHelpItems() {
+        return helpItems;
+    }
 }

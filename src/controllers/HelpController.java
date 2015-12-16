@@ -10,7 +10,6 @@ public class HelpController {
 
     // ATTRIBUTES
     private int currentItem;
-    private Help helpModel;
     private Help help;
 
 
@@ -91,28 +90,29 @@ public class HelpController {
                 "can pay either to another player or to the Bank. If your ,debt is to another player, you must tum over to that" +
                 "player all that you have of value and retire from the game");
 
-        HelpItem item19 = new HelpItem("MİSCELLANEOUS", "Money can be loaned to a player only by the Bank and then " +
+        HelpItem item19 = new HelpItem("MISCELLANEOUS", "Money can be loaned to a player only by the Bank and then " +
                 "only by mortgaging property. No player may borrow from or lend money to another player.");
 
-        this.helpModel = new Help();
+        help = new Help(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, item13,
+                item14, item15, item16, item17, item18, item19);
         currentItem = 0;
     }
 
     // METHODS
     public HelpItem getCurrentItem() {
-        return helpModel.getItemAt(currentItem);
+        return help.getItemAt(currentItem);
     }
 
     public HelpItem getPreviousItem() {
-        return helpModel.getItemAt(currentItem--);
+        return help.getItemAt(currentItem--);
     }
 
     public HelpItem getNextItem() {
-        return helpModel.getItemAt(currentItem++);
+        return help.getItemAt(currentItem++);
     }
 
     public HelpItem getItemAt(int index) {
-        return helpModel.getItemAt(index);
+        return help.getItemAt(index);
     }
 
     public Help getHelp() {
