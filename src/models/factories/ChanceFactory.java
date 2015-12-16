@@ -80,7 +80,7 @@ public class ChanceFactory implements BonusFactory {
 
         ChanceCard card11 = builder
                 .amount(150)
-                .build("Your building {and} loan matures. Collect $150");
+                .build("Your building loan matures. Collect $150");
         cards.add(card11);
 
 

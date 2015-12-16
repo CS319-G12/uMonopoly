@@ -68,6 +68,6 @@ class PlayerView implements Observer {
                         p.isInJail() ? "- JAIL" : "",
                         p.hasLost() ? "- LOST" : ""));
         if (p.hasLost())
-            nameLb.setEnabled(false);
+            setSelected(false);
     }
 }

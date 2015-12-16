@@ -69,32 +69,39 @@ public class CommunityChestFactory implements BonusFactory {
                 .build("Income tax refund. Collect $20");
         cards.add(card9);
 
-        CommunityChestCard card10 = builder.amount(10)
+        CommunityChestCard card10 = builder
+                .amount(10)
                 .getEach(10)
                 .build("It's you birthday. Collect 10$ from each player. ");
         cards.add(card10);
 
-        CommunityChestCard card11 = builder.amount(100)
+        CommunityChestCard card11 = builder
+                .amount(100)
                 .build("Life insurance matures. Collect $100");
         cards.add(card11);
 
-        CommunityChestCard card12 = builder.amount(-100)
+        CommunityChestCard card12 = builder
+                .amount(-100)
                 .build("Pay hospital fees of $100");
         cards.add(card12);
 
-        CommunityChestCard card13 = builder.amount(-150)
+        CommunityChestCard card13 = builder
+                .amount(-150)
                 .build("Pay school fees of $150");
         cards.add(card13);
 
-        CommunityChestCard card14 = builder.amount(25)
+        CommunityChestCard card14 = builder
+                .amount(25)
                 .build("Receive $25 consultancy fee");
         cards.add(card14);
 
-        CommunityChestCard card15 = builder.amount(10)
+        CommunityChestCard card15 = builder
+                .amount(10)
                 .build("You have won second prize in a beauty contest. Collect $10");
         cards.add(card15);
 
-        CommunityChestCard card16 = builder.amount(100)
+        CommunityChestCard card16 = builder
+                .amount(100)
                 .build("You inherit $100");
         cards.add(card16);
 

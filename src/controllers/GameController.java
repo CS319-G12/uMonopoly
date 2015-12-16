@@ -43,9 +43,8 @@ public class GameController {
     }
 
     /**
-     * @throws PlayerRegistrationSection.TooFewPlayersException
-     * PRE: self.game == null
-     * POST: self.game != null
+     * @throws PlayerRegistrationSection.TooFewPlayersException PRE: self.game == null
+     *                                                          POST: self.game != null
      */
     public void startGame() throws PlayerRegistrationSection.TooFewPlayersException {
 
@@ -69,6 +68,10 @@ public class GameController {
      */
     public void buyProperty() throws Game.NotBuyableException {
         game.buyProperty();
+        Player p = game.getCurrentPlayer();
+        if (p.getBudget() <= 0)
+            p.lost();
+        checkIfGameEnded();
     }
 
     /**
@@ -95,7 +98,6 @@ public class GameController {
             new DatabaseHelper().insertHighScoreToDB(game.getWinner().getName(), game.getWinner().getTokenFigure().getName(), game.getWinner().getBudget(), dayMonthYearFormat.format(today));
             game.getView().closeWindow(true);
         } else {
-            // Todo give
             game.getView().closeWindow(false);
         }
     }
@@ -158,19 +160,23 @@ public class GameController {
         }
 
         // Corner Squares
-        else {
-            if (s.getPosition() == Rules.GO_POSITION) {
-                p.updateBudget(Rules.SALARY);
-
-            } else if (s.getPosition() == Rules.JAIL_POSITION) {
-                p.setPosition(Rules.JAIL_POSITION);
-                p.setInJail(true);
-            }
+        else if (s.getPosition() == Rules.JAIL_POSITION) {
+            p.setPosition(Rules.JAIL_POSITION);
+            p.setInJail(true);
         }
+
+        if (s.getPosition() < p.getOldPosition() && !p.isInJail())
+            p.updateBudget(Rules.SALARY);
 
         if (p.getBudget() <= 0)
             p.lost();
 
+
+        checkIfGameEnded();
+        game.notifyObservers();
+    }
+
+    private void checkIfGameEnded() {
         // Checking if game has ended
         int numberOfLostPlayers = 0;
         List<Player> playersList = game.getListOfPlayers();
@@ -181,20 +187,26 @@ public class GameController {
             game.finished();
             endGame();
         }
-
-        game.notifyObservers();
     }
 
     private void applyBonusCard(BonusCard card, Square s, Player p) {
         // TODO
+        if (p.getBudget() <= 0)
+            p.lost();
+        checkIfGameEnded();
     }
 
     public void endTurn() {
+        checkIfGameEnded();
         game.endTurn();
     }
 
     public void build() throws Game.NotBuildableException {
         game.build();
+        Player p = game.getCurrentPlayer();
+        if (p.getBudget() <= 0)
+            p.lost();
+        checkIfGameEnded();
     }
 
     /**
@@ -210,7 +222,6 @@ public class GameController {
     /**
      * Conditions:
      * 1. Current player rolled and it wasn't doubles
-     *
      */
     public boolean canEndTurn() {
         return !canRoll();
