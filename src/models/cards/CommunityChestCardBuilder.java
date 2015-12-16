@@ -9,7 +9,6 @@ public class CommunityChestCardBuilder {
     private int amount;
     private boolean jail;
     private boolean outOfJail;
-    private String desc;
     private int getEach;
 
     // METHODS
@@ -28,17 +27,12 @@ public class CommunityChestCardBuilder {
         return this;
     }
 
-    public CommunityChestCardBuilder description(String desc) {
-        this.desc = desc;
-        return this;
-    }
-
     public CommunityChestCardBuilder getEach(int getEach) {
         this.getEach = getEach;
         return this;
     }
 
-    public CommunityChestCard build() {
+    public CommunityChestCard build(String desc) {
         return new CommunityChestCard(amount, jail, outOfJail, desc, getEach);
     }
 

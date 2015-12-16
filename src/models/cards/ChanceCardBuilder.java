@@ -9,7 +9,6 @@ public class ChanceCardBuilder {
     private int amount;
     private boolean jail;
     private boolean outOfJail;
-    private String desc;
     private int goTo;
     private int payPerHouse;
     private int payPerHotel;
@@ -23,7 +22,6 @@ public class ChanceCardBuilder {
         amount = 0;
         jail = false;
         outOfJail = false;
-        desc = null;
         goTo = 0;
         payPerHouse = 0;
         payPerHotel = 0;
@@ -45,11 +43,6 @@ public class ChanceCardBuilder {
         return this;
     }
 
-    public ChanceCardBuilder description(String desc) {
-        this.desc = desc;
-        return this;
-    }
-
     public ChanceCardBuilder goTo(int goTo) {
         this.goTo = goTo;
         return this;
@@ -65,7 +58,7 @@ public class ChanceCardBuilder {
         return this;
     }
 
-    public ChanceCard build() {
+    public ChanceCard build(String desc) {
         init();
         return new ChanceCard(amount, jail, outOfJail, desc, goTo, payPerHouse, payPerHotel);
     }
