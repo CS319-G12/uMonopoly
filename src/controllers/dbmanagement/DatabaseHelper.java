@@ -1,5 +1,7 @@
 package controllers.dbmanagement;
 
+import models.HighScores;
+
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,11 +21,15 @@ public class DatabaseHelper {
     private Connection dbConnection;
     private Statement  stmt;
 
+    private boolean hasChanged;
+
     // CONSTRUCTOR
     public DatabaseHelper(){
-        theHighScores = new ArrayList<HighScores>();
+        theHighScores = new ArrayList<>();
         dbConnection  = null;
         stmt          = null;
+
+        hasChanged = false;
     }
 
     // METHODS
@@ -51,6 +57,9 @@ public class DatabaseHelper {
             dbConnection.commit();
             dbConnection.close();
             sortingHighScores();
+
+            hasChanged = false;
+
             return theHighScores;
         }
         catch ( ClassNotFoundException | SQLException e ) {
@@ -89,6 +98,9 @@ public class DatabaseHelper {
             stmt.close();
             dbConnection.commit();
             dbConnection.close();
+
+            hasChanged = true;
+
         } catch ( ClassNotFoundException | SQLException e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             JOptionPane.showMessageDialog(null,
@@ -121,6 +133,8 @@ public class DatabaseHelper {
             stmt.close();
             dbConnection.commit();
             dbConnection.close();
+
+            hasChanged = true;
         }
         catch ( ClassNotFoundException | SQLException e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
@@ -139,5 +153,9 @@ public class DatabaseHelper {
                 return hs2.getAmount() - hs1.getAmount();
             }
         });
+    }
+
+    public boolean hasChanged() {
+        return hasChanged;
     }
 }

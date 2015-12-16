@@ -28,6 +28,25 @@ public enum TokenFigure {
         smallIcon = new ImageIcon(getClass().getResource(pathToSmallIcon));
     }
 
+    public static TokenFigure getTokenFigure(String tokenFigure) {
+        switch (tokenFigure.toLowerCase()) {
+            case "dog":
+                return DOG;
+            case "car":
+                return CAR;
+            case "thimble":
+                return THIMBLE;
+            case "hat":
+                return HAT;
+            case "shoe":
+                return SHOE;
+            case "iron":
+                return IRON;
+            default:
+                return DOG;
+        }
+    }
+
     // METHODS
     public ImageIcon getIcon() {
         return icon;

@@ -1,9 +1,9 @@
-package controllers.dbmanagement;
+package models;
 
 /**
  * @author Alper Önder
  */
-class HighScores {
+public class HighScores {
 
     // ATTRIBUTES
     private int id;

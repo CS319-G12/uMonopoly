@@ -2,6 +2,7 @@ package gui;
 
 import controllers.GameController;
 import controllers.HelpController;
+import controllers.dbmanagement.HighScoreController;
 
 import javax.swing.*;
 import java.util.Observable;
@@ -21,6 +22,7 @@ public class Window extends JFrame implements Observer {
 
     private GameController gameController;
     private HelpController helpController;
+    private HighScoreController hsController;
 
     private boolean gameFinished;
 
@@ -30,6 +32,7 @@ public class Window extends JFrame implements Observer {
 
         helpController = new HelpController();
         gameController = new GameController(helpController);
+        hsController = new HighScoreController();
 
         setSize(1185, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,8 +68,8 @@ public class Window extends JFrame implements Observer {
                 }
                 setContentPane(playRegScreen.getContent());
             } else if (o == NotificationMsg.HIGH_SCORES) {
-                if (highScoresScreen == null) {
-                    highScoresScreen = new HighScoresScreen();
+                if (highScoresScreen == null || hsController.hasChanged()) {
+                    highScoresScreen = new HighScoresScreen(hsController);
                     highScoresScreen.addObserver(this);
                 }
                 setContentPane(highScoresScreen.getContent());
@@ -79,7 +82,9 @@ public class Window extends JFrame implements Observer {
                 System.exit(0);
             }
         } else if (observable == highScoresScreen) {
-            // TODO
+            if (o == NotificationMsg.BACK) {
+                setContentPane(homeScreen.getContent());
+            }
         } else if (observable == helpScreen) {
             // TODO
         } else if (observable == playRegScreen) {
