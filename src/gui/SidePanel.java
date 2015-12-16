@@ -60,6 +60,14 @@ class SidePanel implements Observer {
 
         helpBtn.addActionListener(actionEvent -> gameController.viewHelp());
         exitGameButton.addActionListener(actionEvent -> gameController.endGame());
+        upgradeDiceBtn.setOpaque(true);
+        upgradeTokenBtn.setOpaque(true);
+        helpBtn.setOpaque(true);
+        exitGameButton.setOpaque(true);
+        upgradeDiceBtn.setBorderPainted(false);
+        upgradeTokenBtn.setBorderPainted(false);
+        helpBtn.setBorderPainted(false);
+        exitGameButton.setBorderPainted(false);
     }
 
     // METHODS
