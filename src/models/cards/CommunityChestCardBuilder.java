@@ -11,6 +11,11 @@ public class CommunityChestCardBuilder {
     private boolean outOfJail;
     private int getEach;
 
+    // CONSTRUCTOR
+    public CommunityChestCardBuilder() {
+        init();
+    }
+
     // METHODS
     public CommunityChestCardBuilder amount(int amount) {
         this.amount = amount;
@@ -33,7 +38,16 @@ public class CommunityChestCardBuilder {
     }
 
     public CommunityChestCard build(String desc) {
-        return new CommunityChestCard(amount, jail, outOfJail, desc, getEach);
+        CommunityChestCard card = new CommunityChestCard(amount, jail, outOfJail, desc, getEach);
+        init();
+        return card;
+    }
+
+    private void init() {
+        amount = 0;
+        jail = false;
+        outOfJail = false;
+        getEach = 0;
     }
 
 

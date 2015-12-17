@@ -10,16 +10,18 @@ import javax.swing.*;
 public class ChanceCard extends BonusCard {
 
     // ATTRIBUTES
-    private final Integer goTo;
+    private final int goTo;
+    private final boolean hasGoTo;
     private final int payPerHouse;
     private final int payPerHotel;
 
     private ChanceCardView view;
 
     // CONSTRUCTOR
-    public ChanceCard(int amount, boolean jail, boolean outOfJail, String desc, Integer goTo, int payPerHouse, int payPerHotel) {
+    public ChanceCard(int amount, boolean jail, boolean outOfJail, String desc, boolean hasGoTo, int goTo, int payPerHouse, int payPerHotel) {
         super(amount, jail, outOfJail, desc);
 
+        this.hasGoTo = hasGoTo;
         this.goTo = goTo;
         this.payPerHouse = payPerHouse;
         this.payPerHotel = payPerHotel;
@@ -28,7 +30,11 @@ public class ChanceCard extends BonusCard {
     }
 
     // METHODS
-    public Integer getGoToDestination() {
+    public boolean hasGoTo() {
+        return hasGoTo;
+    }
+
+    public int getGoToDestination() {
         return goTo;
     }
 

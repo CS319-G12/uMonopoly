@@ -214,12 +214,14 @@ public class GameController {
 
         if (card instanceof ChanceCard) {
             // Go To
-            Integer goTo = ((ChanceCard) card).getGoToDestination();
-            if (goTo != null) {
+            if (((ChanceCard) card).hasGoTo()) {
+                Integer goTo = ((ChanceCard) card).getGoToDestination();
                 if (goTo < 0)
                     p.updatePosition(goTo);
                 else
                     p.setPosition(goTo);
+
+                checkLandingSquare();
             }
 
             // Pay per house
