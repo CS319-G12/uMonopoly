@@ -263,6 +263,8 @@ public class Game extends Observable {
             p.incrementJailTurns();
             updateCurrentSquares();
             endTurn();
+            setChanged();
+            notifyObservers();
             return;
         }
 
@@ -274,6 +276,8 @@ public class Game extends Observable {
             playerRolled = true;
             updateCurrentSquares();
             endTurn();
+            setChanged();
+            notifyObservers();
             return;
         }
 

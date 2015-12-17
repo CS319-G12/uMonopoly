@@ -130,17 +130,19 @@ class SidePanel implements Observer {
                 upgradeTokenBtn.setEnabled(false);
             }
 
-            // Update (enable / disable) the properties they own
-            List<Integer> propertyCardsIndices =
-                    currentPlayer.getListOfPropertyCards()
-                            .stream()
-                            .map(PropertyCard::getID)
-                            .collect(Collectors.toList());
-            for (int i = 0; i < listOfPropertyCardSmallViews.size(); i++) {
-                if (propertyCardsIndices.contains(i))
-                    listOfPropertyCardSmallViews.get(i).setEnabled(true);
-                else
-                    listOfPropertyCardSmallViews.get(i).setEnabled(false);
+            if (!currentPlayer.hasLost()) {
+                // Update (enable / disable) the properties they own
+                List<Integer> propertyCardsIndices =
+                        currentPlayer.getListOfPropertyCards()
+                                .stream()
+                                .map(PropertyCard::getID)
+                                .collect(Collectors.toList());
+                for (int i = 0; i < listOfPropertyCardSmallViews.size(); i++) {
+                    if (propertyCardsIndices.contains(i))
+                        listOfPropertyCardSmallViews.get(i).setEnabled(true);
+                    else
+                        listOfPropertyCardSmallViews.get(i).setEnabled(false);
+                }
             }
         }
     }
