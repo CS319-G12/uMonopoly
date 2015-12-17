@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.PlayerRegistrationScreen">
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="1152" height="720"/>
+    </constraints>
+    <properties>
+      <background color="-855310"/>
+      <maximumSize width="1152" height="720"/>
+      <minimumSize width="1152" height="720"/>
+      <preferredSize width="1152" height="720"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="80aa1" binding="northPn" layout-manager="BorderLayout" hgap="5" vgap="5">
+        <constraints border-constraint="North"/>
+        <properties>
+          <alignmentX value="1.0"/>
+          <alignmentY value="1.0"/>
+          <background color="-855310"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="f44f8" class="javax.swing.JLabel" binding="titleLb">
+            <constraints border-constraint="First"/>
+            <properties>
+              <alignmentX value="1.0"/>
+              <background color="-855310"/>
+              <icon value="img/playReg_lb_reg.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="63c87" class="javax.swing.JLabel" binding="subTitleLb">
+            <constraints border-constraint="Last"/>
+            <properties>
+              <icon value="img/playReg_lb_sub_reg.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="d7a9b" binding="centerPn" layout-manager="GridBagLayout">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-855310"/>
+        </properties>
+        <border type="none"/>
+        <children/>
+      </grid>
+      <grid id="71dc2" binding="southPn" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="South"/>
+        <properties>
+          <autoscrolls value="false"/>
+          <background color="-855310"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="e781c" class="javax.swing.JButton" binding="nextBtn">
+            <constraints border-constraint="East"/>
+            <properties>
+              <background color="-855310"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <focusPainted value="false"/>
+              <horizontalAlignment value="4"/>
+              <icon value="img/playReg_btn_next.png"/>
+              <text value=""/>
+              <verticalAlignment value="3"/>
+              <verticalTextPosition value="3"/>
+            </properties>
+          </component>
+          <component id="758a5" class="javax.swing.JButton" binding="backBtn">
+            <constraints border-constraint="West"/>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <focusPainted value="false"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <icon value="img/playReg_btn_back.png"/>
+              <label value=""/>
+              <text value=""/>
+              <verticalAlignment value="3"/>
+              <verticalTextPosition value="3"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

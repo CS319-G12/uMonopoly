@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.CenterBoardPanel">
+  <grid id="27dc6" binding="mainPn" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="565" height="565"/>
+    </constraints>
+    <properties>
+      <background color="-3283248"/>
+      <maximumSize width="558" height="554"/>
+      <minimumSize width="558" height="554"/>
+      <preferredSize width="558" height="554"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="f88c1" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-3283248"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="1e25c" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-3283248"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="845ae" class="javax.swing.JButton" binding="rollBtn">
+                <constraints border-constraint="West"/>
+                <properties>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <focusPainted value="false"/>
+                  <icon value="img/btn_roll.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="e0471" class="javax.swing.JButton" binding="endBtn">
+                <constraints border-constraint="East"/>
+                <properties>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <focusPainted value="false"/>
+                  <icon value="img/btn_end.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <grid id="e17ec" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <background color="-3283248"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="2d54" class="javax.swing.JLabel" binding="diceV1">
+                    <constraints/>
+                    <properties>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="f50e1" class="javax.swing.JLabel" binding="diceV2">
+                    <constraints/>
+                    <properties>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="c46f8" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-3283248"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="f7ed2" class="javax.swing.JButton" binding="buyBtn">
+                <constraints/>
+                <properties>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <focusPainted value="false"/>
+                  <icon value="img/btn_buy.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="d5d41" class="javax.swing.JButton" binding="sellBtn">
+                <constraints/>
+                <properties>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <focusPainted value="false"/>
+                  <icon value="img/btn_sell.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="d9dac" class="javax.swing.JButton" binding="buildBtn">
+                <constraints/>
+                <properties>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <focusPainted value="false"/>
+                  <icon value="img/btn_build.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="9cce5" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-3283248"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="d7114" binding="buildingPn" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints border-constraint="West"/>
+            <properties>
+              <background color="-3283248"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="c6151" class="javax.swing.JLabel" binding="buildingCountLb">
+                <constraints/>
+                <properties>
+                  <font size="36"/>
+                  <horizontalAlignment value="0"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="9c733" class="javax.swing.JLabel" binding="buildingIconLb">
+                <constraints/>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="5ffca" binding="cardDisplayPn" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <background color="-3283248"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

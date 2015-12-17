@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.TownCardView">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+      <maximumSize width="200" height="318"/>
+      <minimumSize width="200" height="318"/>
+      <preferredSize width="200" height="318"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="34cd9" binding="titlePn" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="13892" class="javax.swing.JLabel" binding="titleLb">
+            <constraints/>
+            <properties>
+              <font size="14"/>
+              <foreground color="-16777216"/>
+              <text value="MADISON AVENUE"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <vspacer id="740ce">
+        <constraints>
+          <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="ff9d8" class="javax.swing.JLabel" binding="firstRentLb">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="12"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="RENT 22$"/>
+        </properties>
+      </component>
+      <grid id="a1b16" binding="rentPn" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="93e10" class="javax.swing.JLabel" binding="oneHouseLb">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="With 1 house:"/>
+            </properties>
+          </component>
+          <component id="706c7" class="javax.swing.JLabel" binding="oneHouseRentLb">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="3881c" class="javax.swing.JLabel" binding="twoHousesLb">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="With 2 houses:"/>
+            </properties>
+          </component>
+          <component id="93a78" class="javax.swing.JLabel" binding="twoHousesRentLb">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="ef90c" class="javax.swing.JLabel" binding="threeHousesLb">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="With 3 houses:"/>
+            </properties>
+          </component>
+          <component id="90f9" class="javax.swing.JLabel" binding="threeHousesRentLb">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="76c25" class="javax.swing.JLabel" binding="fourHousesLb">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="With 4 houses:"/>
+            </properties>
+          </component>
+          <component id="a315e" class="javax.swing.JLabel" binding="fourHousesRentLb">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="e7e91" class="javax.swing.JLabel" binding="hotelLb">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="With HOTEL:"/>
+            </properties>
+          </component>
+          <component id="13b1e" class="javax.swing.JLabel" binding="hotelRentLb">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-16777216"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="8f653" class="javax.swing.JLabel" binding="mortgageValueLb">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="12"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="fbfe0" class="javax.swing.JLabel" binding="houseCostLb">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="12"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="e5324" class="javax.swing.JLabel" binding="hotelCostLb">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="12"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="d07ff" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="7"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="&lt;html&gt;&lt;center&gt;If a player owns all the cards of a color group&lt;br&gt;the rent is doubled on unimproved sites in that group.&lt;/html&gt;"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.HighScoresScreen">
+  <grid id="27dc6" binding="mainPn" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="a3e65" class="javax.swing.JLabel" binding="titleLb">
+        <constraints border-constraint="North"/>
+        <properties>
+          <icon value="img/hs_title.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <grid id="74ce1" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="bcf8b" class="javax.swing.JButton" binding="backBtn">
+            <constraints/>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <defaultCapable value="false"/>
+              <focusPainted value="false"/>
+              <horizontalAlignment value="2"/>
+              <icon value="img/hs_backBtn.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
